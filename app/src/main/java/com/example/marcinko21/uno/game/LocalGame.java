@@ -1,17 +1,17 @@
 package com.example.marcinko21.uno.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.actionMsg.GameOverAckAction;
-import edu.up.cs301.game.actionMsg.MyNameIsAction;
-import edu.up.cs301.game.actionMsg.ReadyAction;
-import edu.up.cs301.game.actionMsg.TimerAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameOverInfo;
-import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
-import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
-import edu.up.cs301.game.infoMsg.StartGameInfo;
-import edu.up.cs301.game.util.GameTimer;
-import edu.up.cs301.game.util.Tickable;
+import com.example.marcinko21.uno.game.actionMsg.GameAction;
+import com.example.marcinko21.uno.game.actionMsg.GameOverAckAction;
+import com.example.marcinko21.uno.game.actionMsg.MyNameIsAction;
+import com.example.marcinko21.uno.game.actionMsg.ReadyAction;
+import com.example.marcinko21.uno.game.actionMsg.TimerAction;
+import com.example.marcinko21.uno.game.infoMsg.BindGameInfo;
+import com.example.marcinko21.uno.game.infoMsg.GameOverInfo;
+import com.example.marcinko21.uno.game.infoMsg.IllegalMoveInfo;
+import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
+import com.example.marcinko21.uno.game.infoMsg.StartGameInfo;
+import com.example.marcinko21.uno.game.util.GameTimer;
+import com.example.marcinko21.uno.game.util.Tickable;
 
 import android.os.Handler;
 import android.os.Looper;

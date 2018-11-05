@@ -25,10 +25,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
-import edu.up.cs301.game.config.GameConfig;
-import edu.up.cs301.game.config.GamePlayerType;
-import edu.up.cs301.game.util.IPCoder;
-import edu.up.cs301.game.util.MessageBox;
+
+import com.example.marcinko21.uno.R;
+import com.example.marcinko21.uno.game.config.GameConfig;
+import com.example.marcinko21.uno.game.config.GamePlayerType;
+import com.example.marcinko21.uno.game.util.IPCoder;
+import com.example.marcinko21.uno.game.util.MessageBox;
 
 /**
  * class GameMainActivity

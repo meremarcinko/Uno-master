@@ -13,6 +13,10 @@ import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
 
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnTouchListener {
 
+    //todo:
+    //create UnoSurfaceView
+    //add required functions like getTopView, see tictactoe example
+
     // the current activity
     private Activity myActivity;
 

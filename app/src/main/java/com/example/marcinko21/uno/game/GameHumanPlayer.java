@@ -1,16 +1,16 @@
 package com.example.marcinko21.uno.game;
 
-import edu.up.cs301.game.actionMsg.GameOverAckAction;
-import edu.up.cs301.game.actionMsg.MyNameIsAction;
-import edu.up.cs301.game.actionMsg.ReadyAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.infoMsg.GameOverInfo;
-import edu.up.cs301.game.infoMsg.StartGameInfo;
-import edu.up.cs301.game.infoMsg.TimerInfo;
-import edu.up.cs301.game.util.GameTimer;
-import edu.up.cs301.game.util.MessageBox;
-import edu.up.cs301.game.util.Tickable;
+import com.example.marcinko21.uno.game.actionMsg.GameOverAckAction;
+import com.example.marcinko21.uno.game.actionMsg.MyNameIsAction;
+import com.example.marcinko21.uno.game.actionMsg.ReadyAction;
+import com.example.marcinko21.uno.game.infoMsg.BindGameInfo;
+import com.example.marcinko21.uno.game.infoMsg.GameInfo;
+import com.example.marcinko21.uno.game.infoMsg.GameOverInfo;
+import com.example.marcinko21.uno.game.infoMsg.StartGameInfo;
+import com.example.marcinko21.uno.game.infoMsg.TimerInfo;
+import com.example.marcinko21.uno.game.util.GameTimer;
+import com.example.marcinko21.uno.game.util.MessageBox;
+import com.example.marcinko21.uno.game.util.Tickable;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

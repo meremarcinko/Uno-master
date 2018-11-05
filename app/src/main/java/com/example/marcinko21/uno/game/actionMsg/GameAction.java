@@ -2,7 +2,7 @@ package com.example.marcinko21.uno.game.actionMsg;
 
 import java.io.Serializable;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.marcinko21.uno.game.GamePlayer;
 
 /**
  * An action for a generic game.  A game action is something that a player

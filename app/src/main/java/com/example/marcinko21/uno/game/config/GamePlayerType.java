@@ -1,6 +1,6 @@
 package com.example.marcinko21.uno.game.config;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.marcinko21.uno.game.GamePlayer;
 
 /**
  * class GamePlayerType

@@ -1,9 +1,9 @@
 package com.example.marcinko21.uno.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.infoMsg.BindGameInfo;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.util.NetworkObjectPasser;
+import com.example.marcinko21.uno.game.actionMsg.GameAction;
+import com.example.marcinko21.uno.game.infoMsg.BindGameInfo;
+import com.example.marcinko21.uno.game.infoMsg.GameInfo;
+import com.example.marcinko21.uno.game.util.NetworkObjectPasser;
 import android.util.Log;
 
 /**

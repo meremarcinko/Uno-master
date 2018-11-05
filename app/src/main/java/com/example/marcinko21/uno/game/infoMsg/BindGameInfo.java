@@ -1,6 +1,6 @@
 package com.example.marcinko21.uno.game.infoMsg;
 
-import edu.up.cs301.game.Game;
+import com.example.marcinko21.uno.game.Game;
 
 /**
  * A message from the game to a player that tells the player:

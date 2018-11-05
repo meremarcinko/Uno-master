@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.util.Log;
 
-import edu.up.cs301.game.GameMainActivity;
-import edu.up.cs301.game.GamePlayer;
-import edu.up.cs301.game.ProxyPlayer;
+import com.example.marcinko21.uno.game.GameMainActivity;
+import com.example.marcinko21.uno.game.GamePlayer;
+import com.example.marcinko21.uno.game.ProxyPlayer;
 
 /**
  * GameConfig class

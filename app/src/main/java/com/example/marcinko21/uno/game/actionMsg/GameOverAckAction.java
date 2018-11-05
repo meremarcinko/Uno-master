@@ -1,6 +1,6 @@
 package com.example.marcinko21.uno.game.actionMsg;
 
-import edu.up.cs301.game.GamePlayer;
+import com.example.marcinko21.uno.game.GamePlayer;
 
 /**
  * An action by which the player acknowledges that the game is over.

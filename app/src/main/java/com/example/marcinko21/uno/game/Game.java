@@ -1,6 +1,6 @@
 package com.example.marcinko21.uno.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
+import com.example.marcinko21.uno.game.actionMsg.GameAction;
 
 /**
  * To support remote play, this game framework has two types of Games: local

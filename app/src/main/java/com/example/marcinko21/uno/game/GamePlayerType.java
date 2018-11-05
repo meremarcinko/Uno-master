@@ -1,7 +1,7 @@
 package com.example.marcinko21.uno.game;
 
-import edu.up.cs301.game.GamePlayer;
-import edu.up.cs301.game.config.*;
+import com.example.marcinko21.uno.game.GamePlayer;
+import com.example.marcinko21.uno.game.config.*;
 
 /**
  * class GamePlayerType
@@ -12,7 +12,7 @@ import edu.up.cs301.game.config.*;
  * 
  * @author Andrew Nuxoll
  * @version July 2012
- * @see edu.up.cs301.game.config.GameConfig
+ * @see com.example.marcinko21.uno.game.config.GameConfig
  */
 
 public abstract class GamePlayerType implements Cloneable /*, Serializable*/ {

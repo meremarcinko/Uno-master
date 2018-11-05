@@ -14,11 +14,11 @@ public class UnoState extends GameState
     Card deck[] = new Card[108];
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
-    Card discardPile[] = new Card[108];
+    Card discardPile[] = new Card[108]; //make this an arraylist?
     Random r = new Random();
 
     //Default constructor
-    public State() {
+    public UnoState() {
         player1Id = 0;
         player2Id = 1;
         deckSize = 108;
@@ -45,7 +45,7 @@ public class UnoState extends GameState
     /** Deep Copy Constructor
      *
      */
-    public State (UnoState state) {
+    public UnoState (UnoState state) {
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
         deckSize = state.getDeckSize();
@@ -161,7 +161,7 @@ public class UnoState extends GameState
     }
 
     //Method to add a card to a specific hand
-    public void drawCard(ArrayList<Card> hand, int player1Id, int player2Id){
+    public void drawCard(ArrayList<Card> hand){
         int i;
         hand.add(deck[0]);
         deck[0] = null;
@@ -200,7 +200,7 @@ public class UnoState extends GameState
     }
 
     //Method to play a card from the hand
-    public void playCard(ArrayList<Card> hand, Card c, int player2Id, int player1Id){
+    public void playCard(ArrayList<Card> hand, Card c){
         hand.remove(c);
         discardPile[getPileSize()+1] = c;
         updatePileSize();
@@ -258,18 +258,22 @@ public class UnoState extends GameState
             return true;
         }
     }
-}
+
 
     /** playCard action
      *
      * @return true if legal move
      */
-    public boolean playCard(int player1Id, int player2Id)
+    public boolean playCard(int playerId, Card cardToPlay)
     {
-        if(player1Id != turn) {
+        if(playerId != turn) {
             return false;
         }
         else {
+            if(playerId == 0) {
+                playCard(hand1,cardToPlay);
+            }
+            //todo else for p1
             return true;
         }
     }
@@ -351,5 +355,9 @@ public class UnoState extends GameState
     public int getTurn(){ return turn; }
 
     public void setTurn(int newTurn) { turn = newTurn; }
+
+    public Card[] getDiscardPile() {
+        return discardPile;
+    }
 
 }
