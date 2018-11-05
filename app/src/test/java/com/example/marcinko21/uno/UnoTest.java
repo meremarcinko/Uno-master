@@ -74,6 +74,12 @@ public class UnoTest {
     {
         UnoState testUno = new UnoState();
 
+        boolean oldSelect = testUno.selectCard(0, 1);
+        boolean newSelect = testUno.selectCard(0,1);
+
+        assertEquals(oldSelect, newSelect);
+
+
     }
 
     @Test
@@ -94,6 +100,11 @@ public class UnoTest {
     public void testDeclareUno()
     {
         UnoState testUno = new UnoState();
+
+        boolean oldDeclare = testUno.declareUno(0,1);
+        boolean newDeclare = testUno.declareUno(0,1);
+
+        assertEquals(oldDeclare, newDeclare);
 
     }
 }
