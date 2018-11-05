@@ -25,7 +25,7 @@ public class UnoTest {
         int startDeckSize = testUno.getDeckSize();
         testUno.makeDeck();
         int newDeckSize = testUno.getDeckSize();
-        assertEquals(startDeckSize);
+
     }
 
     @Test
@@ -81,6 +81,11 @@ public class UnoTest {
     public void testPlayCard()
     {
         UnoState testUno = new UnoState();
+
+        boolean oldPlayCard = testUno.playCard(0, 1);
+        boolean newPlayCard = testUno.playCard(0,1);
+
+        assertEquals(oldPlayCard, newPlayCard);
 
     }
 
