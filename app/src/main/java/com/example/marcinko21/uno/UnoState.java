@@ -8,21 +8,18 @@ public class UnoState extends GameState
 {
     int player1Id;
     int player2Id;
-    int deckSize;
-    int pileSize;
     int turn;
-    Card deck[] = new Card[108];
+    int color;
+    ArrayList<Card> deck = new ArrayList<Card>(0);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
-    Card discardPile[] = new Card[108]; //make this an arraylist?
+    ArrayList<Card> discardPile = new ArrayList<Card>(0); //make this an arraylist?
     Random r = new Random();
 
     //Default constructor
     public UnoState() {
         player1Id = 0;
         player2Id = 1;
-        deckSize = 108;
-        pileSize = 0;
         turn = 0;
         makeDeck();
         shuffleDeck();
@@ -31,15 +28,9 @@ public class UnoState extends GameState
             drawCard(hand1);
             drawCard(hand2);
         }
-        discardPile[0] = deck[0];
-        deck[0] = null;
-        for(i = 1; i < 108; i++){
-            deck[i-1] = deck[i];
-            deck[i] = null;
-            discardPile[i] = null;
-        }
-        updateDeckSize();
-        updatePileSize();
+        discardPile.add(0,deck.get(0));
+        deck.remove(deck.get(0));
+        color = discardPile.get(discardPile.size()).color;
     }
 
     /** Deep Copy Constructor
@@ -48,10 +39,20 @@ public class UnoState extends GameState
     public UnoState (UnoState state) {
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
-        deckSize = state.getDeckSize();
-        pileSize = state.getPileSize();
         turn = state.getTurn();
-        deck = new Card[108];
+
+        int i = 0;
+        for(Card c : state.deck){
+            deck.set(i, c);
+            i++;
+        }
+        i = 0;
+        for(Card c : state.discardPile)
+        {
+            discardPile.set(i, c);
+            i++;
+        }
+
         hand1 = new ArrayList<Card>(7);
         // this for loop creates a clone of every value in arraylist hand1
         for (Card c : hand1) {
@@ -62,8 +63,7 @@ public class UnoState extends GameState
         for(Card c : hand2) {
             hand2.add(c.clone());
         }
-        discardPile = new Card[108];
-
+        color = discardPile.get(discardPile.size()).color;
     }
 
 
@@ -73,7 +73,8 @@ public class UnoState extends GameState
 
         //number cards with value 0
         for (i = 0; i < 4; i++) {
-            deck[i] = new Card(i, 0, 'n',"card"+i);
+            Card c = new Card(i, 0, 'n',"card"+i);
+            deck.add(c);
         }
 
         //number cards with values 1-9
@@ -81,7 +82,8 @@ public class UnoState extends GameState
             for (n = 0; n < 2; n++) {
                 for (k = 0; k < 10; k++) {
                     for (j = 0; j < 4; j++) {
-                        deck[i] = new Card(j, k, 'n',"card"+i);
+                        Card c = new Card(j, k, 'n',"card"+i);
+                        deck.add(c);
                         i++;
                     }
                 }
@@ -92,7 +94,8 @@ public class UnoState extends GameState
         while (i < 84) {
             for (k = 0; k < 2; k++) {
                 for (j = 0; j < 4; j++) {
-                    deck[i] = new Card(j, 0, 's',"card"+i);
+                    Card c = new Card(j, 0, 's',"card"+i);
+                    deck.add(c);
                     i++;
                 }
             }
@@ -102,7 +105,8 @@ public class UnoState extends GameState
         while (i < 92) {
             for (k = 0; k < 2; k++) {
                 for (j = 0; j < 4; j++) {
-                    deck[i] = new Card(j, 0, 'd',"card"+i);
+                    Card c = new Card(j, 0, 'd',"card"+i);
+                    deck.add(c);
                     i++;
                 }
             }
@@ -112,7 +116,8 @@ public class UnoState extends GameState
         while (i < 100) {
             for (k = 0; k < 2; k++) {
                 for (j = 0; j < 4; j++) {
-                    deck[i] = new Card(j, 0, 'r',"card"+i);
+                    Card c = new Card(j, 0, 'r',"card"+i);
+                    deck.add(c);
                     i++;
                 }
             }
@@ -121,7 +126,8 @@ public class UnoState extends GameState
         //wild cards
         while (i < 104) {
             for (j = 0; j < 4; j++) {
-                deck[i] = new Card(4, 0, 'w',"card"+i);
+                Card c = new Card(4, 0, 'w',"card"+i);
+                deck.add(c);
                 i++;
             }
         }
@@ -129,12 +135,12 @@ public class UnoState extends GameState
         //wild draw 4 cards
         while (i < 108) {
             for (j = 0; j < 4; j++) {
-                deck[i] = new Card(4, 0, 'd',"card"+i);
-                deck[i].setId("card" + i);
+                Card c = new Card(4, 0, 'd',"card"+i);
+                deck.add(c);
                 i++;
             }
         }
-    }
+    } //makeDeck()
 
     //Method to shuffle the deck
     public void shuffleDeck(){
@@ -142,72 +148,40 @@ public class UnoState extends GameState
         int i;
         int n;
         int index = r.nextInt(108);
-        temp[0] = deck[index];
+        temp[0] = deck.get(index);
         for(i = 1;  i < 108; i++){
             index = r.nextInt(108);
-            temp[i] = deck[index];
+            temp[i] = deck.get(index);
             //detects if the value from the random index is equal to another one already in temp
             for(n = 0; n < 108; n++){
                 while(temp[i] == temp[n] && temp[n] != null){
                     index = r.nextInt(108);
-                    temp[i] = deck[index];
+                    temp[i] = deck.get(index);
                 }
             }
         }
+
         //sets the deck in use to the randomly ordered one
         for(i = 0; i < 108; i++){
-            deck[i] = temp[i];
+            deck.set(i, temp[i]);
         }
     }
 
     //Method to add a card to a specific hand
     public void drawCard(ArrayList<Card> hand){
-        int i;
-        hand.add(deck[0]);
-        deck[0] = null;
-        for(i = 1; i < 108; i++){
-            deck[i-1] = deck[i];
-            deck[i] = null;
-        }
-    }
-
-    //Method to update pileSize
-    public void updatePileSize(){
-        int i = 0;
-        while(discardPile[i] != null){
-            i++;
-        }
-        pileSize = i;
-    }
-
-    //Method to get the discard pile's size
-    public int getPileSize(){
-        return pileSize;
-    }
-
-    //Method to update deckSize
-    public void updateDeckSize(){
-        int i = 0;
-        while(deck[i] != null){
-            i++;
-        }
-        deckSize = i;
-    }
-
-    //Method to get the deck size
-    public int getDeckSize(){
-        return deckSize;
+        hand.add(deck.get(0));
+        deck.remove(0);
     }
 
     //Method to play a card from the hand
     public void playCard(ArrayList<Card> hand, Card c){
         hand.remove(c);
-        discardPile[getPileSize()+1] = c;
-        updatePileSize();
+        discardPile.add(c);
+        color = discardPile.get(discardPile.size()).color;
     }
 
     //Method to see if UNO can be called for a hand.
-    public boolean isUno(ArrayList<Card> hand, int player1Id, int player2Id){
+    public boolean isUno(ArrayList<Card> hand, int playerId){
         if(hand.size() == 1) {
             return true;
         }
@@ -224,24 +198,17 @@ public class UnoState extends GameState
 
     //Method to get a formatted String describing the basic game state
     public String getGameState() {
-        return "Player 1 ID: " + player1Id + "Player 2 ID: " + player2Id + ", Deck Size: " + deckSize + ", Turn: " + turn;
+        return "Player 1 ID: " + player1Id + "Player 2 ID: " + player2Id + ", Turn: " + turn;
     }
 
     //Method to check if the deck is empty and makes and shuffles a new one from the pile if it is
     public void checkIsEmpty(){
-        int count = 0;
-        int i;
-        if(deckSize == 0){
-            while(discardPile[count] != null) {
-                count++;
+        int count = discardPile.size();
+        if(deck.size() == 0){
+            for(int i = 0; i < count-1; i++){
+                deck.add(discardPile.get(i));
+                discardPile.remove(i);
             }
-            for(i = 0; i < count-1; i++){
-                deck[i] = discardPile[i];
-                discardPile[i] = null;
-            }
-            discardPile[0] = discardPile[count];
-            updatePileSize();
-            updateDeckSize();
             shuffleDeck();
         }
     }
@@ -304,7 +271,7 @@ public class UnoState extends GameState
      *
      * @return true if legal move
      */
-    public boolean declareUno(int player1Id, int player2Id)
+    public boolean declareUno(int playerId)
     {
         return false;
     }
