@@ -23,7 +23,6 @@ import android.widget.TabHost;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 import com.example.marcinko21.uno.R;
@@ -99,7 +98,7 @@ View.OnClickListener {
 	 *         configuration for this game. (The default may be subsequently
 	 *         modified by the user if this is allowed.)
 	 */
-	public abstract GameConfig createDefaultConfig();
+	public abstract com.example.marcinko21.uno.game.GameConfig createDefaultConfig();
 
 	/**
 	 * createLocalGame
