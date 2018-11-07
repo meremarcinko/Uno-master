@@ -2,16 +2,19 @@ package com.example.marcinko21.uno;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.marcinko21.uno.game.GameHumanPlayer;
+import com.example.marcinko21.uno.game.GameMainActivity;
 import com.example.marcinko21.uno.game.infoMsg.GameInfo;
 import com.example.marcinko21.uno.game.infoMsg.IllegalMoveInfo;
 import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
 
-public class UnoHumanPlayer extends GameHumanPlayer implements View.OnTouchListener {
+public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //todo:
     //create UnoSurfaceView
@@ -37,6 +40,18 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
     public UnoHumanPlayer(String name, int layoutId) {
         super(name);
         this.layoutId = layoutId;
+
+        Button drawButton =
+                (Button) myActivity.findViewById(R.id.drawButton);
+        drawButton.setOnClickListener(this);
+        Button unoButton =
+                (Button) myActivity.findViewById(R.id.unoButton);
+        unoButton.setOnClickListener(this);
+    }
+
+    @Override
+    public View getTopView() {
+        return null;
     }
 
     /**
@@ -52,7 +67,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
 
         if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
             // if the move was out of turn or otherwise illegal, flash the screen
-            surfaceView.flash(Color.RED, 50);
+            //surfaceView.flash(Color.RED, 50);
         }
         else if (!(info instanceof UnoState))
             // if we do not have a UnoState, ignore
@@ -67,22 +82,40 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
     /**
      * sets the current player as the activity's GUI
      */
-    public void setAsGui(UnoMainActivity activity) {
+    public void setAsGui(GameMainActivity activity) {
 
-        // remember our activitiy
+        // remember our activity
         myActivity = activity;
 
         // Load the layout resource for the new configuration
         activity.setContentView(layoutId);
 
         // set the surfaceView instance variable
-        surfaceView = (UnoSurfaceView)myActivity.findViewById(R.id.surfaceView);
+        surfaceView = (UnoSurfaceView)myActivity.findViewById(R.id.unoSurfaceView);
         Log.i("set listener","OnTouch");
-        surfaceView.setOnTouchListener(this);
+        surfaceView.setOnTouchListener(surfaceView);
+    }
+
+    private class drawButtonListener  {
+        public void onClick(View button) {
+
+
+        }
+    }
+
+    private class unoButtonListener  {
+        public void onClick(View button) {
+
+
+        }
     }
 
 
-    public boolean onTouch(View v, MotionEvent event) {
-        return true;
-    }
+
+
+
+
+
+    public void setContentView(int contentView) {this.setContentView(contentView);}
+
 }

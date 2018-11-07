@@ -24,7 +24,7 @@ public class UnoMainActivity extends GameMainActivity {
         // Uno has two player types:  human and computer
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
-                return new UnoHumanPlayer(name, 0);
+                return new UnoHumanPlayer(name, R.layout.activity_uno_main);
             }});
 
 
@@ -34,7 +34,6 @@ public class UnoMainActivity extends GameMainActivity {
                 return new UnoComputerPlayer(name);
             }
         });
-
 
         // Add the default players
         GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "Pig", PORT_NUMBER);
@@ -57,7 +56,7 @@ public class UnoMainActivity extends GameMainActivity {
      */
     @Override
     public LocalGame createLocalGame() {
-        return new LocalGame();
+        return new UnoLocalGame();
     }
     //todo make a uno local game class and have it extend local game class. Then make this method -
     //- return the new uno local game state

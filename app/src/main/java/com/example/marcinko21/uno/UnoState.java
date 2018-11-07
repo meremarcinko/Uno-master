@@ -13,7 +13,7 @@ public class UnoState extends GameState
     ArrayList<Card> deck = new ArrayList<Card>(0);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
-    ArrayList<Card> discardPile = new ArrayList<Card>(0); //make this an arraylist?
+    ArrayList<Card> discardPile = new ArrayList<Card>(0);
     Random r = new Random();
 
     //Default constructor
