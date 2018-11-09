@@ -4,21 +4,24 @@ package com.example.marcinko21.uno;
  * Card Class for Uno
  *
  * @author Andrew, Meredith, Ashley
- * @date October 2018
+ * @date 9 November 2018
  */
 public class Card {
 
 
+    /**
+     * Initialize Variables
+     */
      // two hand. One card in one hand. Two cards in the other hand. Have one card be played and show
     //that it was added to the discard pile. The discard pile has one more card and the hand now has
     //one less card
-    //initialize all the values that are needed for this class
     int value;
     char type;
     int color;
     String id;
 
-    /** Constructor
+    /**
+     * Constructor for Card Class
      *
      */
     public Card() {
@@ -26,9 +29,10 @@ public class Card {
         type = ' ';
         color = 0;
         id = " ";
-    }
+    }//ctor
 
-    /** Deep constructor
+    /**
+     *  Deep constructor
      *
      * @param c
      * @param v
@@ -43,15 +47,20 @@ public class Card {
         id = " ";
     }
 
-    /** Clone method to copy and return new card for deep constructor
+    /**
+     * Clone method to copy and return new card for deep constructor
      *
      * @return copy of Card class
      */
     public Card clone(){
 
         return new Card(color, value, type, id);
-    }
+    }//clone
 
+    /**
+     *  Set and Get Methods
+     *
+     */
     //getter and setter methods
     public int getValue() { return value; }
 

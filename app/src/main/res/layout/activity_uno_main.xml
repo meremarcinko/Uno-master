@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="77dp" />
+        tools:layout_editor_absoluteY="31dp" />
 
     <Button
         android:id="@+id/unoButton"
@@ -31,11 +31,11 @@
     <SurfaceView
         android:id="@+id/unoSurfaceView"
         android:layout_width="match_parent"
-        android:layout_height="422dp"
+        android:layout_height="444dp"
         android:layout_marginStart="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="145dp" />
+        tools:layout_editor_absoluteY="123dp" />
 
     <Spinner
         android:id="@+id/menuSpinner"
@@ -67,6 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="33dp" />
+        tools:layout_editor_absoluteY="81dp" />
 
 </android.support.constraint.ConstraintLayout>

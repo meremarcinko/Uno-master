@@ -14,23 +14,28 @@ import com.example.marcinko21.uno.game.infoMsg.GameInfo;
 import com.example.marcinko21.uno.game.infoMsg.IllegalMoveInfo;
 import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
 
+/**
+ * UnoHumanPlayer Class for Uno Game
+ *
+ * @author Meredith, Andrew, Ashley
+ * @version 09 November 2018
+ */
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //todo:
-    //create UnoSurfaceView
     //add required functions like getTopView, see tictactoe example
 
-    // the current activity
-    private Activity myActivity;
-
-    // the surface view
-    private UnoSurfaceView surfaceView;
-
-    // the ID for the layout to use
-    private int layoutId;
+    /**
+     * Initialize Variables
+     */
+    private Activity myActivity; //the current activity
+    private UnoSurfaceView surfaceView; //the surfaceview
+    private int layoutId; //the ID for the layout to use
+    private Button drawButton;
+    private Button unoButton;
 
     /**
-     * constructor
+     * Constructor for UnoHumanPlayer Class
      *
      * @param name
      * 		the player's name
@@ -38,23 +43,29 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      *      the id of the layout to use
      */
     public UnoHumanPlayer(String name, int layoutId) {
+
         super(name);
         this.layoutId = layoutId;
 
-        Button drawButton =
-                (Button) myActivity.findViewById(R.id.drawButton);
+        drawButton = (Button) myActivity.findViewById(R.id.drawButton);
         drawButton.setOnClickListener(this);
-        Button unoButton =
-                (Button) myActivity.findViewById(R.id.unoButton);
+        unoButton = (Button) myActivity.findViewById(R.id.unoButton);
         unoButton.setOnClickListener(this);
-    }
 
+    }//ctor
+
+    /**
+     * getTopView
+     *
+     * @return null
+     */
     @Override
     public View getTopView() {
         return null;
     }
 
     /**
+     * ReceiveInfo Method
      * Callback method, called when player gets a message
      *
      * @param info
@@ -77,7 +88,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             surfaceView.invalidate();
             Log.i("human player", "receiving");
         }
-    }
+    }//receiveInfo
 
     /**
      * sets the current player as the activity's GUI
@@ -94,27 +105,30 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         surfaceView = (UnoSurfaceView)myActivity.findViewById(R.id.unoSurfaceView);
         Log.i("set listener","OnTouch");
         surfaceView.setOnTouchListener(surfaceView);
-    }
+    }//setAsGui
 
-    private class drawButtonListener  {
-        public void onClick(View button) {
 
+    /**
+     * this method gets called when the user clicks the uno or draw button. It
+     * creates a new UnoUnoAction or UnoDrawAction and sends it to the game.
+     *
+     * @param button
+     * 		the button that was clicked
+     */
+    public void onClick(View button) {
+
+        if(button == unoButton){
+
+            UnoUnoAction declareUno = new UnoUnoAction(this);
+            game.sendAction(declareUno);
+
+        } else if (button == drawButton) {
+
+            UnoDrawAction draw = new UnoDrawAction(this);
+            game.sendAction(draw);
 
         }
-    }
-
-    private class unoButtonListener  {
-        public void onClick(View button) {
-
-
-        }
-    }
-
-
-
-
-
-
+    }// onClick
 
     public void setContentView(int contentView) {this.setContentView(contentView);}
 

@@ -4,19 +4,34 @@ import com.example.marcinko21.uno.game.infoMsg.GameState;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Contains the state of a Uno game.  Sent by the game when
+ * a player wants to enquire about the state of the game.  (E.g., to display
+ * it, or to help figure out its next move.)
+ *
+ * @author Meredith, Andrew, Ashley
+ * @version 09 November 2018
+ */
 public class UnoState extends GameState
 {
+
+    /**
+     * Initialize Variables
+     */
     int player1Id;
     int player2Id;
     int turn;
     int color;
+    int deckSize;
     ArrayList<Card> deck = new ArrayList<Card>(0);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
     ArrayList<Card> discardPile = new ArrayList<Card>(0);
     Random r = new Random();
 
-    //Default constructor
+    /**
+     * Constructor for objects of class UnoState
+     */
     public UnoState() {
         player1Id = 0;
         player2Id = 1;
@@ -31,10 +46,13 @@ public class UnoState extends GameState
         discardPile.add(0,deck.get(0));
         deck.remove(deck.get(0));
         color = discardPile.get(discardPile.size()).color;
-    }
+    }//ctor
 
-    /** Deep Copy Constructor
+    /**
+     * Copy constructor for class UnoState
      *
+     * @param state
+     * 		the UnoState object that we want to clone
      */
     public UnoState (UnoState state) {
         player1Id = state.getPlayer1Id();
@@ -64,10 +82,11 @@ public class UnoState extends GameState
             hand2.add(c.clone());
         }
         color = discardPile.get(discardPile.size()).color;
-    }
+    }//copyCtor
 
-
-    //Method to make the deck for a new game
+    /**
+     * Method to make the deck for a new game
+     */
     public void makeDeck() {
         int i, n, k, j;
 
@@ -142,7 +161,9 @@ public class UnoState extends GameState
         }
     } //makeDeck()
 
-    //Method to shuffle the deck
+    /**
+     * Method to Shuffle the Deck
+     */
     public void shuffleDeck(){
         Card temp[] = new Card[108];
         int i;
@@ -165,22 +186,37 @@ public class UnoState extends GameState
         for(i = 0; i < 108; i++){
             deck.set(i, temp[i]);
         }
-    }
+    }//shuffleDeck
 
-    //Method to add a card to a specific hand
+    /**
+     * Method to add a card to a specific hand
+     *
+     * @param hand
+     */
     public void drawCard(ArrayList<Card> hand){
         hand.add(deck.get(0));
         deck.remove(0);
-    }
+    }//drawCard
 
-    //Method to play a card from the hand
+    /**
+     * Method to play a card from the hand
+     *
+     * @param hand
+     * @param c
+     */
     public void playCard(ArrayList<Card> hand, Card c){
         hand.remove(c);
         discardPile.add(c);
         color = discardPile.get(discardPile.size()).color;
-    }
+    }//playCard
 
-    //Method to see if UNO can be called for a hand.
+    /**
+     * //Method to see if UNO can be called for a hand.
+     *
+     * @param hand
+     * @param playerId
+     * @return true or false
+     */
     public boolean isUno(ArrayList<Card> hand, int playerId){
         if(hand.size() == 1) {
             return true;
@@ -189,19 +225,33 @@ public class UnoState extends GameState
         {
             return false;
         }
-    }
+    }//isUno
 
-    //get method for the size of a hand
+    /**
+     * get method for the size of a hand
+     *
+     *
+     * @param hand
+     * @return hand size
+     */
     public int getHandSize(ArrayList<Card> hand){
         return hand.size();
     }
 
-    //Method to get a formatted String describing the basic game state
+
+    /**
+     * Method to get a formatted String describing the basic game state
+     * @return player 1 and 2's id, with the turn
+     */
     public String getGameState() {
         return "Player 1 ID: " + player1Id + "Player 2 ID: " + player2Id + ", Turn: " + turn;
-    }
+    } //getGameState
 
-    //Method to check if the deck is empty and makes and shuffles a new one from the pile if it is
+    /**
+     * Method to check if the deck is empty and makes and shuffles
+     * a new one from the pile if it is
+     *
+     */
     public void checkIsEmpty(){
         int count = discardPile.size();
         if(deck.size() == 0){
@@ -211,9 +261,10 @@ public class UnoState extends GameState
             }
             shuffleDeck();
         }
-    }
+    } //checkIsEmpty
 
-    /** selectCard action
+    /**
+     * selectCard action
      *
      * @return true if legal move
      */
@@ -224,10 +275,11 @@ public class UnoState extends GameState
         else {
             return true;
         }
-    }
+    }//selectCard
 
 
-    /** playCard action
+    /**
+     * playCard action
      *
      * @return true if legal move
      */
@@ -243,17 +295,23 @@ public class UnoState extends GameState
             //todo else for p1
             return true;
         }
-    }
+    }//playCard
 
+    /**
+     * getHand action
+     *
+     * @return true if legal move
+     */
     public ArrayList<Card> getHand(int playerId)
-        {
-            if(playerId == player1Id) {
-                return hand1;
-            }
-            return hand2;
+    {
+        if(playerId == player1Id) {
+            return hand1;
         }
+            return hand2;
+    }//getHand
 
-    /** drawCard action
+    /**
+     * drawCard action
      *
      * @return true if legal move
      */
@@ -265,9 +323,10 @@ public class UnoState extends GameState
         {
             return true;
         }
-    }
+    }//drawCard
 
-    /** declareUno action
+    /**
+     * declareUno action
      *
      * @return true if legal move
      */
@@ -275,7 +334,6 @@ public class UnoState extends GameState
     {
         return false;
     }
-
 
 
     /**
@@ -289,28 +347,44 @@ public class UnoState extends GameState
         updateDeckSize();
         String out = "Deck Cards: ";
         while(deck[i] != null) {
-            out = out + "ID: "+deck[i].getId() + " Value: " + deck[i].getValue() + " Type: " + deck[i].getType() + " Color: " + deck[i].getColor() + ", ";
+            out = out + "ID: "+ deck[i].getId() + " Value: " + deck[i].getValue() + " Type: " +
+                    deck[i].getType() + " Color: " + deck[i].getColor() + ", ";
             i++;
         }
         i = 0;
         out = out + " Discard Pile: ";
         while(discardPile[i] != null) {
-            out = out + "ID: "+ discardPile[i].getId() + " Value: " + discardPile[i].getValue() + " Type: " + discardPile[i].getType() + " Color: " + discardPile[i].getColor();
+            out = out + "ID: "+ discardPile[i].getId() + " Value: " + discardPile[i].getValue() +
+                    " Type: " + discardPile[i].getType() + " Color: " + discardPile[i].getColor();
             i++;
         }
-        out = out + "Deck size: " + getDeckSize() + " Discard Pile size: "+ getPileSize() + " Turns: " + turn + " ";
+        out = out + "Deck size: " + getDeckSize() + " Discard Pile size: "+ getDiscardPile() + " Turns: " + turn + " ";
         for (i = 0; i < hand1.size(); i++) {
-            out = out + "hand1 card"+i+": " + "Color: " + hand1.get(i).getColor() + " Value: " + hand1.get(i).getValue() + " Type: " + hand1.get(i).getType() + " " + "ID: " + hand1.get(i).getId();
+            out = out + "hand1 card"+i+": " + "Color: " + hand1.get(i).getColor() + " Value: " +
+                    hand1.get(i).getValue() + " Type: " + hand1.get(i).getType() + " " + "ID: " +
+                    hand1.get(i).getId();
         }
         for (i = 0; i < hand2.size(); i++) {
-            out = out + "hand2 card"+i+": " + "Color: " + hand2.get(i).getColor() + " Value: " + hand2.get(i).getValue() + " Type: " + hand2.get(i).getType() + " " + "ID: " + hand2.get(i).getId();
+            out = out + "hand2 card"+i+": " + "Color: " + hand2.get(i).getColor() + " Value: " +
+                    hand2.get(i).getValue() + " Type: " + hand2.get(i).getType() + " " + "ID: " + hand2.get(i).getId();
         }
         out = out + "Player 1 ID: "+player1Id+" Player 2 ID: "+player2Id;
         return out;
+    }//toString
+
+    /**
+     * Update Deck Size
+     */
+    private void updateDeckSize() {
+        //todo implement this method
+
     }
 
 
-    //set/get methods
+    /**
+     *  Set and Get Methods
+     *
+     */
     public void setPlayer1Id(int pid){ player1Id = pid; }
 
     public int getPlayer1Id(){ return player1Id; }
@@ -326,5 +400,7 @@ public class UnoState extends GameState
     public Card[] getDiscardPile() {
         return discardPile;
     }
+
+    public int getDeckSize() {return deckSize;}
 
 }
