@@ -23,6 +23,7 @@ public class UnoState extends GameState
     int turn;
     int color;
     int deckSize;
+    boolean playerDeclaredUno;
     ArrayList<Card> deck = new ArrayList<Card>(0);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
@@ -38,6 +39,7 @@ public class UnoState extends GameState
         turn = 0;
         makeDeck();
         shuffleDeck();
+        playerDeclaredUno = false;
         int i;
         for(i=0; i < 7; i++){
             drawCard(hand1);
@@ -55,9 +57,11 @@ public class UnoState extends GameState
      * 		the UnoState object that we want to clone
      */
     public UnoState (UnoState state) {
+
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
         turn = state.getTurn();
+        playerDeclaredUno = state.playerDeclaredUno;
 
         int i = 0;
         for(Card c : state.deck){
@@ -402,5 +406,9 @@ public class UnoState extends GameState
     }
 
     public int getDeckSize() {return deckSize;}
+
+    public void setPlayerDeclaredUno() { playerDeclaredUno = true; }
+
+    public boolean getPlayerDeclaredUno() { return playerDeclaredUno; }
 
 }

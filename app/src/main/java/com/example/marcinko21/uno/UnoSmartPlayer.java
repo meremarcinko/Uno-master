@@ -49,7 +49,7 @@ public class UnoSmartPlayer extends GameComputerPlayer {
                         }
                     } //draw 4 wild
 
-                    else if(if(gs.hand2.get(i).type == 'd' && gs.hand2.get(i).color == 4 ){
+                    else if( if (gs.hand2.get(i).type == 'd' && gs.hand2.get(i).color == 4 ){
                         c.add(gs.hand2.get(i));)
                 }
 

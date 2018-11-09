@@ -117,12 +117,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     public void onClick(View button) {
 
-        if(button == unoButton){
+        if(button.getId() == R.id.unoButton){
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
 
-        } else if (button == drawButton) {
+        } else if (button.getId() == R.id.drawButton) {
 
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);
