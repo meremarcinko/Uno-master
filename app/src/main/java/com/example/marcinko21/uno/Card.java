@@ -47,6 +47,7 @@ public class Card {
         id = " ";
     }
 
+
     /**
      * Clone method to copy and return new card for deep constructor
      *

@@ -26,5 +26,6 @@ public class UnoLocalGame extends LocalGame{
         p.sendInfo(new UnoState(state));
     }
 
+
 }
 
