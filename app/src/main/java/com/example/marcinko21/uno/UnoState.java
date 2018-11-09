@@ -353,16 +353,16 @@ public class UnoState extends GameState
         int i = 0;
         updateDeckSize();
         String out = "Deck Cards: ";
-        while(deck[i] != null) {
-            out = out + "ID: "+ deck[i].getId() + " Value: " + deck[i].getValue() + " Type: " +
-                    deck[i].getType() + " Color: " + deck[i].getColor() + ", ";
+        while(deck.get(i) != null) {
+            out = out + "ID: "+ deck.get(i).getId() + " Value: " + deck.get(i).getValue() + " Type: " +
+                    deck.get(i).getType() + " Color: " + deck.get(i).getColor() + ", ";
             i++;
         }
         i = 0;
         out = out + " Discard Pile: ";
-        while(discardPile[i] != null) {
-            out = out + "ID: "+ discardPile[i].getId() + " Value: " + discardPile[i].getValue() +
-                    " Type: " + discardPile[i].getType() + " Color: " + discardPile[i].getColor();
+        while(discardPile.get(i) != null) {
+            out = out + "ID: "+ discardPile.get(i).getId() + " Value: " + discardPile.get(i).getValue() +
+                    " Type: " + discardPile.get(i).getType() + " Color: " + discardPile.get(i).getColor();
             i++;
         }
         out = out + "Deck size: " + getDeckSize() + " Discard Pile size: "+ getDiscardPile() + " Turns: " + turn + " ";
