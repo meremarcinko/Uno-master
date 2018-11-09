@@ -114,6 +114,9 @@ public class UnoState extends GameState
                     }
                 }
             }
+
+            //todo temporarily comment out above coe and add just green cards 0-9 manually
+            //deck.add(new Card(0,0,'g','green',R.drawable.green0);  etc
         }
 
         //skip cards

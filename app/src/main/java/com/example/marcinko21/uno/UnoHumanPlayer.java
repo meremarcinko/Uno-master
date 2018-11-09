@@ -61,7 +61,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public View getTopView() {
-        return null;
+        return myActivity.findViewById(R.id.top_gui_layout);
     }
 
     /**
