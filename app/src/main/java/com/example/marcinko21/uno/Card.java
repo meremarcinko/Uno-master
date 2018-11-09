@@ -1,5 +1,10 @@
 package com.example.marcinko21.uno;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.view.SurfaceView;
+
 /**
  * Card Class for Uno
  *
@@ -78,4 +83,11 @@ public class Card {
     public void setColor(int c) { this.color = c; }
 
     public void setId(String i) { this.id = i; }
+
+    public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView)
+    {
+        Bitmap cardImage = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.green0);
+        cardImage = Bitmap.createScaledBitmap(cardImage,xSize,ySize,false);
+        canvas.drawBitmap(cardImage, x,y,null);
+    }
 }

@@ -25,10 +25,34 @@ public class UnoLocalGame extends LocalGame{
         state = new UnoState();
     }//ctor
 
-    /**
-     * SendUpdatedStateTo
-     * @param p
+    /** Check if the game is over. If it is over, return
+     * a string that tells who the winner is. If the game
+     * is not over, return null;
+     *
+     * @return
+     *
+     *      a message that tells who has wont the game, or
+     *      null if the game is not over
      */
+
+
+    @Override
+    protected String checkIfGameOver()
+    {
+        //if a player does not have any card left, the
+        //game is over
+
+        //if(player 1 hand == 0)
+        //return return playerNames[gameWinner]+" is the winner.";
+        //else
+        //game is not over
+
+        //if(player 2 hand == 0)
+        //return playerNames[gameWinner]+" is the winner.";
+        //else
+        //game is not over
+        return null;
+    }
     protected void sendUpdatedStateTo(GamePlayer p) {
         p.sendInfo(new UnoState(state));
     }//sendUpdatedStateTo
@@ -36,7 +60,7 @@ public class UnoLocalGame extends LocalGame{
 
     @Override
     protected boolean makeMove(GameAction action) {
-        if(action instanceof UnoDrawAction) {
+        /*if(action instanceof UnoDrawAction) {
 
             GamePlayer p = action.getPlayer();
 
@@ -53,9 +77,22 @@ public class UnoLocalGame extends LocalGame{
             state.setPlayerDeclaredUno();
             return true;
 
-        }
+        }*/
 
         return false;
+    }
+    /**
+     * Tell whether the given player is allowed to make a move at the
+     * present point in the game.
+     *
+     * @param playerIdx
+     * 		the player's player-number (ID)
+     * @return
+     * 		true iff the player is allowed to move
+     */
+    protected boolean canMove(int playerIdx)
+    {
+        return true;
     }
 
 

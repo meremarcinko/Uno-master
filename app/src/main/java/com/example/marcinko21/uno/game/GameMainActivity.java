@@ -26,7 +26,7 @@ import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
 
 import com.example.marcinko21.uno.R;
-import com.example.marcinko21.uno.game.config.GameConfig;
+//import com.example.marcinko21.uno.game.config.GameConfig;
 import com.example.marcinko21.uno.game.config.GamePlayerType;
 import com.example.marcinko21.uno.game.util.IPCoder;
 import com.example.marcinko21.uno.game.util.MessageBox;

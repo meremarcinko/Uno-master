@@ -1,6 +1,7 @@
 package com.example.marcinko21.uno;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -51,6 +52,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
      */
     public UnoSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setWillNotDraw(false);
         init();
     }// ctor
 
@@ -67,5 +69,13 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
 
     public void setState(UnoState state) {
         this.state = state;
+    }
+
+    @Override
+    public void onDraw(Canvas canvas)
+    {
+        Card c = new Card();
+        c.draw(canvas, 0, 0, 50, 100, this);
+
     }
 }

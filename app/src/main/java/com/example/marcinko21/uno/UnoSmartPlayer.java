@@ -1,4 +1,4 @@
-package com.example.marcinko21.uno;
+/*package com.example.marcinko21.uno;
 
 import android.util.Log;
 
@@ -63,3 +63,4 @@ public class UnoSmartPlayer extends GameComputerPlayer {
         return;
     }
 }
+*/

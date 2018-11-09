@@ -404,7 +404,7 @@ public class UnoState extends GameState
 
     public void setTurn(int newTurn) { turn = newTurn; }
 
-    public Card[] getDiscardPile() {
+    public ArrayList<Card> getDiscardPile() {
         return discardPile;
     }
 
