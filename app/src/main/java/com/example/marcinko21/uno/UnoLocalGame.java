@@ -15,7 +15,7 @@ public class UnoLocalGame extends LocalGame {
     protected UnoState state;
 
     /**
-     * Constructor for UnoLocalGame
+     *  Constructor for UnoLocalGame
      */
     public UnoLocalGame() {
 
@@ -26,7 +26,6 @@ public class UnoLocalGame extends LocalGame {
         state = new UnoState();
 
     }//ctor
-
 
     /**
      * Check if the game is over. It is over, return a string that tells
@@ -52,6 +51,17 @@ public class UnoLocalGame extends LocalGame {
         return null;
     }
 
+
+
+    /**
+     * Tell whether the given player is allowed to make a move at the
+     * present point in the game.
+     *
+     * @param playerIdx
+     * 		the player's player-number (ID)
+     * @return
+     * 		true iff the player is allowed to move
+     */
     /**
      * sendUpdatedStateTo
      * <p>
@@ -65,23 +75,28 @@ public class UnoLocalGame extends LocalGame {
         //make a copy of the state, and send it to the player
         p.sendInfo(new UnoState(state));
 
-    }//sendUpdatedStateTo
+    }
 
-
+    /**
+     * CanMove
+     * @param playerIdx
+     * 		the player's player-number (ID)
+     * @return
+     */
     @Override
     protected boolean canMove(int playerIdx) {
 
         //todo implement this method
         return false;
+    }
 
-    }//canMove
 
     /**
-     * Tell whether the given player is allowed to make a move at the
-     * present point in the game.
-     *
-     * @param action The move that the player has sent to the game
-     * @return Tells whether the move was a legal one.
+     * MakeMove
+    * Makes a move on behalf of a player
+    *
+    * @param action The move that the player has sent to the game
+    * @return Tells whether the move was a legal one.
      */
     @Override
     protected boolean makeMove(GameAction action) {
@@ -97,26 +112,27 @@ public class UnoLocalGame extends LocalGame {
             }
         }
 
-        //for every action, check that it's my turn
-        //true for except for challenges
-        if (state.getTurn() != playerNum) {
-            return false;
-        }
+            //for every action, check that it's my turn
+            //true for except for challenges
+            if (state.getTurn() != playerNum) {
+                return false;
+            }
 
-        if (action instanceof UnoDrawAction) {
+            if (action instanceof UnoDrawAction) {
 
-            state.drawCard(state.getHand(playerNum));
-            return true;
+                state.drawCard(state.getHand(playerNum));
+                return true;
 
-        } else if (action instanceof UnoUnoAction) {
+            } else if (action instanceof UnoUnoAction) {
 
-            state.setPlayerDeclaredUno();
-            return true;
+                state.setPlayerDeclaredUno();
+                return true;
 
-        }
+            }
+            //todo for PlayCard action, actually do the action
 
         return false;
+    }//makeMove
 
-    }
 }
 
