@@ -203,6 +203,8 @@ public class UnoState extends GameState
      *
      * @param hand
      */
+    //todo check if they're allowed to draw
+
     public void drawCard(ArrayList<Card> hand){
         checkIsEmpty();
         hand.add(deck.get(0));
@@ -378,6 +380,8 @@ public class UnoState extends GameState
     @Override
     public String toString() {
         int i = 0;
+        /*
+        updateDeckSize();
         String out = "Deck Cards: ";
         while(deck.get(i) != null) {
             out = out + "ID: "+ deck.get(i).getId() + " Value: " + deck.get(i).getValue() + " Type: " +
@@ -403,6 +407,8 @@ public class UnoState extends GameState
         }
         out = out + "Player 1 ID: "+player1Id+" Player 2 ID: "+player2Id;
         return out;
+        */
+        return "";
     }//toString
 
     /**

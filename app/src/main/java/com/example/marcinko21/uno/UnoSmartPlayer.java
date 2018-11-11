@@ -22,6 +22,7 @@ public class UnoSmartPlayer extends GameComputerPlayer {
         UnoState gs = (UnoState) info;
         int id = gs.player2Id;
 
+        /*
         if(gs.getTurn() == this.playerNum) {
             Log.i("Smart AI", "Is turn");
 
@@ -36,7 +37,7 @@ public class UnoSmartPlayer extends GameComputerPlayer {
             else{
                 ArrayList<Card> c = new ArrayList<>(0);
                 sleep(100);
-                Card dTop = gs.discardPile[0];
+                Card dTop = gs.getDiscardPile().get(0);
                 Log.i("Smart AI", "Choosing card");
                 for (int i = 0; i < gs.hand2.size(); i++) {
                     if(gs.hand2.get(i).type == 'd' && gs.hand2.get(i).color == 4){
@@ -60,7 +61,8 @@ public class UnoSmartPlayer extends GameComputerPlayer {
             return;
         }
 
-        return;
+        return; */
+
     }
 }
 */
