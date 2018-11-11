@@ -204,6 +204,7 @@ public class UnoState extends GameState
      * @param hand
      */
     public void drawCard(ArrayList<Card> hand){
+        checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
     }//drawCard
@@ -299,10 +300,12 @@ public class UnoState extends GameState
             return false;
         }
         else {
-            if(playerId == 0) {
-                playCard(hand1,cardToPlay);
+            if(playerId == player1Id) {
+                playCard(hand1, cardToPlay);
             }
-            //todo else for p1
+            else{
+                playCard(hand2, cardToPlay);
+            }
             return true;
         }
     }//playCard
@@ -317,7 +320,9 @@ public class UnoState extends GameState
         if(playerId == player1Id) {
             return hand1;
         }
+        else {
             return hand2;
+        }
     }//getHand
 
     /**
@@ -340,9 +345,28 @@ public class UnoState extends GameState
      *
      * @return true if legal move
      */
-    public boolean declareUno(int playerId)
+    public void declareUno(int playerId)
     {
-        return false;
+        if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false)){
+            if(playerId == player1Id && hand2.size() == 1 ){
+                    for(int i = 0; i < 2; i++){
+                    drawCard(hand2);
+                    }
+                    playerDeclaredUno = true;
+            }
+            else if(playerId == player2Id && hand1.size() == 1 ){
+                for(int i = 0; i < 2; i++){
+                    drawCard(hand1);
+                }
+                playerDeclaredUno = true;
+            }
+            else if(playerId == player1Id && hand1.size() == 1 ){
+                playerDeclaredUno = true;
+            }
+            else if(playerId == player2Id && hand2.size() == 1 ){
+                playerDeclaredUno = true;
+            }
+        }
     }
 
 
@@ -354,7 +378,6 @@ public class UnoState extends GameState
     @Override
     public String toString() {
         int i = 0;
-        updateDeckSize();
         String out = "Deck Cards: ";
         while(deck.get(i) != null) {
             out = out + "ID: "+ deck.get(i).getId() + " Value: " + deck.get(i).getValue() + " Type: " +
@@ -383,15 +406,6 @@ public class UnoState extends GameState
     }//toString
 
     /**
-     * Update Deck Size
-     */
-    private void updateDeckSize() {
-        //todo implement this method
-
-    }
-
-
-    /**
      *  Set and Get Methods
      *
      */
@@ -405,7 +419,10 @@ public class UnoState extends GameState
 
     public int getTurn(){ return turn; }
 
-    public void setTurn(int newTurn) { turn = newTurn; }
+    public void setTurn(int newTurn) {
+        turn = newTurn;
+        playerDeclaredUno = false;
+    }
 
     public ArrayList<Card> getDiscardPile() {
         return discardPile;
