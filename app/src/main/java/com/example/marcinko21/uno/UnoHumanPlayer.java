@@ -47,12 +47,17 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         super(name);
         this.layoutId = layoutId;
 
+
+
+    }//ctor
+
+    protected void initAfterReady()
+    {
         drawButton = (Button) myActivity.findViewById(R.id.drawButton);
         drawButton.setOnClickListener(this);
         unoButton = (Button) myActivity.findViewById(R.id.unoButton);
         unoButton.setOnClickListener(this);
-
-    }//ctor
+    }
 
     /**
      * getTopView
@@ -108,6 +113,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }//setAsGui
 
 
+
+
     /**
      * this method gets called when the user clicks the uno or draw button. It
      * creates a new UnoUnoAction or UnoDrawAction and sends it to the game.
@@ -129,7 +136,5 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         }
     }// onClick
-
-    public void setContentView(int contentView) {this.setContentView(contentView);}
 
 }

@@ -78,16 +78,20 @@ public class UnoLocalGame extends LocalGame {
     }
 
     /**
-     * CanMove
+     * Tell whether the given player is allowed to make a move at the
+     * present point in the game.
+     *
      * @param playerIdx
      * 		the player's player-number (ID)
      * @return
+     * 		true iff the player is allowed to move
      */
     @Override
     protected boolean canMove(int playerIdx) {
 
         //todo implement this method
-        return false;
+        //return playerIdx == state.getWhoseMove();
+        return true;
     }
 
 

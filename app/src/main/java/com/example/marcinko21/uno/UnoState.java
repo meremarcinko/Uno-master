@@ -2,6 +2,7 @@ package com.example.marcinko21.uno;
 
 import com.example.marcinko21.uno.game.infoMsg.GameState;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -50,7 +51,7 @@ public class UnoState extends GameState
         }
         discardPile.add(0,deck.get(0));
         deck.remove(deck.get(0));
-        color = discardPile.get(discardPile.size()).color;
+        color = discardPile.get(discardPile.size()-1).color;
     }//ctor
 
     /**
@@ -68,13 +69,15 @@ public class UnoState extends GameState
 
         int i = 0;
         for(Card c : state.deck){
-            deck.set(i, c);
+            //deck.set(i, c);
+            deck.add(c.clone());
             i++;
         }
         i = 0;
         for(Card c : state.discardPile)
         {
-            discardPile.set(i, c);
+            //discardPile.set(i, c);
+            discardPile.add(c.clone());
             i++;
         }
 
@@ -88,7 +91,7 @@ public class UnoState extends GameState
         for(Card c : hand2) {
             hand2.add(c.clone());
         }
-        color = discardPile.get(discardPile.size()).color;
+        color = discardPile.get(discardPile.size()-1).color;
     }//copyCtor
 
     /**
@@ -175,7 +178,10 @@ public class UnoState extends GameState
      * Method to Shuffle the Deck
      */
     public void shuffleDeck(){
-        Card temp[] = new Card[108];
+        //how do you shuffle an arrayList
+        Collections.shuffle(deck);//Collections.shuffle - shuffles an arrayList
+
+        /*Card temp[] = new Card[108];
         int i;
         int n;
         int index = r.nextInt(108);
@@ -195,7 +201,7 @@ public class UnoState extends GameState
         //sets the deck in use to the randomly ordered one
         for(i = 0; i < 108; i++){
             deck.set(i, temp[i]);
-        }
+        }*/
     }//shuffleDeck
 
     /**

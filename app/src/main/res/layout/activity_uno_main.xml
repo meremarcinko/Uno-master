@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="563dp" />
 
-    <SurfaceView
+    <com.example.marcinko21.uno.UnoSurfaceView
         android:id="@+id/unoSurfaceView"
         android:layout_width="match_parent"
         android:layout_height="444dp"
