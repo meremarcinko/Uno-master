@@ -20,7 +20,7 @@ public class UnoTest {
     }
 
 
-    
+
     @Test
     //testing the makeDeck function
     public void  testMakeDeck()
