@@ -76,7 +76,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
     {
         //R.drawable.green0
         Card c = new Card(0,0,'g',"g");
-        c.draw(canvas, 0, 0, 50, 100, this);
+        c.draw(canvas, 100, 100, 125, 250, this);
 
     }
 }

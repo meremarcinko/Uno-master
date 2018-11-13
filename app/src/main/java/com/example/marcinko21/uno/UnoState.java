@@ -100,7 +100,7 @@ public class UnoState extends GameState
     public void makeDeck() {
         int i, n, k, j;
 
-        /**
+
 
         //number cards with value 0
         for (i = 0; i < 4; i++) {
@@ -120,7 +120,7 @@ public class UnoState extends GameState
                 }
             }
 
-         */
+
 
         //maybe something like this
         int color = R.drawable.green0;
