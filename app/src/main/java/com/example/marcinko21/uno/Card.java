@@ -13,7 +13,6 @@ import android.view.SurfaceView;
  */
 public class Card {
 
-
     /**
      * Initialize Variables
      */
@@ -84,6 +83,18 @@ public class Card {
 
     public void setId(String i) { this.id = i; }
 
+    /**
+     * Method to draw card
+     *
+     * @param canvas
+     * @param x
+     * @param y
+     * @param xSize
+     * @param ySize
+     * @param unoView
+     *
+     * @return card
+     */
     public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView)
     {
         Bitmap cardImage = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.green0);

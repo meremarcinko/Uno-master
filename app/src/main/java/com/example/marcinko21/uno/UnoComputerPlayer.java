@@ -7,6 +7,12 @@ import com.example.marcinko21.uno.game.infoMsg.GameInfo;
 
 import java.util.Random;
 
+/**
+ * UnoComputerPlayer Class for Uno
+ *
+ * @author Andrew, Meredith, Ashley
+ * @date 9 November 2018
+ */
 public class UnoComputerPlayer extends GameComputerPlayer {
     private Random r = new Random();
 

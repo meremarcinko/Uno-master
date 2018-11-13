@@ -22,9 +22,6 @@ import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
  */
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
-    //todo:
-    //add required functions like getTopView, see tictactoe example
-
     /**
      * Initialize Variables
      */

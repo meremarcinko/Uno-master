@@ -1,5 +1,7 @@
 package com.example.marcinko21.uno;
 
+import android.graphics.Color;
+
 import com.example.marcinko21.uno.game.infoMsg.GameState;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,9 +17,6 @@ import java.util.Random;
  */
 public class UnoState extends GameState
 {
-
-
-
 
     /**
      * Initialize Variables
@@ -68,6 +67,7 @@ public class UnoState extends GameState
         playerDeclaredUno = state.playerDeclaredUno;
 
         int i = 0;
+
         for(Card c : state.deck){
             //deck.set(i, c);
             deck.add(c.clone());
@@ -100,6 +100,8 @@ public class UnoState extends GameState
     public void makeDeck() {
         int i, n, k, j;
 
+        /**
+
         //number cards with value 0
         for (i = 0; i < 4; i++) {
             Card c = new Card(i, 0, 'n',"card"+i);
@@ -118,7 +120,14 @@ public class UnoState extends GameState
                 }
             }
 
-            //todo temporarily comment out above coe and add just green cards 0-9 manually
+         */
+
+        //maybe something like this
+        int color = R.drawable.green0;
+        String colorNew = Integer.toString(color); //int to string
+        deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
+
+            //todo temporarily comment out above code and add just green cards 0-9 manually
             //deck.add(new Card(0,0,'g','green',R.drawable.green0);  etc
         }
 
@@ -212,9 +221,11 @@ public class UnoState extends GameState
     //todo check if they're allowed to draw
 
     public void drawCard(ArrayList<Card> hand){
+
         checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
+
     }//drawCard
 
     /**
@@ -224,9 +235,11 @@ public class UnoState extends GameState
      * @param c
      */
     public void playCard(ArrayList<Card> hand, Card c){
+
         hand.remove(c);
         discardPile.add(c);
         color = discardPile.get(discardPile.size()).color;
+
     }//playCard
 
     /**
@@ -237,13 +250,17 @@ public class UnoState extends GameState
      * @return true or false
      */
     public boolean isUno(ArrayList<Card> hand, int playerId){
+
         if(hand.size() == 1) {
+
             return true;
+
         }
         else
         {
             return false;
         }
+
     }//isUno
 
     /**
