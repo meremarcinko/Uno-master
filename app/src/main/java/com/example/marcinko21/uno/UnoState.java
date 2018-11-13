@@ -108,6 +108,7 @@ public class UnoState extends GameState
             deck.add(c);
         }
 
+        
         //number cards with values 1-9
         while (i < 76) {
             for (n = 0; n < 2; n++) {
