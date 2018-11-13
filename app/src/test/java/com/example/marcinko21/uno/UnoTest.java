@@ -89,7 +89,7 @@ public class UnoTest {
     //testing the play card function
     public void testPlayCard()
     {
-        //step 1 allllll the setup
+        //step 1 all the setup
         UnoState testUno = new UnoState();
 
         ArrayList<Card> hand = testUno.getHand(0);
@@ -103,7 +103,7 @@ public class UnoTest {
         int oldHandSize = testUno.getHand(0).size();
         //end of step 1
 
-        testUno.playCard(0, cardToPlay); // step 2, acutually run thing to test
+        testUno.playCard(0, cardToPlay); // step 2, actually run thing to test
 
 
         //step 3 tests that assert outcome of step 2
@@ -152,7 +152,7 @@ public class UnoTest {
     {
         UnoState testUno = new UnoState();
 
-        boolean oldDeclare = testUno.declareUno(0,1);
+        boolean oldDeclare = testUno.declareUno(0);
         boolean newDeclare = testUno.declareUno(0,1);
 
         assertEquals(oldDeclare, newDeclare);
