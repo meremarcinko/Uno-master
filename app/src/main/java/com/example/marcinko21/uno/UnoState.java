@@ -101,14 +101,13 @@ public class UnoState extends GameState
         int i, n, k, j;
 
 
-
+        /**
         //number cards with value 0
         for (i = 0; i < 4; i++) {
             Card c = new Card(i, 0, 'n',"card"+i);
             deck.add(c);
         }
 
-        
         //number cards with values 1-9
         while (i < 76) {
             for (n = 0; n < 2; n++) {
@@ -121,15 +120,6 @@ public class UnoState extends GameState
                 }
             }
 
-
-
-        //maybe something like this
-        int color = R.drawable.green0;
-        String colorNew = Integer.toString(color); //int to string
-        deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
-
-            //todo temporarily comment out above code and add just green cards 0-9 manually
-            //deck.add(new Card(0,0,'g','green',R.drawable.green0);  etc
         }
 
         //skip cards
@@ -182,6 +172,24 @@ public class UnoState extends GameState
                 i++;
             }
         }
+        */
+
+        //maybe something like this
+        int color = R.drawable.green0;
+        String colorNew = Integer.toString(color); //int to string
+        deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 1, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 2, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 3, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 4, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 5, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 6, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 7, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 8, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 9, 'g', colorNew));
+
+        //todo temporarily comment out above code and add just green cards 0-9 manually
+        //deck.add(new Card(0,0,'g','green',R.drawable.green0);  etc
     } //makeDeck()
 
     /**
