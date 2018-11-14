@@ -70,6 +70,7 @@ public class Card {
      */
     //getter and setter methods
     public int getAndro() {return androidId;}
+
     public int getValue() { return value; }
 
     public char getType() { return type; }

@@ -1,6 +1,7 @@
 package com.example.marcinko21.uno;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import com.example.marcinko21.uno.game.infoMsg.GameState;
 import java.util.ArrayList;
@@ -68,11 +69,13 @@ public class UnoState extends GameState
 
         int i = 0;
 
+        Log.i("Game state copy constructor","deck size is: " + state.deck.size());
         for(Card c : state.deck){
             //deck.set(i, c);
             deck.add(c.clone());
             i++;
         }
+        Log.i("Game state copy constructor","deck size is: " + deck.size());
         i = 0;
         for(Card c : state.discardPile)
         {
@@ -191,6 +194,36 @@ public class UnoState extends GameState
 
         //todo temporarily comment out above code and add just green cards 0-9 manually
         deck.add(new Card(0,0,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,0,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,0,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+
     } //makeDeck()
 
     /**
@@ -228,8 +261,6 @@ public class UnoState extends GameState
      *
      * @param hand
      */
-    //todo check if they're allowed to draw
-
     public void drawCard(ArrayList<Card> hand){
 
         checkIsEmpty();
@@ -307,6 +338,7 @@ public class UnoState extends GameState
             }
             shuffleDeck();
         }
+        Log.i("checkIsEmpty","Deck Size Is : " + deck.size());
     } //checkIsEmpty
 
     /**
@@ -413,6 +445,7 @@ public class UnoState extends GameState
     @Override
     public String toString() {
         int i = 0;
+
         /*
         updateDeckSize();
         String out = "Deck Cards: ";
@@ -441,6 +474,7 @@ public class UnoState extends GameState
         out = out + "Player 1 ID: "+player1Id+" Player 2 ID: "+player2Id;
         return out;
         */
+
         return "";
     }//toString
 

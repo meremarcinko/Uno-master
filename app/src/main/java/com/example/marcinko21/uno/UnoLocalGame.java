@@ -1,5 +1,7 @@
 package com.example.marcinko21.uno;
 
+import android.util.Log;
+
 import com.example.marcinko21.uno.game.GamePlayer;
 import com.example.marcinko21.uno.game.LocalGame;
 import com.example.marcinko21.uno.game.actionMsg.GameAction;
@@ -116,12 +118,13 @@ public class UnoLocalGame extends LocalGame {
             }
         }
 
+        Log.i("Make Move","Checking Turn");
             //for every action, check that it's my turn
             //true for except for challenges
             if (state.getTurn() != playerNum) {
                 return false;
             }
-
+        Log.i("Make Move","About to take action");
             if (action instanceof UnoDrawAction) {
 
                 state.drawCard(state.getHand(playerNum));
@@ -134,6 +137,7 @@ public class UnoLocalGame extends LocalGame {
 
             }
             //todo for PlayCard action, actually do the action
+        Log.i("Make Move","Didn't Move");
 
         return false;
     }//makeMove
