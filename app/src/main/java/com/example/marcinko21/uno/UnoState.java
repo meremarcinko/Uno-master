@@ -175,22 +175,23 @@ public class UnoState extends GameState
         }
 
 */
-        //maybe something like this
-        /*int color = R.drawable.green0;
-        String colorNew = Integer.toString(color); //int to string
-        deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 1, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 2, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 3, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 4, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 5, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 6, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 7, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 8, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 9, 'g', colorNew));*/
-
         //todo temporarily comment out above code and add just green cards 0-9 manually
+        //maybe something like this
+        int color = R.drawable.green0;
+        String colorNew = Integer.toString(color); //int to string
         deck.add(new Card(0,0,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green1));
+        deck.add(new Card(0,2,'g','g',R.drawable.green2));
+        deck.add(new Card(0,3,'g','g',R.drawable.green3));
+        deck.add(new Card(0,4,'g','g',R.drawable.green4));
+        deck.add(new Card(0,5,'g','g',R.drawable.green5));
+        deck.add(new Card(Color.GREEN,6,'g','g',R.drawable.green6));
+        deck.add(new Card(Color.GREEN,7,'g','g',R.drawable.green7));
+        deck.add(new Card(Color.GREEN,8,'g','g',R.drawable.green8));
+        deck.add(new Card(Color.GREEN,9,'g','g',R.drawable.green9));
+
+
+
     } //makeDeck()
 
     /**
