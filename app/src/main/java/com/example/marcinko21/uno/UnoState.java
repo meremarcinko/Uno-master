@@ -27,7 +27,7 @@ public class UnoState extends GameState
     int color;
     int deckSize;
     boolean playerDeclaredUno;
-    ArrayList<Card> deck = new ArrayList<Card>(0);
+    ArrayList<Card> deck = new ArrayList<Card>(108);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
     ArrayList<Card> discardPile = new ArrayList<Card>(0);
@@ -97,11 +97,12 @@ public class UnoState extends GameState
     /**
      * Method to make the deck for a new game
      */
+
     public void makeDeck() {
-        int i, n, k, j;
+       /* int i, n, k, j;
 
 
-        /**
+
         //number cards with value 0
         for (i = 0; i < 4; i++) {
             Card c = new Card(i, 0, 'n',"card"+i);
@@ -172,10 +173,10 @@ public class UnoState extends GameState
                 i++;
             }
         }
-        */
 
+*/
         //maybe something like this
-        int color = R.drawable.green0;
+        /*int color = R.drawable.green0;
         String colorNew = Integer.toString(color); //int to string
         deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
         deck.add(new Card(Color.GREEN, 1, 'g', colorNew));
@@ -186,10 +187,10 @@ public class UnoState extends GameState
         deck.add(new Card(Color.GREEN, 6, 'g', colorNew));
         deck.add(new Card(Color.GREEN, 7, 'g', colorNew));
         deck.add(new Card(Color.GREEN, 8, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 9, 'g', colorNew));
+        deck.add(new Card(Color.GREEN, 9, 'g', colorNew));*/
 
         //todo temporarily comment out above code and add just green cards 0-9 manually
-        //deck.add(new Card(0,0,'g','green',R.drawable.green0);  etc
+        deck.add(new Card(0,0,'g','g',R.drawable.green0));
     } //makeDeck()
 
     /**

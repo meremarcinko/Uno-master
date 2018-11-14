@@ -22,7 +22,8 @@ public class Card {
     int value;
     char type;
     int color;
-    String id;
+    char id;
+    int androidId;
 
     /**
      * Constructor for Card Class
@@ -32,7 +33,7 @@ public class Card {
         value = 0;
         type = ' ';
         color = 0;
-        id = " ";
+        id = ' ';
     }//ctor
 
     /**
@@ -43,12 +44,13 @@ public class Card {
      * @param t
      * @param i
      */
-    public Card(int c, int v, char t, String i)
+    public Card(int c, int v, char t, char i, int aId)
     {
         color = c;
         value = v;
         type = ' ';
-        id = " ";
+        id = ' ';
+        androidId = aId;
     }
 
 
@@ -59,7 +61,7 @@ public class Card {
      */
     public Card clone(){
 
-        return new Card(color, value, type, id);
+        return new Card(color, value, type, id, androidId);
     }//clone
 
     /**
@@ -67,13 +69,14 @@ public class Card {
      *
      */
     //getter and setter methods
+    public int getAndro() {return androidId;}
     public int getValue() { return value; }
 
     public char getType() { return type; }
 
     public int getColor() { return color; }
 
-    public String getId(){ return id; }
+    public char getId(){ return id; }
 
     public void setValue(int v) { this.value = v; }
 
@@ -81,7 +84,7 @@ public class Card {
 
     public void setColor(int c) { this.color = c; }
 
-    public void setId(String i) { this.id = i; }
+    public void setId(char i) { this.id = i; }
 
     /**
      * Method to draw card
@@ -97,8 +100,17 @@ public class Card {
      */
     public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView)
     {
-        Bitmap cardImage = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.green0);
-        cardImage = Bitmap.createScaledBitmap(cardImage,xSize,ySize,false);
-        canvas.drawBitmap(cardImage, x,y,null);
+        Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.green0);
+        cardGreen0 = Bitmap.createScaledBitmap(cardGreen0,xSize,ySize,false);
+        canvas.drawBitmap(cardGreen0, x,y,null);
+
+        Bitmap cardGreen1 = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.green1);
+        cardGreen1= Bitmap.createScaledBitmap(cardGreen1,xSize,ySize,false);
+        canvas.drawBitmap(cardGreen1, x,y,null);
+
+
+        Bitmap cardUno = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.uno_logo_card);
+        cardUno= Bitmap.createScaledBitmap(cardUno,xSize,ySize,false);
+        canvas.drawBitmap(cardUno, x,y,null);
     }
 }
