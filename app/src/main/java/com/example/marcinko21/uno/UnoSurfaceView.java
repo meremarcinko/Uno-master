@@ -87,6 +87,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
         a.draw(canvas, 300, 100, 125, 250, this);
 
 
+        //todo
         //drawing all the pieces of the game
 
         // to draw player hand :
@@ -105,6 +106,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
 
         //to draw text showing number of cards in computer player's hand, OR
         //draw backside card for every card in computer player's hand
+
     }
 
 }
