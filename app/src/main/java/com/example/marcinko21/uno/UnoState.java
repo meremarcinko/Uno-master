@@ -52,6 +52,7 @@ public class UnoState extends GameState
         discardPile.add(0,deck.get(0));
         deck.remove(deck.get(0));
         color = discardPile.get(discardPile.size()-1).color;
+        Log.i("Game state constructor","hand1 size is: " + hand1.size());
     }//ctor
 
     /**
@@ -70,6 +71,7 @@ public class UnoState extends GameState
         int i = 0;
 
         Log.i("Game state copy constructor","deck size is: " + state.deck.size());
+        deck = new ArrayList<>();
         for(Card c : state.deck){
             //deck.set(i, c);
             deck.add(c.clone());
@@ -77,6 +79,7 @@ public class UnoState extends GameState
         }
         Log.i("Game state copy constructor","deck size is: " + deck.size());
         i = 0;
+        discardPile = new ArrayList<>();
         for(Card c : state.discardPile)
         {
             //discardPile.set(i, c);
@@ -84,17 +87,19 @@ public class UnoState extends GameState
             i++;
         }
 
-        hand1 = new ArrayList<Card>(7);
+        Log.i("Game state copy constructor","hand1 size is: " + state.hand1.size());
+        hand1 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand1
-        for (Card c : hand1) {
+        for (Card c : state.hand1) {
             hand1.add(c.clone());
         }
-        hand2 = new ArrayList<Card>(7);
+        Log.i("Game state copy constructor","hand1 size is: " + hand1.size());
+        hand2 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand2
-        for(Card c : hand2) {
+        for(Card c : state.hand2) {
             hand2.add(c.clone());
         }
-        color = discardPile.get(discardPile.size()-1).color;
+        color = state.color;
     }//copyCtor
 
     /**
@@ -314,6 +319,7 @@ public class UnoState extends GameState
      */
     public int getHandSize(ArrayList<Card> hand){
         return hand.size();
+
     }
 
 
@@ -407,6 +413,7 @@ public class UnoState extends GameState
             return true;
         }
     }//drawCard
+
 
     /**
      * declareUno action
@@ -502,6 +509,10 @@ public class UnoState extends GameState
 
     public int getDeckSize() {return deckSize;}
 
+    public ArrayList<Card> getDeck()
+    {
+        return deck;
+    }
     public void setPlayerDeclaredUno() { playerDeclaredUno = true; }
 
     public boolean getPlayerDeclaredUno() { return playerDeclaredUno; }

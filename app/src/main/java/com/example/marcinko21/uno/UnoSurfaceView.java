@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import java.lang.Math;
 
 
 /**
@@ -74,95 +76,49 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
     @Override
     public void onDraw(Canvas canvas)
     {
+        //for the human player's hand
+        int y = 3*(this.getHeight())/4;
+        //card width
+        int xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
+        //card height
+        int ySize = (int)(xSize*1.8);
+        for(int i=0; i < state.getHandSize(state.getHand(0)); i++)
+        {
+            Card c = state.getHand(0).get(i);
+            c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
+        }
 
-
-        //R.drawable.green0
-        //demo, fakes just to prove we were drawing them
-        //reference
-        Card g0 = new Card(0,0,'g','g', R.drawable.green0);
-        g0.draw(canvas, 350, 1100, 200, 300, this);
-
-        //R.drawable.green1
-        Card g1 = new Card(0,1,'g','g', R.drawable.green1);
-        g1.draw(canvas, 650, 1100, 200, 300, this);
-
-        //R.drawable.green2
-        Card g2 = new Card(0,1,'g','g', R.drawable.green2);
-        g2.draw(canvas, 950, 1100, 200, 300, this);
-
-        //R.drawable.green3
-        Card g3 = new Card(0,1,'g','g', R.drawable.green3);
-        g3.draw(canvas, 1250, 1100, 200, 300, this);
-
-        //R.drawable.green4
-        Card g4 = new Card(0,1,'g','g', R.drawable.green4);
-        g4.draw(canvas, 1550, 1100, 200, 300, this);
-
-        //R.drawable.green5
-        Card g5 = new Card(0,1,'g','g', R.drawable.green5);
-        g5.draw(canvas, 1850, 1100, 200, 300, this);
-
-        //R.drawable.green6
-        Card g6 = new Card(0,1,'g','g', R.drawable.green6);
-        g6.draw(canvas, 2150, 1100, 200, 300, this);
-
-        //R.drawable.green7
-        Card g7 = new Card(0,1,'g','g', R.drawable.green7);
-        g7.draw(canvas, 350, 300, 200, 300, this);
-
-        //R.drawable.green8
-        Card g8 = new Card(0,1,'g','g', R.drawable.green8);
-        g8.draw(canvas, 650, 300, 200, 300, this);
-
-        //R.drawable.green9
-        Card g9 = new Card(0,1,'g','g', R.drawable.green9);
-        g9.draw(canvas, 950, 300, 200, 300, this);
-
-        //R.drawable.green_wild
-        Card gw = new Card(0,1,'g','g', R.drawable.green_wild);
-        gw.draw(canvas, 1250, 300, 200, 300, this);
-
-        //R.drawable.green_skip
-        Card gs = new Card(0,1,'g','g', R.drawable.green_skip);
-        gs.draw(canvas, 1550, 300, 200, 300, this);
-
-        //R.drawable.green_reverse
-        Card gr = new Card(0,1,'g','g', R.drawable.green_reverse);
-        gr.draw(canvas, 1850, 300, 200, 300, this);
-
-        //R.drawable.green_draw2
-        Card gd2 = new Card(0,1,'g','g', R.drawable.green_draw2);
-        gd2.draw(canvas, 2150, 300, 200, 300, this);
-
-        //R.drawable.green_draw4
-        Card gd4 = new Card(0,1,'g','g', R.drawable.green_draw4);
-        gd4.draw(canvas, 1400, 700, 200, 300, this);
-
-        //R.drawable.blue0
-        Card b0 = new Card(0,1,'g','g', R.drawable.blue0);
-        b0.draw(canvas, 1000, 700, 200, 300, this);
-
-
+        Log.i("onDraw ", "handSizeIs "+state.getHandSize(state.getHand(0)));
         //todo
         //drawing all the pieces of the game
 
-        // to draw player hand :
-        //loop through player hand
-        //call each card draw method and mathematically where should draw appropriately
-        //in loop, have variable
 
-
-        //to draw discard:
+        //to render the discard: not the action to draw
         //get discard from state and call that card's draw method
+        int last = state.getDiscardPile().size()-1;
 
+        //drawing on the surface view the discard pile
+        Card discard = state.getDiscardPile().get(last);
+        discard.draw(canvas, (int)(.25*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(1.8*(int)(.1*this.getWidth())), this, false);
 
         //to draw pile:
+        //drawing on the surface view the draw pile
+        Card drawPile = state.getDeck().get(0);
+        drawPile.draw(canvas, (int)(.75*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(1.8*(int)(.1*this.getWidth())), this, true);
         //draw back side of the uno card's image
 
 
         //to draw text showing number of cards in computer player's hand, OR
         //draw backside card for every card in computer player's hand
 
+        //For the computer's hand
+        xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(1)));//how many cards are in the hand
+        y = 0;
+        ySize = (int)(xSize*1.8);
+        for(int i=0; i < state.getHandSize(state.getHand(1)); i++) {
+            Card c = state.getHand(0).get(i);
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
+        }
     }
 
 }
