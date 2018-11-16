@@ -9,36 +9,28 @@
 
     <com.example.marcinko21.uno.UnoSurfaceView
         android:id="@+id/unoSurfaceView"
-        android:layout_width="1302dp"
-        android:layout_height="783dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="1017dp"
+        android:layout_height="529dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/turn"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="41dp"
         android:text="TURN: "
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/computerHand"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="31dp" />
-
-    <Button
-        android:id="@+id/unoButton"
-        android:layout_width="450dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="8dp"
-        android:text="UNO"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="563dp" />
+        app:layout_constraintTop_toBottomOf="@+id/menuSpinner" />
 
     <Spinner
         android:id="@+id/menuSpinner"
@@ -53,9 +45,11 @@
     <TextView
         android:id="@+id/computerHand"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:text="COMPUTER'S HAND"
+        android:layout_height="51dp"
+        android:layout_marginTop="12dp"
+        android:text="COMPUTER'S HAND : "
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
