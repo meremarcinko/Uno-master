@@ -76,12 +76,13 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
     @Override
     public void onDraw(Canvas canvas)
     {
+        final double RATIO = 1.2;
         //for the human player's hand
         int y = 3*(this.getHeight())/4;
         //card width
         int xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
         //card height
-        int ySize = (int)(xSize*1.8);
+        int ySize = (int)(xSize*RATIO);
         for(int i=0; i < state.getHandSize(state.getHand(0)); i++)
         {
             Card c = state.getHand(0).get(i);
@@ -99,12 +100,12 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
 
         //drawing on the surface view the discard pile
         Card discard = state.getDiscardPile().get(last);
-        discard.draw(canvas, (int)(.25*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(1.8*(int)(.1*this.getWidth())), this, false);
+        discard.draw(canvas, (int)(.25*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(RATIO*(int)(.1*this.getWidth())), this, false);
 
         //to draw pile:
         //drawing on the surface view the draw pile
         Card drawPile = state.getDeck().get(0);
-        drawPile.draw(canvas, (int)(.75*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(1.8*(int)(.1*this.getWidth())), this, true);
+        drawPile.draw(canvas, (int)(.75*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(RATIO*(int)(.1*this.getWidth())), this, true);
         //draw back side of the uno card's image
 
 
@@ -114,7 +115,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
         //For the computer's hand
         xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(1)));//how many cards are in the hand
         y = 0;
-        ySize = (int)(xSize*1.8);
+        ySize = (int)(xSize*RATIO);
         for(int i=0; i < state.getHandSize(state.getHand(1)); i++) {
             Card c = state.getHand(0).get(i);
             c.draw(canvas, xSize * i, y, xSize, ySize, this, true);

@@ -104,7 +104,8 @@ public class Card {
     public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView, boolean isHidden)
     {
         if(!isHidden) {
-            Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(), R.drawable.green0);
+            //Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(), R.drawable.green0);
+            Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(), androidId);
             cardGreen0 = Bitmap.createScaledBitmap(cardGreen0, xSize, ySize, false);
             canvas.drawBitmap(cardGreen0, x, y, null);
         }
