@@ -100,7 +100,6 @@ public class UnoState extends GameState
     /**
      * Method to make the deck for a new game
      */
-
     public void makeDeck() {
        /* int i, n, k, j;
 
