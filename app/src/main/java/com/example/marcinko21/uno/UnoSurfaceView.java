@@ -89,7 +89,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
             c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
         }
 
-        
+
         Log.i("onDraw ", "handSizeIs "+state.getHandSize(state.getHand(0)));
         //todo
         //drawing all the pieces of the game
