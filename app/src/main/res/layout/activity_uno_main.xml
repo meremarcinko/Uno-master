@@ -7,16 +7,15 @@
     android:id="@+id/top_gui_layout"
     tools:context=".UnoMainActivity">
 
-    <SurfaceView
+    <com.example.marcinko21.uno.UnoSurfaceView
         android:id="@+id/unoSurfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="696dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_width="1302dp"
+        android:layout_height="783dp"
+        android:layout_marginStart="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/computerHand" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/turn"
@@ -29,7 +28,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuSpinner" />
+        tools:layout_editor_absoluteY="31dp" />
+
+    <Button
+        android:id="@+id/unoButton"
+        android:layout_width="450dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="8dp"
+        android:text="UNO"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="563dp" />
 
     <Spinner
         android:id="@+id/menuSpinner"

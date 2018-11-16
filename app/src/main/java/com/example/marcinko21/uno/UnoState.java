@@ -193,35 +193,35 @@ public class UnoState extends GameState
 
         //todo temporarily comment out above code and add just green cards 0-9 manually
         deck.add(new Card(0,0,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,0,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,0,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green0));
+        deck.add(new Card(0,1,'g','g',R.drawable.green1));
+        deck.add(new Card(0,1,'g','g',R.drawable.green2));
+        deck.add(new Card(0,1,'g','g',R.drawable.green3));
+        deck.add(new Card(0,1,'g','g',R.drawable.green4));
+        deck.add(new Card(0,1,'g','g',R.drawable.green5));
+        deck.add(new Card(0,1,'g','g',R.drawable.green6));
+        deck.add(new Card(0,1,'g','g',R.drawable.green7));
+        deck.add(new Card(0,1,'g','g',R.drawable.green8));
+        deck.add(new Card(0,1,'g','g',R.drawable.green9));
+        deck.add(new Card(0,0,'g','g',R.drawable.green1_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green2_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green3_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green4_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green5_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green6_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green7_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green8_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green9_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_draw2));
+        deck.add(new Card(0,0,'g','g',R.drawable.green_draw2_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_wild));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_draw4));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_skip));
+        deck.add(new Card(0,1,'g','g',R.drawable.green_skip_copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.blue0));
+        deck.add(new Card(0,1,'g','g',R.drawable.blue1));
+        deck.add(new Card(0,1,'g','g',R.drawable.blue1copy));
 
     } //makeDeck()
 
