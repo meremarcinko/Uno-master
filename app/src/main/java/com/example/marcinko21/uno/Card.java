@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.SurfaceView;
 
+import java.util.ArrayList;
+
 /**
  * Card Class for Uno
  *
@@ -109,9 +111,11 @@ public class Card {
         cardGreen1= Bitmap.createScaledBitmap(cardGreen1,xSize,ySize,false);
         canvas.drawBitmap(cardGreen1, x,y,null);
 
-
         Bitmap cardUno = BitmapFactory.decodeResource(unoView.getResources(),R.drawable.uno_logo_card);
         cardUno= Bitmap.createScaledBitmap(cardUno,xSize,ySize,false);
         canvas.drawBitmap(cardUno, x,y,null);
     }
+
+
+
 }

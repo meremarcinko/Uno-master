@@ -7,6 +7,16 @@
     android:id="@+id/top_gui_layout"
     tools:context=".UnoMainActivity">
 
+    <com.example.marcinko21.uno.UnoSurfaceView
+        android:id="@+id/unoSurfaceView"
+        android:layout_width="1302dp"
+        android:layout_height="783dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
+
     <TextView
         android:id="@+id/turn"
         android:layout_width="match_parent"
@@ -28,15 +38,6 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="563dp" />
-
-    <com.example.marcinko21.uno.UnoSurfaceView
-        android:id="@+id/unoSurfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="123dp" />
 
     <Spinner
         android:id="@+id/menuSpinner"
