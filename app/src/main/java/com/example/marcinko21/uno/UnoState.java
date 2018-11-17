@@ -226,7 +226,7 @@ public class UnoState extends GameState
         deck.add(new Card(0,1,'g','g',R.drawable.green_skip_copy));
         deck.add(new Card(0,1,'g','g',R.drawable.blue0));
         deck.add(new Card(0,1,'g','g',R.drawable.blue1));
-        deck.add(new Card(0,1,'g','g',R.drawable.blue1copy));
+        deck.add(new Card(0,1,'g','g',R.drawable.blue1_copy));
 
     } //makeDeck()
 
