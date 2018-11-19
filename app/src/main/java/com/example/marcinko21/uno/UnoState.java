@@ -182,51 +182,116 @@ public class UnoState extends GameState
         }
 
 */
-        //maybe something like this
-        /*int color = R.drawable.green0;
-        String colorNew = Integer.toString(color); //int to string
-        deck.add(new Card(Color.GREEN, 0, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 1, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 2, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 3, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 4, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 5, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 6, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 7, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 8, 'g', colorNew));
-        deck.add(new Card(Color.GREEN, 9, 'g', colorNew));*/
-
         //todo temporarily comment out above code and add just green cards 0-9 manually
-        deck.add(new Card(0,0,'g','g',R.drawable.green0));
-        deck.add(new Card(0,1,'g','g',R.drawable.green1));
-        deck.add(new Card(0,1,'g','g',R.drawable.green2));
-        deck.add(new Card(0,1,'g','g',R.drawable.green3));
-        deck.add(new Card(0,1,'g','g',R.drawable.green4));
-        deck.add(new Card(0,1,'g','g',R.drawable.green5));
-        deck.add(new Card(0,1,'g','g',R.drawable.green6));
-        deck.add(new Card(0,1,'g','g',R.drawable.green7));
-        deck.add(new Card(0,1,'g','g',R.drawable.green8));
-        deck.add(new Card(0,1,'g','g',R.drawable.green9));
-        deck.add(new Card(0,0,'g','g',R.drawable.green1_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green2_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green3_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green4_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green5_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green6_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green7_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green8_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green9_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_draw2));
-        deck.add(new Card(0,0,'g','g',R.drawable.green_draw2_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_wild));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_draw4));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_skip));
-        deck.add(new Card(0,1,'g','g',R.drawable.green_skip_copy));
-        deck.add(new Card(0,1,'g','g',R.drawable.blue0));
-        deck.add(new Card(0,1,'g','g',R.drawable.blue1));
-        deck.add(new Card(0,1,'g','g',R.drawable.blue1_copy));
+        deck.add(new Card(0,0,'g','g',R.drawable.green0));//1
+        deck.add(new Card(0,1,'g','g',R.drawable.green1));//2
+        deck.add(new Card(0,0,'g','g',R.drawable.green1_copy));//3
+        deck.add(new Card(0,1,'g','g',R.drawable.green2));//4
+        deck.add(new Card(0,1,'g','g',R.drawable.green2_copy));//5
+        deck.add(new Card(0,1,'g','g',R.drawable.green3));//6
+        deck.add(new Card(0,1,'g','g',R.drawable.green3_copy));//7
+        deck.add(new Card(0,1,'g','g',R.drawable.green4));//8
+        deck.add(new Card(0,1,'g','g',R.drawable.green4_copy));//9
+        deck.add(new Card(0,1,'g','g',R.drawable.green5));//10
+        deck.add(new Card(0,1,'g','g',R.drawable.green5_copy));//11
+        deck.add(new Card(0,1,'g','g',R.drawable.green6));//12
+        deck.add(new Card(0,1,'g','g',R.drawable.green6_copy));//13
+        deck.add(new Card(0,1,'g','g',R.drawable.green7));//14
+        deck.add(new Card(0,1,'g','g',R.drawable.green7_copy));//15
+        deck.add(new Card(0,1,'g','g',R.drawable.green8));//16
+        deck.add(new Card(0,1,'g','g',R.drawable.green8_copy));//17
+        deck.add(new Card(0,1,'g','g',R.drawable.green9));//18
+        deck.add(new Card(0,1,'g','g',R.drawable.green9_copy));//19
+        deck.add(new Card(0,1,'g','g',R.drawable.green_draw2));//20
+        deck.add(new Card(0,0,'g','g',R.drawable.green_draw2_copy));//21
+        deck.add(new Card(0,1,'g','g',R.drawable.green_wild));//22
+        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse));//23
+        deck.add(new Card(0,1,'g','g',R.drawable.green_reverse_copy));//24
+        deck.add(new Card(0,1,'g','g',R.drawable.green_draw4));//25
+        deck.add(new Card(0,1,'g','g',R.drawable.green_skip));//26
+        deck.add(new Card(0,1,'g','g',R.drawable.green_skip_copy));//27
+        deck.add(new Card(0,1,'g','g',R.drawable.blue0));//28
+        deck.add(new Card(0,1,'g','g',R.drawable.blue1));//29
+        deck.add(new Card(0,1,'g','g',R.drawable.blue1_copy));//30
+        deck.add(new Card(0,1,'g','g',R.drawable.blue2));//31
+        deck.add(new Card(0,1,'g','g',R.drawable.blue2_copy));//32
+        deck.add(new Card(0,1,'g','g',R.drawable.blue3));//33
+        deck.add(new Card(0,1,'g','g',R.drawable.blue3_copy));//34
+        deck.add(new Card(0,1,'g','g',R.drawable.blue4));//35
+        deck.add(new Card(0,1,'g','g',R.drawable.blue4_copy));//36
+        deck.add(new Card(0,1,'g','g',R.drawable.blue5));//37
+        deck.add(new Card(0,1,'g','g',R.drawable.blue5_copy));//38
+        deck.add(new Card(0,1,'g','g',R.drawable.blue6));//39
+        deck.add(new Card(0,1,'g','g',R.drawable.blue6_copy));//40
+        deck.add(new Card(0,1,'g','g',R.drawable.blue7));//41
+        deck.add(new Card(0,1,'g','g',R.drawable.blue7_copy));//42
+        deck.add(new Card(0,1,'g','g',R.drawable.blue8));//43
+        deck.add(new Card(0,1,'g','g',R.drawable.blue8_copy));//44
+        deck.add(new Card(0,1,'g','g',R.drawable.blue9));//45
+        deck.add(new Card(0,1,'g','g',R.drawable.blue9_copy));//46
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_draw2));//47
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_draw2_copy));//48
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_draw4));//49
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_reverse));//50
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_reverse_copy));//51
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_skip));//52
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_skip_copy));//53
+        deck.add(new Card(0,1,'g','g',R.drawable.blue_wild));//54
+        deck.add(new Card(0,1,'g','g',R.drawable.red0));//55
+        deck.add(new Card(0,1,'g','g',R.drawable.red1));//56
+        deck.add(new Card(0,1,'g','g',R.drawable.red1_copy));//57
+        deck.add(new Card(0,1,'g','g',R.drawable.red2));//58
+        deck.add(new Card(0,1,'g','g',R.drawable.red2_copy));//59
+        deck.add(new Card(0,1,'g','g',R.drawable.red3));//60
+        deck.add(new Card(0,1,'g','g',R.drawable.red3_copy));//61
+        deck.add(new Card(0,1,'g','g',R.drawable.red4));//62
+        deck.add(new Card(0,1,'g','g',R.drawable.red4_copy));//63
+        deck.add(new Card(0,1,'g','g',R.drawable.red5));//64
+        deck.add(new Card(0,1,'g','g',R.drawable.red5_copy));//65
+        deck.add(new Card(0,1,'g','g',R.drawable.red6));//66
+        deck.add(new Card(0,1,'g','g',R.drawable.red6_copy));//67
+        deck.add(new Card(0,1,'g','g',R.drawable.red7));//68
+        deck.add(new Card(0,1,'g','g',R.drawable.red7_copy));//69
+        deck.add(new Card(0,1,'g','g',R.drawable.red8));//70
+        deck.add(new Card(0,1,'g','g',R.drawable.red8_copy));//71
+        deck.add(new Card(0,1,'g','g',R.drawable.red9));//72
+        deck.add(new Card(0,1,'g','g',R.drawable.red9_copy));//73
+        deck.add(new Card(0,1,'g','g',R.drawable.red_draw2));//74
+        deck.add(new Card(0,1,'g','g',R.drawable.red_draw2_copy));//75
+        deck.add(new Card(0,1,'g','g',R.drawable.red_draw4));//76
+        deck.add(new Card(0,1,'g','g',R.drawable.red_reverse));//77
+        deck.add(new Card(0,1,'g','g',R.drawable.red_reverse_copy));//78
+        deck.add(new Card(0,1,'g','g',R.drawable.red_skip));//79
+        deck.add(new Card(0,1,'g','g',R.drawable.red_skip_copy));//80
+        deck.add(new Card(0,1,'g','g',R.drawable.red_wild));//81
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow0));//82
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow1));//83
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow1_copy));//84
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow2));//85
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow2_copy));//86
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow3));//87
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow3_copy));//88
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow4));//89
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow4_copy));//90
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow5));//91
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow5_copy));//92
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow6));//93
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow6_copy));//94
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow7));//95
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow7_copy));//96
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow8));//97
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow8_copy));//98
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow9));//99
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow9_copy));//100
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_draw2));//101
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_draw2_copy));//102
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_draw4));//103
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_reverse));//104
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_reverse_copy));//105
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_skip));//106
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_skip_copy));//107
+        deck.add(new Card(0,1,'g','g',R.drawable.yellow_wild));//108
+
 
     } //makeDeck()
 
