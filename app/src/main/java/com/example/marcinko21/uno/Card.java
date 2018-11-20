@@ -24,7 +24,6 @@ public class Card {
     int value;
     char type;
     int color;
-    char id;
     int androidId;
 
     /**
@@ -35,7 +34,6 @@ public class Card {
         value = 0;
         type = ' ';
         color = 0;
-        id = ' ';
     }//ctor
 
     /**
@@ -44,14 +42,13 @@ public class Card {
      * @param c
      * @param v
      * @param t
-     * @param i
+     * @param aId
      */
-    public Card(int c, int v, char t, char i, int aId)
+    public Card(int c, int v, char t, int aId)
     {
         color = c;
         value = v;
         type = ' ';
-        id = ' ';
         androidId = aId;
     }
 
@@ -63,7 +60,7 @@ public class Card {
      */
     public Card clone(){
 
-        return new Card(color, value, type, id, androidId);
+        return new Card(color, value, type, androidId);
     }//clone
 
     /**
@@ -79,15 +76,12 @@ public class Card {
 
     public int getColor() { return color; }
 
-    public char getId(){ return id; }
-
     public void setValue(int v) { this.value = v; }
 
     public void setType(char t) { this.type = t; }
 
     public void setColor(int c) { this.color = c; }
 
-    public void setId(char i) { this.id = i; }
 
     /**
      * Method to draw card
