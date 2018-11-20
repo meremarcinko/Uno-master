@@ -106,83 +106,8 @@ public class UnoState extends GameState
      * Method to make the deck for a new game
      */
     public void makeDeck() {
-       /* int i, n, k, j;
 
-
-
-        //number cards with value 0
-        for (i = 0; i < 4; i++) {
-            Card c = new Card(i, 0, 'n',"card"+i);
-            deck.add(c);
-        }
-
-        //number cards with values 1-9
-        while (i < 76) {
-            for (n = 0; n < 2; n++) {
-                for (k = 0; k < 10; k++) {
-                    for (j = 0; j < 4; j++) {
-                        Card c = new Card(j, k, 'n',"card"+i);
-                        deck.add(c);
-                        i++;
-                    }
-                }
-            }
-
-        }
-
-        //skip cards
-        while (i < 84) {
-            for (k = 0; k < 2; k++) {
-                for (j = 0; j < 4; j++) {
-                    Card c = new Card(j, 0, 's',"card"+i);
-                    deck.add(c);
-                    i++;
-                }
-            }
-        }
-
-        //draw 2 cards
-        while (i < 92) {
-            for (k = 0; k < 2; k++) {
-                for (j = 0; j < 4; j++) {
-                    Card c = new Card(j, 0, 'd',"card"+i);
-                    deck.add(c);
-                    i++;
-                }
-            }
-        }
-
-        //reverse cards
-        while (i < 100) {
-            for (k = 0; k < 2; k++) {
-                for (j = 0; j < 4; j++) {
-                    Card c = new Card(j, 0, 'r',"card"+i);
-                    deck.add(c);
-                    i++;
-                }
-            }
-        }
-
-        //wild cards
-        while (i < 104) {
-            for (j = 0; j < 4; j++) {
-                Card c = new Card(4, 0, 'w',"card"+i);
-                deck.add(c);
-                i++;
-            }
-        }
-
-        //wild draw 4 cards
-        while (i < 108) {
-            for (j = 0; j < 4; j++) {
-                Card c = new Card(4, 0, 'd',"card"+i);
-                deck.add(c);
-                i++;
-            }
-        }
-
-*/
-        //todo temporarily comment out above code and add just green cards 0-9 manually
+        //add cards to deck manually
         deck.add(new Card(0,0,'g','g',R.drawable.green0));//1
         deck.add(new Card(0,1,'g','g',R.drawable.green1));//2
         deck.add(new Card(0,0,'g','g',R.drawable.green1_copy));//3
@@ -301,28 +226,6 @@ public class UnoState extends GameState
     public void shuffleDeck(){
         //how do you shuffle an arrayList
         Collections.shuffle(deck);//Collections.shuffle - shuffles an arrayList
-
-        /*Card temp[] = new Card[108];
-        int i;
-        int n;
-        int index = r.nextInt(108);
-        temp[0] = deck.get(index);
-        for(i = 1;  i < 108; i++){
-            index = r.nextInt(108);
-            temp[i] = deck.get(index);
-            //detects if the value from the random index is equal to another one already in temp
-            for(n = 0; n < 108; n++){
-                while(temp[i] == temp[n] && temp[n] != null){
-                    index = r.nextInt(108);
-                    temp[i] = deck.get(index);
-                }
-            }
-        }
-
-        //sets the deck in use to the randomly ordered one
-        for(i = 0; i < 108; i++){
-            deck.set(i, temp[i]);
-        }*/
     }//shuffleDeck
 
     /**
