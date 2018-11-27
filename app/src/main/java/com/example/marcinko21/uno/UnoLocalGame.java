@@ -6,6 +6,8 @@ import com.example.marcinko21.uno.game.GamePlayer;
 import com.example.marcinko21.uno.game.LocalGame;
 import com.example.marcinko21.uno.game.actionMsg.GameAction;
 
+import java.util.ArrayList;
+
 /**
  * UnoLocalGame Class for Uno Game
  * Returns the new Local Game State
@@ -145,6 +147,17 @@ public class UnoLocalGame extends LocalGame {
                 state.setPlayerDeclaredUno();
                 return true;
 
+            }
+            else if(action instanceof UnoPlayAction){
+                ArrayList<Card> hand = new ArrayList<>(0);
+                    if(state.turn == state.player1Id){
+                        hand = state.hand1;
+                    }
+                    else{
+                        hand = state.hand2;
+                    }
+                state.playCard(hand, state.cbp);
+                return true;
             }
             //todo for PlayCard action, actually do the action
         Log.i("Make Move","Didn't Move");

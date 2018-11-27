@@ -30,6 +30,7 @@ public class UnoState extends GameState
     int value;
     int deckSize;
     boolean playerDeclaredUno;
+    Card cbp; //card being played
     ArrayList<Card> deck = new ArrayList<Card>(108);
     ArrayList<Card> hand1 = new ArrayList<Card>(7);
     ArrayList<Card> hand2 = new ArrayList<Card>(7);
@@ -318,16 +319,9 @@ public class UnoState extends GameState
 
     /**
      * selectCard action
-     *
-     * @return true if legal move
      */
-    public boolean selectCard(int player1Id, int player2Id) {
-        if(player1Id != turn) {
-            return false;
-        }
-        else {
-            return true;
-        }
+    public void selectCard(Card c) {
+        cbp = c;
     }//selectCard
 
 
