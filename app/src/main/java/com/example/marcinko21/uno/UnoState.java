@@ -26,6 +26,8 @@ public class UnoState extends GameState
     int player2Id;
     int turn;
     int color;
+    char type;
+    int value;
     int deckSize;
     boolean playerDeclaredUno;
     ArrayList<Card> deck = new ArrayList<Card>(108);
@@ -52,6 +54,9 @@ public class UnoState extends GameState
         discardPile.add(0,deck.get(0));
         deck.remove(deck.get(0));
         color = discardPile.get(discardPile.size()-1).color;
+        type = discardPile.get(discardPile.size()-1).type;
+        value = discardPile.get(discardPile.size()-1).value;
+
         Log.i("Game state constructor","hand1 size is: " + hand1.size());
     }//ctor
 
@@ -215,8 +220,6 @@ public class UnoState extends GameState
         deck.add(new Card(3,-1,'s',R.drawable.yellow_skip));//106
         deck.add(new Card(3,-1,'s',R.drawable.yellow_skip_copy));//107
         deck.add(new Card(4,-1,'w',R.drawable.yellow_wild));//108
-
-
     } //makeDeck()
 
     /**
@@ -235,7 +238,6 @@ public class UnoState extends GameState
     //todo check if they're allowed to draw
 
     public void drawCard(ArrayList<Card> hand){
-
         checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
@@ -249,11 +251,11 @@ public class UnoState extends GameState
      * @param c
      */
     public void playCard(ArrayList<Card> hand, Card c){
-
         hand.remove(c);
         discardPile.add(c);
-        color = discardPile.get(discardPile.size()).color;
-
+        color = discardPile.get(discardPile.size()-1).color;
+        type = discardPile.get(discardPile.size()-1).type;
+        value = discardPile.get(discardPile.size()-1).value;
     }//playCard
 
     /**
@@ -304,11 +306,10 @@ public class UnoState extends GameState
      *
      */
     public void checkIsEmpty(){
-        int count = discardPile.size();
-        if(deck.size() == 0){
-            for(int i = 0; i < count-1; i++){
-                deck.add(discardPile.get(i));
-                discardPile.remove(i);
+        if(deck.size() == 0){ //if is empty
+            while(discardPile.size() > 1){
+                deck.add(discardPile.get(0));
+                discardPile.remove(0);
             }
             shuffleDeck();
         }
