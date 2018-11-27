@@ -242,7 +242,12 @@ public class UnoState extends GameState
         checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
-
+        if(turn == 0){
+            turn = 1;
+        }
+        else{
+            turn = 0;
+        }
     }//drawCard
 
     /**

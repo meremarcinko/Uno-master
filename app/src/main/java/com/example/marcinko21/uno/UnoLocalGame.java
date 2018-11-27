@@ -146,7 +146,6 @@ public class UnoLocalGame extends LocalGame {
 
                 state.setPlayerDeclaredUno();
                 return true;
-
             }
             else if(action instanceof UnoPlayAction){
                 ArrayList<Card> hand = new ArrayList<>(0);
