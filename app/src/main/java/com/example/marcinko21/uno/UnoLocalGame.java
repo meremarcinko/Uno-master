@@ -2,9 +2,11 @@ package com.example.marcinko21.uno;
 
 import android.util.Log;
 
+import com.example.marcinko21.uno.game.GameMainActivity;
 import com.example.marcinko21.uno.game.GamePlayer;
 import com.example.marcinko21.uno.game.LocalGame;
 import com.example.marcinko21.uno.game.actionMsg.GameAction;
+import com.example.marcinko21.uno.game.infoMsg.GameInfo;
 
 /**
  * UnoLocalGame Class for Uno Game
@@ -14,7 +16,39 @@ import com.example.marcinko21.uno.game.actionMsg.GameAction;
 public class UnoLocalGame extends LocalGame {
 
     //the game's state
-    protected UnoState state;
+    public UnoState state;
+
+    GamePlayer p = new GamePlayer() {
+        @Override
+        public void gameSetAsGui(GameMainActivity activity) {
+
+        }
+
+        @Override
+        public void setAsGui(GameMainActivity activity) {
+
+        }
+
+        @Override
+        public void sendInfo(GameInfo info) {
+
+        }
+
+        @Override
+        public void start() {
+
+        }
+
+        @Override
+        public boolean requiresGui() {
+            return false;
+        }
+
+        @Override
+        public boolean supportsGui() {
+            return false;
+        }
+    };
 
     /**
      *  Constructor for UnoLocalGame
@@ -40,7 +74,7 @@ public class UnoLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         //if a player does not have any card left, the
         //game is over
-        //test
+
         if(state.hand1 == null)
         {
             return "You are the winner!";
@@ -87,6 +121,11 @@ public class UnoLocalGame extends LocalGame {
         //make a copy of the state, and send it to the player
         p.sendInfo(new UnoState(state));
 
+        /** maybe another solution
+        state.toString();
+        p.sendInfo(state);
+         */
+
     }
 
     /**
@@ -101,9 +140,16 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
 
-        //todo implement this method
-        //return playerIdx == state.getWhoseMove();
-        return true;
+        //playerIdx == state.getWhoseMove();
+        //playerIdx = newTurn;
+        //int newTurn = state.getTurn();
+
+        if(playerIdx == getPlayerIdx(p)){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 
@@ -128,6 +174,10 @@ public class UnoLocalGame extends LocalGame {
             }
         }
 
+
+
+
+
         Log.i("Make Move","Checking Turn");
             //for every action, check that it's my turn
             //true for except for challenges
@@ -146,9 +196,8 @@ public class UnoLocalGame extends LocalGame {
                 return true;
 
             }
-            //todo for PlayCard action, actually do the action
-        Log.i("Make Move","Didn't Move");
 
+        Log.i("Make Move","Didn't Move");
         return false;
     }//makeMove
 

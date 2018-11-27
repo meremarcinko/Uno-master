@@ -57,7 +57,7 @@ public class UnoState extends GameState
         type = discardPile.get(discardPile.size()-1).type;
         value = discardPile.get(discardPile.size()-1).value;
 
-        Log.i("Game state constructor","hand1 size is: " + hand1.size());
+        //Log.i("Game state constructor","hand1 size is: " + hand1.size());
     }//ctor
 
     /**
@@ -306,15 +306,19 @@ public class UnoState extends GameState
      *
      */
     public void checkIsEmpty(){
+
         if(deck.size() == 0){ //if is empty
+            /**
             while(discardPile.size() > 1){
                 deck.add(discardPile.get(0));
                 discardPile.remove(0);
+             */
             }
             shuffleDeck();
         }
-        Log.i("checkIsEmpty","Deck Size Is : " + deck.size());
-    } //checkIsEmpty
+        //Log.i("checkIsEmpty","Deck Size Is : " + deck.size());
+    // checkIsEmpty
+
 
     /**
      * selectCard action
@@ -322,12 +326,17 @@ public class UnoState extends GameState
      * @return true if legal move
      */
     public boolean selectCard(int player1Id, int player2Id) {
-        if(player1Id != turn) {
+        //todo find out how specific card selected's info be sent to local game, and exchanged with the state
+
+
+        /**if(player1Id != turn) {
             return false;
         }
         else {
             return true;
         }
+         */
+        return false;
     }//selectCard
 
 
@@ -350,6 +359,7 @@ public class UnoState extends GameState
             }
             return true;
         }
+
     }//playCard
 
     /**
