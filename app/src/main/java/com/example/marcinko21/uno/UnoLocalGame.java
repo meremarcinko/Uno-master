@@ -40,6 +40,16 @@ public class UnoLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         //if a player does not have any card left, the
         //game is over
+        //test
+        if(state.hand1 == null)
+        {
+            return "You are the winner!";
+        }
+
+        if(state.hand2 == null)
+        {
+            return "You lose, better luck next time!";
+        }
 
         //if(player 1 hand == 0)
         //return return playerNames[gameWinner]+" is the winner.";
