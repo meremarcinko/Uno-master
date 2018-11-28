@@ -58,7 +58,7 @@ public class UnoState extends GameState
         type = discardPile.get(discardPile.size()-1).type;
         value = discardPile.get(discardPile.size()-1).value;
 
-        Log.i("Game state constructor","hand1 size is: " + hand1.size());
+        //Log.i("Game state constructor","hand1 size is: " + hand1.size());
     }//ctor
 
     /**
@@ -319,7 +319,7 @@ public class UnoState extends GameState
             }
             shuffleDeck();
         }
-        Log.i("checkIsEmpty","Deck Size Is : " + deck.size());
+        //Log.i("checkIsEmpty","Deck Size Is : " + deck.size());
     } //checkIsEmpty
 
     /**

@@ -79,13 +79,22 @@ public class UnoTest {
     {
 
         UnoState testUno = new UnoState();
-        int have = testUno.getHand(0).size();
+        //int have = testUno.getHand(0).size();
         ArrayList<Card> hand = testUno.getHand(0);
-        testUno.isUno(hand, 0);
-        int want = 1;
+        boolean result = testUno.isUno(hand, 0);
+        //int want = 1;
 
-        assertEquals(have, want);
-
+        //assertEquals(have, want);
+        //we know starting hand size if 7 so testUno should be false
+        assertFalse(result);
+        //remove cards from hand to test actually uno
+        for(int i = 0; i<6; i++)
+        {
+            hand.remove(6-i);
+        }
+        //there should only be one card in the hand
+        result = testUno.isUno(hand,0);
+        assertTrue(result);
     }
 
     @Test
@@ -94,11 +103,23 @@ public class UnoTest {
     {
         //todo check do I need to see if it shuffled of discard pile is empty?
         UnoState testUno = new UnoState();
-        int before = testUno.getDiscardPile().size();
-        testUno.checkIsEmpty();
-        int after = 0;
 
-        assertEquals(before, after);
+        testUno.checkIsEmpty();
+        int after = testUno.getDiscardPile().size();
+        //int after = 0;
+        //no change
+
+        assertEquals(0, after);
+        //use up deck and fill the discard pile
+        testUno.discardPile.add(testUno.getDeck().get(0));
+        testUno.getDeck().clear();
+
+        testUno.checkIsEmpty();//this should shuffle the one card from the discard pile into the deck
+        //assert that the deck has 1 card
+        assertEquals(1,testUno.getDeckSize());
+        //assert that the discard pile has 0 cards
+        assertEquals(0,testUno.getDiscardPile().size());
+
     }
 
     @Test
