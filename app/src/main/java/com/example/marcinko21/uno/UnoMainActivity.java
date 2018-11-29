@@ -59,7 +59,5 @@ public class UnoMainActivity extends GameMainActivity {
     public LocalGame createLocalGame() {
         return new UnoLocalGame();
     }
-    //todo make a uno local game class and have it extend local game class. Then make this method -
-    //- return the new uno local game state
 
 }
