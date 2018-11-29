@@ -164,6 +164,19 @@ public class UnoLocalGame extends LocalGame {
                     }
                 state.playCard(hand, state.cbp);
                 return true;
+            }
+            else if(action instanceof UnoSkip)
+            {
+                state.getTurn();
+                return true;
+            }
+            else if(action instanceof UnoReverse)
+            {
+
+            }
+            else if(action instanceof UnoDraw2)
+            {
+
             } else if (action instanceof playCardAction){
 
                 //todo get card number from action

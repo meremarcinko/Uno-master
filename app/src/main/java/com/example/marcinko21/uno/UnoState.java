@@ -262,6 +262,12 @@ public class UnoState extends GameState
         color = discardPile.get(discardPile.size()-1).color;
         type = discardPile.get(discardPile.size()-1).type;
         value = discardPile.get(discardPile.size()-1).value;
+        if(turn == 0) {
+            turn = 1;
+        }
+        else{
+            turn = 0;
+        }
     }//playCard
 
     /**
