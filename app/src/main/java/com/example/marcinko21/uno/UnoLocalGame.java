@@ -108,6 +108,7 @@ public class UnoLocalGame extends LocalGame {
         } else {
             return true;
         }
+
     }
 
 
@@ -138,9 +139,6 @@ public class UnoLocalGame extends LocalGame {
         if (state.getTurn() != playerNum) {
                 return false;
             }
-
-
-
 
 
         Log.i("Make Move","About to take action");
@@ -191,8 +189,12 @@ public class UnoLocalGame extends LocalGame {
             } else if (action instanceof playCardAction){
 
                 //todo get card number from action
-                if(validPlay) {
+
+                if(canMove(playerNum)) { //if valid action
+
                     //tell gameState to play card
+                    state.playCard(playerNum, );
+
                     if(){//not skip or reverse, change turn)
                     return true;
                 } //if ok return true
