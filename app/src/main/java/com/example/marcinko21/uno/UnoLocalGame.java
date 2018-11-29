@@ -103,9 +103,11 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
 
-        //todo implement this method
-        //return playerIdx == state.getWhoseMove();
-        return true;
+        if(playerIdx != state.getTurn()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
