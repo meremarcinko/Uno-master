@@ -43,12 +43,12 @@ public class UnoLocalGame extends LocalGame {
         //if a player does not have any card left, the
         //game is over
         //test
-        if(state.hand1 == null)
+        if(state.hand1.size() == 0)
         {
             return "You are the winner!";
         }
 
-        if(state.hand2 == null)
+        if(state.hand2.size() == 0)
         {
             return "You lose, better luck next time!";
         }
