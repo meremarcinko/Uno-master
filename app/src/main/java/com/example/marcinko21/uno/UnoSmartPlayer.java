@@ -65,9 +65,9 @@ public class UnoSmartPlayer extends GameComputerPlayer {
                 while(found == false) {
                     if (legal == true) {
                         for (Card m : gs.hand2) {
-                            if (m.type == 'd' && m.value == 4) {
+                            if (m.type == 'd' && m.color == 4) {
                                 //decide color
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }
@@ -76,7 +76,7 @@ public class UnoSmartPlayer extends GameComputerPlayer {
                     else {
                         for(Card m : gs.hand2) {
                             if (gs.type == 'd' || m.color == gs.color) {
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }//draw 2
@@ -84,36 +84,49 @@ public class UnoSmartPlayer extends GameComputerPlayer {
                         for(Card m : gs.hand2) {
                             if (m.type == 'd' && m.value == 4) {
                                 //decide color
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }//draw 4 (illegal)
                         }
                         for(Card m : gs.hand2) {
                             if (gs.type == 's' || gs.type == 'r' || m.color == gs.color) {
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }//skip/reverse
                         }
                         for(Card m : gs.hand2) {
                             if (m.value == gs.value && m.color != gs.color) {
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }//same number
                         }
                         for(Card m : gs.hand2) {
                             if (m.color == gs.color) {
-                                //playAction
+                                gs.playCard(gs.hand2,m);
                                 found = true;
                                 break;
                             }//same color
                         }
-                        //drawAction
+                        for(Card m : gs.hand2) {
+                            if (m.type == 'w') {
+                                //decide color
+                                gs.playCard(gs.hand2,m);
+                                found = true;
+                                break;
+                            }//wild
+                        }
+                        gs.drawCard(gs.hand2); //draw action
                         found = true;
                         break;
                     }
+                }
+                if(gs.hand2.size() == 1 || gs.hand1.size() == 1){
+                    Log.i("Smart AI", "Declaring UNO in 1 second");
+                    sleep(1000);
+                    gs.declareUno(id);
                 }
             }
         }
