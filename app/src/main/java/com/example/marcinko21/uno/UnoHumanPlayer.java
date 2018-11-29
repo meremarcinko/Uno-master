@@ -121,6 +121,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     public void onClick(View button) {
 
+        //creates a new instance of playCardAction
+        playCardAction a = new playCardAction(this);
+
         if(button.getId() == R.id.unoButton){
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
@@ -132,6 +135,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction(draw);
 
         }
+        game.sendAction(a); //send the action to the game
+
     }// onClick
 
 }

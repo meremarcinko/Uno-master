@@ -43,12 +43,12 @@ public class UnoLocalGame extends LocalGame {
         //if a player does not have any card left, the
         //game is over
         //test
-        if(state.hand1 == null)
+        if(state.hand1.size() == 0)
         {
             return "You are the winner!";
         }
 
-        if(state.hand2 == null)
+        if(state.hand2.size() == 0)
         {
             return "You lose, better luck next time!";
         }
@@ -103,9 +103,11 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
 
-        //todo implement this method
-        //return playerIdx == state.getWhoseMove();
-        return true;
+        if(playerIdx != state.getTurn()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -119,10 +121,9 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
 
-        //todo for PlayCard action, actually do the action
-
         GamePlayer p = action.getPlayer();
         int playerNum = 0;
+        int play = getPlayerIdx(p);
 
         for (int i = 0; i < players.length; i++) {
             if (players[i] == p) {
@@ -133,9 +134,15 @@ public class UnoLocalGame extends LocalGame {
         Log.i("Make Move","Checking Turn");
             //for every action, check that it's my turn
             //true for except for challenges
-            if (state.getTurn() != playerNum) {
+
+        if (state.getTurn() != playerNum) {
                 return false;
             }
+
+
+
+
+
         Log.i("Make Move","About to take action");
             if (action instanceof UnoDrawAction) {
 
@@ -146,8 +153,8 @@ public class UnoLocalGame extends LocalGame {
 
                 state.setPlayerDeclaredUno();
                 return true;
-            }
-            else if(action instanceof UnoPlayAction){
+
+            } else if(action instanceof UnoPlayAction){
                 ArrayList<Card> hand = new ArrayList<>(0);
                     if(state.turn == state.player1Id){
                         hand = state.hand1;
@@ -157,12 +164,24 @@ public class UnoLocalGame extends LocalGame {
                     }
                 state.playCard(hand, state.cbp);
                 return true;
+            } else if (action instanceof playCardAction){
+
+                //todo get card number from action
+                if(validPlay) {
+                    //tell gameState to play card
+                    if(){//not skip or reverse, change turn)
+                    return true;
+                } //if ok return true
+                    if(){
+                        return true;
+                    }
             }
-            //todo for PlayCard action, actually do the action
+
         Log.i("Make Move","Didn't Move");
 
         return false;
     }//makeMove
 
+    }
 }
 
