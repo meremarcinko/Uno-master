@@ -158,6 +158,19 @@ public class UnoLocalGame extends LocalGame {
                 state.playCard(hand, state.cbp);
                 return true;
             }
+            else if(action instanceof UnoSkip)
+            {
+                state.getTurn();
+                return true;
+            }
+            else if(action instanceof UnoReverse)
+            {
+
+            }
+            else if(action instanceof UnoDraw2)
+            {
+
+            }
             //todo for PlayCard action, actually do the action
         Log.i("Make Move","Didn't Move");
 
