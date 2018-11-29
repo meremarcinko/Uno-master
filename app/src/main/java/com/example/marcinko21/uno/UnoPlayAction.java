@@ -10,4 +10,9 @@ public class UnoPlayAction extends GameAction {
      * 		the player who sent the action
      */
     public UnoPlayAction(GamePlayer p) { super(p); }
+
+    //todo add private variable for the card number
+    //getter and setter for those
+    //maybe an overloaded constructor
+
 }

@@ -23,6 +23,24 @@ import java.lang.Math;
 public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener {
 
     public boolean onTouch(View v, MotionEvent event) {
+
+        //locate card tapped
+        //compare x,y to the rectangle where each card is drawn
+
+        final double RATIO = 1.2;
+        //for the human player's hand
+        int y = 3*(this.getHeight())/4;
+        //card width
+        int xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
+        //card height
+        int ySize = (int)(xSize*RATIO);
+        for(int i=0; i < state.getHandSize(state.getHand(0)); i++)
+        {
+            Card c = state.getHand(0).get(i);
+            //c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
+            //check rect
+        }
+
         return true;
     }
 
@@ -56,7 +74,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
         super(context, attrs);
         setWillNotDraw(false);
         init();
-    }// ctor
+    }//ctor
 
     /**
      * Helper-method for the constructors
@@ -91,9 +109,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
 
 
         Log.i("onDraw ", "handSizeIs "+state.getHandSize(state.getHand(0)));
-        //todo
         //drawing all the pieces of the game
-
 
         //to render the discard: not the action to draw
         //get discard from state and call that card's draw method

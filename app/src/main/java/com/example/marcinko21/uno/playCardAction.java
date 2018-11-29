@@ -12,16 +12,29 @@ import com.example.marcinko21.uno.game.actionMsg.GameAction;
  */
 public class playCardAction extends GameAction {
 
+    UnoLocalGame g = new UnoLocalGame();
+
     /** constructor
      *
      * @param p
      * 		the player who sent the action
      */
-    public playCardAction(GamePlayer p) {
+    public playCardAction(GamePlayer p, Card card) {
         super(p);
+
         //todo add player card number
+        Card c = new Card();
+        c.getValue();
+
+    }
+
+    public boolean validPlay(){
 
         //todo check if play is valid
+        if(g.canMove()){
+            return true;
+        }
+        return false;
     }
 
 }
