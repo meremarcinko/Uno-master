@@ -167,16 +167,27 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoSkip)
             {
-                state.getTurn();
-                return true;
+                //if turn == 0 when the card is played return 0
+                //else return 1
+                if(turn == 0){
+                    turn = 1;
+                }
+                else {
+                    turn = 0;
+                    return true;
+                }
             }
             else if(action instanceof UnoReverse)
             {
-
+                //if turn == 0 when the card is played return 0
+                //else return 1
+                //treat the reverse like a skip card
             }
+
             else if(action instanceof UnoDraw2)
             {
-
+                //if this card is drawn, player recieves two cards
+                //else turn = person who played the card
             } else if (action instanceof playCardAction){
 
                 //todo get card number from action
