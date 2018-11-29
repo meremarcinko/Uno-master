@@ -120,7 +120,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * 		the button that was clicked
      */
     public void onClick(View button) {
-
         //creates a new instance of playCardAction
         playCardAction a = new playCardAction(this);
 
@@ -135,8 +134,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction(draw);
 
         }
-        game.sendAction(a); //send the action to the game
 
+        game.sendAction(a);
     }// onClick
 
 }
