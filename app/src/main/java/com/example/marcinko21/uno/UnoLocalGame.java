@@ -162,6 +162,7 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoSkip)
             {
+                // TODO: 11/29/2018 finish implementing this method 
                 //if turn == 0 when the card is played return 0
                 //else return 1
                 if(turn == 0){
@@ -174,6 +175,7 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoReverse)
             {
+                // TODO: 11/29/2018 implement this method 
                 //if turn == 0 when the card is played return 0
                 //else return 1
                 //treat the reverse like a skip card
@@ -181,9 +183,11 @@ public class UnoLocalGame extends LocalGame {
 
             else if(action instanceof UnoDraw2)
             {
-                //if this card is drawn, player recieves two cards
+                // TODO: 11/29/2018 implement this method 
+                //if this card is drawn, player receives two cards
                 //else turn = person who played the card
-            } else if (action instanceof playCardAction){
+            } 
+            else if (action instanceof playCardAction){
 
                 //todo get card number from action
                 if(validPlay) {
