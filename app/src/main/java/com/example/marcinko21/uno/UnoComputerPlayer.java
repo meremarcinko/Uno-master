@@ -80,7 +80,6 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                 }
             Log.i("Dumb AI", "Drawing card");
             gs.drawCard(gs.hand2);
-
         }
         return;
     }//receiveInfo()
