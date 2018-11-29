@@ -170,7 +170,18 @@ public class UnoLocalGame extends LocalGame {
             else if(action instanceof UnoDraw2)
             {
 
-            }
+            } else if (action instanceof playCardAction){
+
+                //todo get card number from action
+                if(validPlay) {
+                    //tell gameState to play card
+                    if(){//not skip or reverse, change turn)
+                        return true;
+                    } //if ok return true
+                    if(){
+                        return true;
+                    }
+                }
             //todo for PlayCard action, actually do the action
         Log.i("Make Move","Didn't Move");
 
