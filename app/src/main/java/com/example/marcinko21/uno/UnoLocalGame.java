@@ -111,7 +111,6 @@ public class UnoLocalGame extends LocalGame {
 
     }
 
-
     /**
      * MakeMove
     * Makes a move on behalf of a player
@@ -165,7 +164,7 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoSkip)
             {
-                // TODO: 11/29/2018 finish implementing this method 
+                // TODO: 11/29/2018 finish implementing this method
                 //if turn == 0 when the card is played return 0
                 //else return 1
                 if(turn == 0){
@@ -178,7 +177,7 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoReverse)
             {
-                // TODO: 11/29/2018 implement this method 
+                // TODO: 11/29/2018 implement this method
                 //if turn == 0 when the card is played return 0
                 //else return 1
                 //treat the reverse like a skip card
@@ -186,32 +185,41 @@ public class UnoLocalGame extends LocalGame {
 
             else if(action instanceof UnoDraw2)
             {
-                // TODO: 11/29/2018 implement this method 
+                // TODO: 11/29/2018 implement this method
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
-            } 
-            else if (action instanceof playCardAction){
+            }
+            else if (action instanceof playCardAction)
+            {
 
                 //todo get card number from action
 
                 if(canMove(playerNum)) { //if valid action
 
-                    //tell gameState to play card
-                    state.playCard(playerNum, );
+                    Card c = ((playCardAction)action).getCard();
 
-                    if(){//not skip or reverse, change turn)
+                    //tell gameState to play card
+                    state.playCard(playerNum, c);
+
+                    if((action != UnoSkip) && (action != UnoReverse)){ //not skip or reverse, change turn)
+                        int turn = state.getTurn();
+                        if(turn == 0){
+                            state.setTurn(1);
+                        }
+                        else {
+                            state.setTurn(0);
+
+                        }
                     return true;
+
                 } //if ok return true
-                    if(){
-                        return true;
-                    }
+                    return true;
             }
 
-        Log.i("Make Move","Didn't Move");
+        }//playCard action
 
+        Log.i("Make Move","Didn't Move");
         return false;
     }//makeMove
-
-    }
 }
 

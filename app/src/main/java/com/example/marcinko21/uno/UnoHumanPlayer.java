@@ -120,8 +120,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * 		the button that was clicked
      */
     public void onClick(View button) {
+
+        //todo check w tribel
+        Card c = new Card();
         //creates a new instance of playCardAction
-        playCardAction a = new playCardAction(this);
+        playCardAction a = new playCardAction(this, c);
 
         if(button.getId() == R.id.unoButton){
 
