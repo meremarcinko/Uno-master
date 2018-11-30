@@ -17,6 +17,10 @@ public class UnoDrawAction extends GameAction {
      * @param p
      * 		the player who sent the action
      */
-    public UnoDrawAction(GamePlayer p) { super(p); }
+    public UnoDrawAction(GamePlayer p)
+    {
+        super(p);
+    }
+
 
 }

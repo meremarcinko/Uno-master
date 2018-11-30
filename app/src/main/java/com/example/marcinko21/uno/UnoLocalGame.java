@@ -167,13 +167,16 @@ public class UnoLocalGame extends LocalGame {
                 // TODO: 11/29/2018 finish implementing this method
                 //if turn == 0 when the card is played return 0
                 //else return 1
-                if(turn == 0){
+                /*if(turn == 0){
                     turn = 1;
                 }
                 else {
                     turn = 0;
-                    return true;
-                }
+                }*/
+                Card cardtoPlay = ((Unoskip)info).getCard();
+                state.playCard(state.getTurn(), cardToPlay);
+                return true;
+
             }
             else if(action instanceof UnoReverse)
             {
