@@ -8,6 +8,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+
+import com.example.marcinko21.uno.game.Game;
+import com.example.marcinko21.uno.game.GamePlayer;
+import com.example.marcinko21.uno.game.LocalGame;
+
 import java.lang.Math;
 
 
@@ -26,6 +31,13 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
 
         //locate card tapped
         //compare x,y to the rectangle where each card is drawn
+        //if the tapped area is in the field of rectangle, then the program will know that THAT card is tapped
+
+        int touchX = (int)event.getX();
+        //sub note: can cast because primitive
+        // casting happens later if not primitive
+        int touchY = (int)event.getY();
+
 
         final double RATIO = 1.2;
         //for the human player's hand
@@ -38,8 +50,21 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
         {
             Card c = state.getHand(0).get(i);
             //c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
-            //check rect
+            int leftX = xSize*i;
+            int rightX = xSize + xSize*i;
+            int topY = y;
+            int bottomY = ySize + y;
+            //check rect to see if we have the exact right card to playAction
+            if((touchX >= leftX) && (touchX > rightX) && (touchY >= topY) && (touchY > bottomY)){
+
+                playCardAction a = new playCardAction(aHuman, c);
+                aGame.sendAction(a);
+                return true;
+
+            }
         }
+
+        //creates a new instance of playCardAction
 
         return true;
     }
@@ -138,5 +163,16 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
             c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
     }
+
+    public void setHumanPlayer(GamePlayer p){
+        this.aHuman = p;
+    }
+
+    public void setGame(Game g){
+        this.aGame = g;
+    }
+
+    private GamePlayer aHuman;
+    private Game aGame;
 
 }

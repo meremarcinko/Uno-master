@@ -200,8 +200,6 @@ public class UnoLocalGame extends LocalGame {
             else if (action instanceof playCardAction)
             {
 
-                //todo get card number from action
-
                 if(canMove(playerNum)) { //if valid action
 
                     Card c = ((playCardAction)action).getCard();
@@ -209,7 +207,8 @@ public class UnoLocalGame extends LocalGame {
                     //tell gameState to play card
                     state.playCard(playerNum, c);
 
-                    if((action != UnoSkip) && (action != UnoReverse)){ //not skip or reverse, change turn)
+                    if(((action instanceof UnoSkip) && (action instanceof UnoReverse) == false))
+                    { //not skip or reverse, change turn)
                         int turn = state.getTurn();
                         if(turn == 0){
                             state.setTurn(1);
@@ -223,7 +222,6 @@ public class UnoLocalGame extends LocalGame {
                     } //if ok return true
                     return true;
                 }
-
             }//playCard action
 
         Log.i("Make Move","Didn't Move");

@@ -107,6 +107,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         surfaceView = (UnoSurfaceView)myActivity.findViewById(R.id.unoSurfaceView);
         Log.i("set listener","OnTouch");
         surfaceView.setOnTouchListener(surfaceView);
+
+        surfaceView.setHumanPlayer(this);
+        surfaceView.setGame(game);
+
     }//setAsGui
 
 
@@ -121,10 +125,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     public void onClick(View button) {
 
-        //todo check w tribel
-        Card c = new Card();
-        //creates a new instance of playCardAction
-        playCardAction a = new playCardAction(this, c);
 
         if(button.getId() == R.id.unoButton){
 
@@ -138,7 +138,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         }
 
-        game.sendAction(a);
+
     }// onClick
 
 }
