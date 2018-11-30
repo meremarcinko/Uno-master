@@ -115,7 +115,6 @@ public class UnoState extends GameState
      */
     public void makeDeck()
     {
-        //todo temporarily comment out above code and add just green cards 0-9 manually
         deck.add(new Card(0,0,'n',R.drawable.green0));//1
         deck.add(new Card(0,1,'n',R.drawable.green1));//2
         deck.add(new Card(0,1,'n',R.drawable.green1_copy));//3
@@ -240,8 +239,6 @@ public class UnoState extends GameState
      *
      * @param hand
      */
-    //todo check if they're allowed to draw
-
     public void drawCard(ArrayList<Card> hand)
     {
         checkIsEmpty();
@@ -292,6 +289,7 @@ public class UnoState extends GameState
         if(hand.size() == 1)
         {
             return true;
+
         }
         else
         {

@@ -119,7 +119,6 @@ public class UnoLocalGame extends LocalGame
 
     }
 
-
     /**
      * MakeMove
     * Makes a move on behalf of a player
@@ -185,14 +184,15 @@ public class UnoLocalGame extends LocalGame
             else if(action instanceof UnoSkip)
             {
                 // TODO: 11/29/2018 finish implementing this method 
-                //if turn == 0 when the card is played return 0
-                //else return 1
-                /*if(turn == 0){
-                    turn = 1;
+                int turn = state.getTurn();
+                if(turn == 0)
+                {
+                    state.setTurn(1);
                 }
-                else {
-                    turn = 0;
-                }*/
+                else
+                {
+                    state.setTurn(0);
+                }
                 Card cardtoPlay = ((Unoskip)info).getCard();
                 state.playCard(state.getTurn(), cardToPlay);
                 return true;
@@ -201,8 +201,16 @@ public class UnoLocalGame extends LocalGame
             else if(action instanceof UnoReverse)
             {
                 // TODO: 11/29/2018 implement this method 
-                //if turn == 0 when the card is played return 0
-                //else return 1
+                int turn = state.getTurn();
+                if(turn == 0)
+                {
+                    state.setTurn(1);
+                }
+                else
+                {
+                    state.setTurn(0);
+
+                }
                 //treat the reverse like a skip card
             }
 
@@ -211,18 +219,36 @@ public class UnoLocalGame extends LocalGame
                 // TODO: 11/29/2018 implement this method 
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
-            } 
+            }
             else if (action instanceof playCardAction)
             {
-
-                //todo get card number from action
 
                 if(canMove(playerNum))
                 { //if valid action
 
-                    //tell gameState to play card
-                    state.playCard(playerNum, );
+                    Card c = ((playCardAction)action).getCard();
 
+                    //tell gameState to play card
+                    state.playCard(playerNum, c);
+
+                    if(((action instanceof UnoSkip) && (action instanceof UnoReverse) == false))
+                    { //not skip or reverse, change turn)
+                        int turn = state.getTurn();
+                        if(turn == 0)
+                        {
+                            state.setTurn(1);
+                        }
+                        else
+                        {
+                            state.setTurn(0);
+
+                        }
+                        return true;
+
+                    } //if ok return true
+                    return true;
+                }
+            }//playCard action
                     if()
                     {
                         //not skip or reverse, change turn)
@@ -235,11 +261,9 @@ public class UnoLocalGame extends LocalGame
             }
 
         Log.i("Make Move","Didn't Move");
-
         return false;
     }//makeMove
-
-    }
 }
 
-a
+
+
