@@ -13,7 +13,8 @@ import java.util.ArrayList;
  * Returns the new Local Game State
  * Checks if game is Over
  */
-public class UnoLocalGame extends LocalGame {
+public class UnoLocalGame extends LocalGame
+{
 
     //the game's state
     protected UnoState state;
@@ -21,7 +22,8 @@ public class UnoLocalGame extends LocalGame {
     /**
      *  Constructor for UnoLocalGame
      */
-    public UnoLocalGame() {
+    public UnoLocalGame()
+    {
 
         //perform superclass initialization
         super();
@@ -39,7 +41,8 @@ public class UnoLocalGame extends LocalGame {
      * game is not over
      */
     @Override
-    protected String checkIfGameOver() {
+    protected String checkIfGameOver()
+    {
         //if a player does not have any card left, the
         //game is over
         //test
@@ -84,7 +87,8 @@ public class UnoLocalGame extends LocalGame {
      *
      * @param p
      */
-    protected void sendUpdatedStateTo(GamePlayer p) {
+    protected void sendUpdatedStateTo(GamePlayer p)
+    {
 
         //make a copy of the state, and send it to the player
         p.sendInfo(new UnoState(state));
@@ -101,11 +105,15 @@ public class UnoLocalGame extends LocalGame {
      * 		true iff the player is allowed to move
      */
     @Override
-    protected boolean canMove(int playerIdx) {
+    protected boolean canMove(int playerIdx)
+    {
 
-        if(playerIdx != state.getTurn()){
+        if(playerIdx != state.getTurn())
+        {
             return false;
-        } else {
+        }
+        else
+        {
             return true;
         }
 
@@ -120,14 +128,17 @@ public class UnoLocalGame extends LocalGame {
     * @return Tells whether the move was a legal one.
      */
     @Override
-    protected boolean makeMove(GameAction action) {
+    protected boolean makeMove(GameAction action)
+    {
 
         GamePlayer p = action.getPlayer();
         int playerNum = 0;
         int play = getPlayerIdx(p);
 
-        for (int i = 0; i < players.length; i++) {
-            if (players[i] == p) {
+        for (int i = 0; i < players.length; i++)
+        {
+            if (players[i] == p)
+            {
                 playerNum = i;
             }
         }
@@ -136,28 +147,36 @@ public class UnoLocalGame extends LocalGame {
             //for every action, check that it's my turn
             //true for except for challenges
 
-        if (state.getTurn() != playerNum) {
-                return false;
-            }
+        if (state.getTurn() != playerNum)
+        {
+            return false;
+        }
 
 
         Log.i("Make Move","About to take action");
-            if (action instanceof UnoDrawAction) {
+            if (action instanceof UnoDrawAction)
+            {
 
                 state.drawCard(state.getHand(playerNum));
                 return true;
 
-            } else if (action instanceof UnoUnoAction) {
+            }
+            else if (action instanceof UnoUnoAction)
+            {
 
                 state.setPlayerDeclaredUno();
                 return true;
 
-            } else if(action instanceof UnoPlayAction){
+            }
+            else if(action instanceof UnoPlayAction)
+            {
                 ArrayList<Card> hand = new ArrayList<>(0);
-                    if(state.turn == state.player1Id){
+                    if(state.turn == state.player1Id)
+                    {
                         hand = state.hand1;
                     }
-                    else{
+                    else
+                    {
                         hand = state.hand2;
                     }
                 state.playCard(hand, state.cbp);
@@ -193,19 +212,24 @@ public class UnoLocalGame extends LocalGame {
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
             } 
-            else if (action instanceof playCardAction){
+            else if (action instanceof playCardAction)
+            {
 
                 //todo get card number from action
 
-                if(canMove(playerNum)) { //if valid action
+                if(canMove(playerNum))
+                { //if valid action
 
                     //tell gameState to play card
                     state.playCard(playerNum, );
 
-                    if(){//not skip or reverse, change turn)
-                    return true;
-                } //if ok return true
-                    if(){
+                    if()
+                    {
+                        //not skip or reverse, change turn)
+                        return true;
+                    } //if ok return true
+                    if()
+                    {
                         return true;
                     }
             }
@@ -218,3 +242,4 @@ public class UnoLocalGame extends LocalGame {
     }
 }
 
+a

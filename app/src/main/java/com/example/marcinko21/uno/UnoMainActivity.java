@@ -8,7 +8,8 @@ import com.example.marcinko21.uno.game.LocalGame;
 
 import java.util.ArrayList;
 
-public class UnoMainActivity extends GameMainActivity {
+public class UnoMainActivity extends GameMainActivity
+{
 
     public static final int PORT_NUMBER = 5213;
 
@@ -16,21 +17,27 @@ public class UnoMainActivity extends GameMainActivity {
      * an uno game for two players. The default is human vs. computer
      */
     @Override
-    public GameConfig createDefaultConfig() {
+    public GameConfig createDefaultConfig()
+    {
 
         // Define the allowed player types
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
         // Uno has two player types:  human and computer
-        playerTypes.add(new GamePlayerType("Local Human Player") {
-            public GamePlayer createPlayer(String name) {
+        playerTypes.add(new GamePlayerType("Local Human Player")
+        {
+            public GamePlayer createPlayer(String name)
+            {
                 return new UnoHumanPlayer(name, R.layout.activity_uno_main);
-            }});
+            }
+        });
 
 
         // dumb computer player
-        playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
-            public GamePlayer createPlayer(String name) {
+        playerTypes.add(new GamePlayerType("Computer Player (dumb)")
+        {
+            public GamePlayer createPlayer(String name)
+            {
                 return new UnoComputerPlayer(name);
             }
         });
@@ -56,7 +63,8 @@ public class UnoMainActivity extends GameMainActivity {
      *         class.
      */
     @Override
-    public LocalGame createLocalGame() {
+    public LocalGame createLocalGame()
+    {
         return new UnoLocalGame();
     }
 

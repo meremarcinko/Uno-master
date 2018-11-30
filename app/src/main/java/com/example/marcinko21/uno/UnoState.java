@@ -96,13 +96,15 @@ public class UnoState extends GameState
         Log.i("Game state copy constructor","hand1 size is: " + state.hand1.size());
         hand1 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand1
-        for (Card c : state.hand1) {
+        for (Card c : state.hand1)
+        {
             hand1.add(c.clone());
         }
         Log.i("Game state copy constructor","hand1 size is: " + hand1.size());
         hand2 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand2
-        for(Card c : state.hand2) {
+        for(Card c : state.hand2)
+        {
             hand2.add(c.clone());
         }
         color = state.color;
@@ -111,7 +113,8 @@ public class UnoState extends GameState
     /**
      * Method to make the deck for a new game
      */
-    public void makeDeck() {
+    public void makeDeck()
+    {
         //todo temporarily comment out above code and add just green cards 0-9 manually
         deck.add(new Card(0,0,'n',R.drawable.green0));//1
         deck.add(new Card(0,1,'n',R.drawable.green1));//2
@@ -226,7 +229,8 @@ public class UnoState extends GameState
     /**
      * Method to Shuffle the Deck
      */
-    public void shuffleDeck(){
+    public void shuffleDeck()
+    {
         //how do you shuffle an arrayList
         Collections.shuffle(deck);//Collections.shuffle - shuffles an arrayList
     }//shuffleDeck
@@ -238,14 +242,17 @@ public class UnoState extends GameState
      */
     //todo check if they're allowed to draw
 
-    public void drawCard(ArrayList<Card> hand){
+    public void drawCard(ArrayList<Card> hand)
+    {
         checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
-        if(turn == 0){
+        if(turn == 0)
+        {
             turn = 1;
         }
-        else{
+        else
+        {
             turn = 0;
         }
     }//drawCard
@@ -256,16 +263,19 @@ public class UnoState extends GameState
      * @param hand
      * @param c
      */
-    public void playCard(ArrayList<Card> hand, Card c){
+    public void playCard(ArrayList<Card> hand, Card c)
+    {
         hand.remove(c);
         discardPile.add(c);
         color = discardPile.get(discardPile.size()-1).color;
         type = discardPile.get(discardPile.size()-1).type;
         value = discardPile.get(discardPile.size()-1).value;
-        if(turn == 0) {
+        if(turn == 0)
+        {
             turn = 1;
         }
-        else{
+        else
+        {
             turn = 0;
         }
     }//playCard
@@ -277,12 +287,11 @@ public class UnoState extends GameState
      * @param playerId
      * @return true or false
      */
-    public boolean isUno(ArrayList<Card> hand, int playerId){
-
-        if(hand.size() == 1) {
-
+    public boolean isUno(ArrayList<Card> hand, int playerId)
+    {
+        if(hand.size() == 1)
+        {
             return true;
-
         }
         else
         {
@@ -298,9 +307,9 @@ public class UnoState extends GameState
      * @param hand
      * @return hand size
      */
-    public int getHandSize(ArrayList<Card> hand){
+    public int getHandSize(ArrayList<Card> hand)
+    {
         return hand.size();
-
     }
 
 
@@ -308,7 +317,8 @@ public class UnoState extends GameState
      * Method to get a formatted String describing the basic game state
      * @return player 1 and 2's id, with the turn
      */
-    public String getGameState() {
+    public String getGameState()
+    {
         return "Player 1 ID: " + player1Id + "Player 2 ID: " + player2Id + ", Turn: " + turn;
     } //getGameState
 
@@ -317,9 +327,11 @@ public class UnoState extends GameState
      * a new one from the pile if it is
      *
      */
-    public void checkIsEmpty(){
+    public void checkIsEmpty()
+    {
         if(deck.size() == 0){ //if is empty
-            while(discardPile.size() > 1){
+            while(discardPile.size() > 1)
+            {
                 deck.add(discardPile.get(0));
                 discardPile.remove(0);
             }
@@ -331,7 +343,8 @@ public class UnoState extends GameState
     /**
      * selectCard action
      */
-    public void selectCard(Card c) {
+    public void selectCard(Card c)
+    {
         cbp = c;
     }//selectCard
 
@@ -343,14 +356,18 @@ public class UnoState extends GameState
      */
     public boolean playCard(int playerId, Card cardToPlay)
     {
-        if(playerId != turn) {
+        if(playerId != turn)
+        {
             return false;
         }
-        else {
-            if(playerId == player1Id) {
+        else
+        {
+            if(playerId == player1Id)
+            {
                 playCard(hand1, cardToPlay);
             }
-            else{
+            else
+            {
                 playCard(hand2, cardToPlay);
             }
             return true;
@@ -364,10 +381,12 @@ public class UnoState extends GameState
      */
     public ArrayList<Card> getHand(int playerId)
     {
-        if(playerId == player1Id) {
+        if(playerId == player1Id)
+        {
             return hand1;
         }
-        else {
+        else
+        {
             return hand2;
         }
     }//getHand
@@ -377,8 +396,10 @@ public class UnoState extends GameState
      *
      * @return true if legal move
      */
-    public boolean drawCard(int player1Id, int player2Id) {
-        if (deckSize == 0) {
+    public boolean drawCard(int player1Id, int player2Id)
+    {
+        if (deckSize == 0)
+        {
             return false;
         }
         else
@@ -395,23 +416,30 @@ public class UnoState extends GameState
      */
     public void declareUno(int playerId)
     {
-        if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false)){
-            if(playerId == player1Id && hand2.size() == 1 ){
-                    for(int i = 0; i < 2; i++){
-                    drawCard(hand2);
+        if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false))
+        {
+            if(playerId == player1Id && hand2.size() == 1 )
+            {
+                    for(int i = 0; i < 2; i++)
+                    {
+                        drawCard(hand2);
                     }
                     playerDeclaredUno = true;
             }
-            else if(playerId == player2Id && hand1.size() == 1 ){
-                for(int i = 0; i < 2; i++){
+            else if(playerId == player2Id && hand1.size() == 1 )
+            {
+                for(int i = 0; i < 2; i++)
+                {
                     drawCard(hand1);
                 }
                 playerDeclaredUno = true;
             }
-            else if(playerId == player1Id && hand1.size() == 1 ){
+            else if(playerId == player1Id && hand1.size() == 1 )
+            {
                 playerDeclaredUno = true;
             }
-            else if(playerId == player2Id && hand2.size() == 1 ){
+            else if(playerId == player2Id && hand2.size() == 1 )
+            {
                 playerDeclaredUno = true;
             }
         }
@@ -424,7 +452,8 @@ public class UnoState extends GameState
      * @return Game State
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         int i = 0;
         /*
         updateDeckSize();
@@ -461,33 +490,58 @@ public class UnoState extends GameState
      *  Set and Get Methods
      *
      */
-    public void setPlayer1Id(int pid){ player1Id = pid; }
+    public void setPlayer1Id(int pid)
+    {
+        player1Id = pid;
+    }
 
-    public int getPlayer1Id(){ return player1Id; }
+    public int getPlayer1Id()
+    {
+        return player1Id;
+    }
 
-    public void setPlayer2Id(int pid){ player2Id = pid; }
+    public void setPlayer2Id(int pid)
+    {
+        player2Id = pid;
+    }
 
-    public int getPlayer2Id(){ return player2Id; }
+    public int getPlayer2Id()
+    {
+        return player2Id;
+    }
 
-    public int getTurn(){ return turn; }
+    public int getTurn()
+    {
+        return turn;
+    }
 
-    public void setTurn(int newTurn) {
+    public void setTurn(int newTurn)
+    {
         turn = newTurn;
         playerDeclaredUno = false;
     }
 
-    public ArrayList<Card> getDiscardPile() {
+    public ArrayList<Card> getDiscardPile()
+    {
         return discardPile;
     }
 
-    public int getDeckSize() {return deckSize;}
+    public int getDeckSize()
+    {
+        return deckSize;
+    }
 
     public ArrayList<Card> getDeck()
     {
         return deck;
     }
-    public void setPlayerDeclaredUno() { playerDeclaredUno = true; }
+    public void setPlayerDeclaredUno()
+    {
+        playerDeclaredUno = true;
+    }
 
-    public boolean getPlayerDeclaredUno() { return playerDeclaredUno; }
-
+    public boolean getPlayerDeclaredUno()
+    {
+        return playerDeclaredUno;
+    }
 }

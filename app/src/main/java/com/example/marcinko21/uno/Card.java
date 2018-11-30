@@ -13,7 +13,8 @@ import java.util.ArrayList;
  * @author Andrew, Meredith, Ashley
  * @date 9 November 2018
  */
-public class Card {
+public class Card
+{
 
     /**
      * Initialize Variables
@@ -30,7 +31,8 @@ public class Card {
      * Constructor for Card Class
      *
      */
-    public Card() {
+    public Card()
+    {
         value = 0;
         type = ' ';
         color = 0;
@@ -58,7 +60,8 @@ public class Card {
      *
      * @return copy of Card class
      */
-    public Card clone(){
+    public Card clone()
+    {
 
         return new Card(color, value, type, androidId);
     }//clone
@@ -68,19 +71,40 @@ public class Card {
      *
      */
     //getter and setter methods
-    public int getAndro() {return androidId;}
+    public int getAndro()
+    {
+        return androidId;
+    }
 
-    public int getValue() { return value; }
+    public int getValue()
+    {
+        return value;
+    }
 
-    public char getType() { return type; }
+    public char getType()
+    {
+        return type;
+    }
 
-    public int getColor() { return color; }
+    public int getColor()
+    {
+        return color;
+    }
 
-    public void setValue(int v) { this.value = v; }
+    public void setValue(int v)
+    {
+        this.value = v;
+    }
 
-    public void setType(char t) { this.type = t; }
+    public void setType(char t)
+    {
+        this.type = t;
+    }
 
-    public void setColor(int c) { this.color = c; }
+    public void setColor(int c)
+    {
+        this.color = c;
+    }
 
 
     /**
@@ -97,7 +121,8 @@ public class Card {
      */
     public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView, boolean isHidden)
     {
-        if(!isHidden) {
+        if(!isHidden)
+        {
             //Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(), R.drawable.green0);
             Bitmap cardGreen0 = BitmapFactory.decodeResource(unoView.getResources(), androidId);
             cardGreen0 = Bitmap.createScaledBitmap(cardGreen0, xSize, ySize, false);
@@ -110,7 +135,4 @@ public class Card {
             canvas.drawBitmap(cardUno, x,y,null);
         }
     }
-
-
-
 }

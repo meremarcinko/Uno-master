@@ -10,7 +10,8 @@ import com.example.marcinko21.uno.game.actionMsg.GameAction;
  * @author Meredith, Andrew, Ashley
  * @version 09 November 2018
  */
-public class playCardAction extends GameAction {
+public class playCardAction extends GameAction
+{
 
     UnoLocalGame g = new UnoLocalGame();
 
@@ -19,7 +20,8 @@ public class playCardAction extends GameAction {
      * @param p
      * 		the player who sent the action
      */
-    public playCardAction(GamePlayer p, Card card) {
+    public playCardAction(GamePlayer p, Card card)
+    {
         super(p);
 
         //todo add player card number
@@ -28,7 +30,8 @@ public class playCardAction extends GameAction {
 
     }
 
-    public boolean validPlay(){
+    public boolean validPlay()
+    {
 
         //todo check if play is valid
         if(g.canMove()){

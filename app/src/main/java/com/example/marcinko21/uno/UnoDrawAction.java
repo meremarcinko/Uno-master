@@ -10,7 +10,8 @@ import com.example.marcinko21.uno.game.actionMsg.GameAction;
  * @author Meredith, Andrew, Ashley
  * @version 09 November 2018
  */
-public class UnoDrawAction extends GameAction {
+public class UnoDrawAction extends GameAction
+{
 
     /** constructor
      *

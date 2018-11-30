@@ -20,7 +20,8 @@ import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
  * @author Meredith, Andrew, Ashley
  * @version 09 November 2018
  */
-public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener
+{
 
     /**
      * Initialize Variables
@@ -39,7 +40,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param layoutId
      *      the id of the layout to use
      */
-    public UnoHumanPlayer(String name, int layoutId) {
+    public UnoHumanPlayer(String name, int layoutId)
+    {
 
         super(name);
         this.layoutId = layoutId;
@@ -62,7 +64,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @return null
      */
     @Override
-    public View getTopView() {
+    public View getTopView()
+    {
         return myActivity.findViewById(R.id.top_gui_layout);
     }
 
@@ -74,18 +77,26 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * 		the message
      */
     @Override
-    public void receiveInfo(GameInfo info) {
+    public void receiveInfo(GameInfo info)
+    {
 
-        if (surfaceView == null) return;
+        if (surfaceView == null)
+        {
+            return;
+        }
 
-        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
+        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
+        {
             // if the move was out of turn or otherwise illegal, flash the screen
             //surfaceView.flash(Color.RED, 50);
         }
         else if (!(info instanceof UnoState))
+        {
             // if we do not have a UnoState, ignore
             return;
-        else {
+        }
+        else
+        {
             surfaceView.setState((UnoState)info);
             surfaceView.invalidate();
             Log.i("human player", "receiving");
@@ -95,7 +106,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     /**
      * sets the current player as the activity's GUI
      */
-    public void setAsGui(GameMainActivity activity) {
+    public void setAsGui(GameMainActivity activity)
+    {
 
         // remember our activity
         myActivity = activity;
@@ -119,16 +131,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param button
      * 		the button that was clicked
      */
-    public void onClick(View button) {
+    public void onClick(View button)
+    {
         //creates a new instance of playCardAction
         playCardAction a = new playCardAction(this);
 
-        if(button.getId() == R.id.unoButton){
+        if(button.getId() == R.id.unoButton)
+        {
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
 
-        } else if (button.getId() == R.id.drawButton) {
+        }
+        else if (button.getId() == R.id.drawButton)
+        {
 
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);

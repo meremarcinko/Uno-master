@@ -20,9 +20,11 @@ import java.lang.Math;
  *
  *
  */
-public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener {
+public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
+{
 
-    public boolean onTouch(View v, MotionEvent event) {
+    public boolean onTouch(View v, MotionEvent event)
+    {
 
         //locate card tapped
         //compare x,y to the rectangle where each card is drawn
@@ -55,7 +57,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
      *
      * @param context - a reference to the activity this animation is run under
      */
-    public UnoSurfaceView(Context context) {
+    public UnoSurfaceView(Context context)
+    {
         super(context);
         setState(state);
         init();
@@ -70,7 +73,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
      * @param context - a reference to the activity this animation is run under
      * @param attrs   - set of attributes passed from system
      */
-    public UnoSurfaceView(Context context, AttributeSet attrs) {
+    public UnoSurfaceView(Context context, AttributeSet attrs)
+    {
         super(context, attrs);
         setWillNotDraw(false);
         init();
@@ -79,15 +83,18 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
     /**
      * Helper-method for the constructors
      */
-    private void init() {
+    private void init()
+    {
         setBackgroundColor(backgroundColor());
     }// init
 
-    public int backgroundColor() {
+    public int backgroundColor()
+    {
         return Color.BLUE;
     }
 
-    public void setState(UnoState state) {
+    public void setState(UnoState state)
+    {
         this.state = state;
     }
 
@@ -133,7 +140,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener 
         xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(1)));//how many cards are in the hand
         y = 0;
         ySize = (int)(xSize*RATIO);
-        for(int i=0; i < state.getHandSize(state.getHand(1)); i++) {
+        for(int i=0; i < state.getHandSize(state.getHand(1)); i++)
+        {
             Card c = state.getHand(0).get(i);
             c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
