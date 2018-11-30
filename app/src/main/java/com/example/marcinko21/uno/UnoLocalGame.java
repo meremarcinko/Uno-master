@@ -164,15 +164,14 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoSkip)
             {
-                // TODO: 11/29/2018 finish implementing this method
-                //if turn == 0 when the card is played return 0
-                //else return 1
-                /*if(turn == 0){
-                    turn = 1;
+                // TODO: 11/29/2018 finish implementing this method 
+                int turn = state.getTurn();
+                if(turn == 0){
+                    state.setTurn(1);
                 }
                 else {
-                    turn = 0;
-                }*/
+                    state.setTurn(0);
+                }
                 Card cardtoPlay = ((Unoskip)info).getCard();
                 state.playCard(state.getTurn(), cardToPlay);
                 return true;
@@ -180,15 +179,21 @@ public class UnoLocalGame extends LocalGame {
             }
             else if(action instanceof UnoReverse)
             {
-                // TODO: 11/29/2018 implement this method
-                //if turn == 0 when the card is played return 0
-                //else return 1
+                // TODO: 11/29/2018 implement this method 
+                int turn = state.getTurn();
+                if(turn == 0){
+                    state.setTurn(1);
+                }
+                else {
+                    state.setTurn(0);
+
+                }
                 //treat the reverse like a skip card
             }
 
             else if(action instanceof UnoDraw2)
             {
-                // TODO: 11/29/2018 implement this method
+                // TODO: 11/29/2018 implement this method 
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
             }
@@ -213,16 +218,18 @@ public class UnoLocalGame extends LocalGame {
                             state.setTurn(0);
 
                         }
-                    return true;
+                        return true;
 
-                } //if ok return true
+                    } //if ok return true
                     return true;
-            }
+                }
 
-        }//playCard action
+            }//playCard action
 
         Log.i("Make Move","Didn't Move");
         return false;
     }//makeMove
 }
+
+
 
