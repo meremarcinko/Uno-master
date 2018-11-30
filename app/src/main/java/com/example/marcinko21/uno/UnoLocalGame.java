@@ -192,23 +192,33 @@ public class UnoLocalGame extends LocalGame {
                 // TODO: 11/29/2018 implement this method 
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
-            } 
-            else if (action instanceof playCardAction){
+            }
+            else if (action instanceof playCardAction)
+            {
 
                 //todo get card number from action
 
                 if(canMove(playerNum)) { //if valid action
 
-                    //tell gameState to play card
-                    state.playCard(playerNum, );
+                    Card c = ((playCardAction)action).getCard();
 
-                    if(){//not skip or reverse, change turn)
-                    return true;
-                } //if ok return true
-                    if(){
+                    //tell gameState to play card
+                    state.playCard(playerNum, c);
+
+                    if((action != UnoSkip) && (action != UnoReverse)){ //not skip or reverse, change turn)
+                        int turn = state.getTurn();
+                        if(turn == 0){
+                            state.setTurn(1);
+                        }
+                        else {
+                            state.setTurn(0);
+
+                        }
                         return true;
-                    }
-            }
+
+                    } //if ok return true
+                    return true;
+                }
 
         Log.i("Make Move","Didn't Move");
 
