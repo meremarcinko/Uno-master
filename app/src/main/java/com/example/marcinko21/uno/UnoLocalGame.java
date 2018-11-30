@@ -169,7 +169,7 @@ public class UnoLocalGame extends LocalGame
             }
             else if(action instanceof UnoPlayAction)
             {
-                ArrayList<Card> hand = new ArrayList<>(0);
+                ArrayList<Card> hand;
                     if(state.turn == state.player1Id)
                     {
                         hand = state.hand1;
@@ -193,7 +193,7 @@ public class UnoLocalGame extends LocalGame
                 {
                     state.setTurn(0);
                 }
-                Card cardtoPlay = ((Unoskip)info).getCard();
+                Card cardToPlay = ((UnoSkip)action).getSkipCard();
                 state.playCard(state.getTurn(), cardToPlay);
                 return true;
 
@@ -222,10 +222,11 @@ public class UnoLocalGame extends LocalGame
             }
             else if (action instanceof playCardAction)
             {
-
+                Log.i("Make Move", "have play card action");
                 if(canMove(playerNum))
                 { //if valid action
 
+                    Log.i("Make Move", "about to play card");
                     Card c = ((playCardAction)action).getCard();
 
                     //tell gameState to play card
@@ -248,16 +249,7 @@ public class UnoLocalGame extends LocalGame
                     } //if ok return true
                     return true;
                 }
-            }//playCard action
-                    if()
-                    {
-                        //not skip or reverse, change turn)
-                        return true;
-                    } //if ok return true
-                    if()
-                    {
-                        return true;
-                    }
+
             }
 
         Log.i("Make Move","Didn't Move");

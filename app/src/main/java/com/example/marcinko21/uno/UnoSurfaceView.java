@@ -31,6 +31,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     public boolean onTouch(View v, MotionEvent event)
     {
 
+        Log.i("SurfaceView onTouch", "surfaceView Touch starting");
+
         //locate card tapped
         //compare x,y to the rectangle where each card is drawn
         //if the tapped area is in the field of rectangle, then the program will know that THAT card is tapped
@@ -56,15 +58,20 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
             int rightX = xSize + xSize*i;
             int topY = y;
             int bottomY = ySize + y;
+            Log.i("SurfaceView onTouch", "touch x, y " + touchX + " " + touchY + " left corner"+ leftX + " " + topY + " bottom Corner" + rightX + "  " + bottomY);
+
             //check rect to see if we have the exact right card to playAction
-            if((touchX >= leftX) && (touchX > rightX) && (touchY >= topY) && (touchY > bottomY)){
+            if((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY)){
 
                 playCardAction a = new playCardAction(aHuman, c);
                 aGame.sendAction(a);
+                Log.i("SurfaceView onTouch", "sent playCard action: " + i);
                 return true;
 
             }
         }
+        //todo: touch down for everything in the function
+        // todo: debug the crash, prob in the play card function in the game state, maybe
 
         //creates a new instance of playCardAction
 
