@@ -211,6 +211,9 @@ public class UnoLocalGame extends LocalGame
                     state.setTurn(0);
 
                 }
+                Card cardBeingPlayed = ((UnoReverse)action).getReverseCard();
+                state.playCard(state.getTurn(), cardBeingPlayed);
+                return true;
                 //treat the reverse like a skip card
             }
 

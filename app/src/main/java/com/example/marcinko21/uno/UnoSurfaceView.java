@@ -179,11 +179,13 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         }
     }
 
-    public void setHumanPlayer(GamePlayer p){
+    public void setHumanPlayer(GamePlayer p)
+    {
         this.aHuman = p;
     }
 
-    public void setGame(Game g){
+    public void setGame(Game g)
+    {
         this.aGame = g;
     }
 
