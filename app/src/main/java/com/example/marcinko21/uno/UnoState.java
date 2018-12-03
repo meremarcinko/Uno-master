@@ -110,6 +110,7 @@ public class UnoState extends GameState
         color = state.color;
     }//copyCtor
 
+    
     /**
      * Method to make the deck for a new game
      */
