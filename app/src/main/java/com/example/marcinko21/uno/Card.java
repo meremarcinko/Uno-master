@@ -50,7 +50,7 @@ public class Card
     {
         color = c;
         value = v;
-        type = ' ';
+        type = t;
         androidId = aId;
     }
 
@@ -106,6 +106,19 @@ public class Card
         this.color = c;
     }
 
+    public boolean equals(Object o)
+    {
+        if(o instanceof Card)
+        {
+            Card c = (Card)o;
+            if(this.color == c.color && this.type == c.type && this.value == c.value)
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 
     /**
      * Method to draw card

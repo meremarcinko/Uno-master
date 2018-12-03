@@ -75,6 +75,7 @@ public class UnoTest {
 
     @Test
     //testing the is uno function
+    //Meredith Marcinko
     public void testIsUno()
     {
 
@@ -99,6 +100,7 @@ public class UnoTest {
 
     @Test
     //testing the is empty function
+    //Meredith Marcinko
     public void testIsEmpty()
     {
         //todo check do I need to see if it shuffled of discard pile is empty?

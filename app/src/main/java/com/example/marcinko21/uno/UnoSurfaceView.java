@@ -176,7 +176,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         ySize = (int)(xSize*RATIO);
         for(int i=0; i < state.getHandSize(state.getHand(1)); i++)
         {
-            Card c = state.getHand(0).get(i);
+            Card c = state.getHand(1).get(i);
             c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
     }

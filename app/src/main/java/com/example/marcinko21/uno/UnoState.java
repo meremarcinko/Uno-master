@@ -260,21 +260,57 @@ public class UnoState extends GameState
      * @param hand
      * @param c
      */
-    public void playCard(ArrayList<Card> hand, Card c)
+    public boolean playCard(ArrayList<Card> hand, Card c)
     {
-        hand.remove(c);
-        discardPile.add(c);
-        color = discardPile.get(discardPile.size()-1).color;
-        type = discardPile.get(discardPile.size()-1).type;
-        value = discardPile.get(discardPile.size()-1).value;
-        if(turn == 0)
+        //ckeck cardToPlay is valid move based on color, etc.
+        //todo: maybe need to check type, adding in if statement
+        if(this.color == c.color || this.value == c.value || c.type == 'w')
+        {
+            hand.remove(c);
+            discardPile.add(c);
+            color = discardPile.get(discardPile.size() - 1).color;
+            type = discardPile.get(discardPile.size() - 1).type;
+            value = discardPile.get(discardPile.size() - 1).value;
+            //in case of wild, pick players max color
+            //TODO: fix me
+            Log.i("playcard", "checking wild");
+            if(c.type == 'w' || (c.type == 'd' && c.color == 4))
+            {
+                int counts[] = {0,0,0,0};
+                for (int i = 0; i < hand.size(); i++) {
+                    int color = hand.get(i).color;
+                    if (color > 0) {
+                        counts[color - 1]++;
+                    }
+                }
+                //find the max counts
+                //what is the maximum
+
+                int max = counts[0];
+                int location = 0;
+                for(int i = 0; i < counts.length; i++)
+                {
+                    if(counts[i] > max)
+                    {
+                        max = counts[i];
+                        location = i;
+                    }
+                }
+
+                Log.i("playcard", "max count is" + max + "location is: "+ (location +1));
+                color = location + 1;
+            }
+            return true;
+        }
+        return false;
+        /*if(turn == 0)
         {
             turn = 1;
         }
         else
         {
             turn = 0;
-        }
+        }*/
     }//playCard
 
     /**
@@ -362,15 +398,18 @@ public class UnoState extends GameState
         {
             if(playerId == player1Id)
             {
-                playCard(hand1, cardToPlay);
+                return playCard(hand1, cardToPlay);
             }
             else
             {
-                playCard(hand2, cardToPlay);
+                return playCard(hand2, cardToPlay);
             }
-            return true;
+
         }
+        //if cardToPlay is played
+        //remove from hand
         //Todo: need to be able to remove the card from the Hand after the card is played
+        //Todo: need to implement the action is it is the right card to play
     }//playCard
 
     /**
