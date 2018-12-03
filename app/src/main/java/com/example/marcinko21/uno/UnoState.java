@@ -526,7 +526,6 @@ public class UnoState extends GameState
 
     /**
      *  Set and Get Methods
-     *
      */
     public void setPlayer1Id(int pid)
     {

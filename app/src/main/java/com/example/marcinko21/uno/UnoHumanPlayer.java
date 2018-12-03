@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.marcinko21.uno.game.GameHumanPlayer;
 import com.example.marcinko21.uno.game.GameMainActivity;
@@ -31,6 +33,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private int layoutId; //the ID for the layout to use
     private Button drawButton;
     private Button unoButton;
+    private TextView aText;
 
     /**
      * Constructor for UnoHumanPlayer Class
@@ -52,10 +55,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     protected void initAfterReady()
     {
-        drawButton = (Button) myActivity.findViewById(R.id.drawButton);
+        drawButton = myActivity.findViewById(R.id.drawButton);
         drawButton.setOnClickListener(this);
-        unoButton = (Button) myActivity.findViewById(R.id.unoButton);
+        unoButton = myActivity.findViewById(R.id.unoButton);
         unoButton.setOnClickListener(this);
+        aText = myActivity.findViewById(R.id.textBox);
+        aText.setOnClickListener(this);
+        //Log.i("initAfterReady()", "aText is : " + aText);
 
         surfaceView.setGame(game);
 
@@ -131,9 +137,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     }//setAsGui
 
-
-
-
     /**
      * this method gets called when the user clicks the uno or draw button. It
      * creates a new UnoUnoAction or UnoDrawAction and sends it to the game.
@@ -149,6 +152,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
+            aText.setText("The Uno Button Has Been Pushed");
 
         }
         else if (button.getId() == R.id.drawButton)
@@ -156,10 +160,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);
+            aText.setText("The Draw Button Has Been Pushed");
 
         }
-
-
     }// onClick
 
 }

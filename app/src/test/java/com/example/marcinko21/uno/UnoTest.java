@@ -33,7 +33,7 @@ public class UnoTest {
 
     }
 
-    /** commented out because may not need ot be tested
+    /** commented out because may not need to be tested
      *
 
      @Test
