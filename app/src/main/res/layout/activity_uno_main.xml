@@ -10,59 +10,67 @@
     <com.example.marcinko21.uno.UnoSurfaceView
         android:id="@+id/unoSurfaceView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="579dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuSpinner" />
-
-    <TextView
-        android:id="@+id/turn"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:text="TURN: "
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/computerHand"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuSpinner" />
-
-    <Spinner
-        android:id="@+id/menuSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toTopOf="@+id/turn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/computerHand"
+        android:id="@+id/yourHand"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:text="COMPUTER'S HAND : "
+        android:layout_height="41dp"
+        android:layout_marginBottom="144dp"
+        android:background="@android:color/black"
+        android:text="YOUR HAND"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textBox"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="108dp"
+        android:text="TextBox"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/yourHand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/computerHand"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="168dp"
+        android:background="#000000"
+        android:text="COMPUTER'S HAND"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/turn" />
+        app:layout_constraintTop_toTopOf="@+id/unoSurfaceView"
+        app:layout_constraintVertical_bias="0.166" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:layout_alignParentBottom= "true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -56,15 +56,6 @@ public class UnoLocalGame extends LocalGame
             return "You lose, better luck next time!";
         }
 
-        //if(player 1 hand == 0)
-        //return return playerNames[gameWinner]+" is the winner.";
-        //else
-        //game is not over
-
-        //if(player 2 hand == 0)
-        //return playerNames[gameWinner]+" is the winner.";
-        //else
-        //game is not over
         return null;
     }
 
@@ -216,7 +207,6 @@ public class UnoLocalGame extends LocalGame
                 return true;
                 //treat the reverse like a skip card
             }
-
             else if(action instanceof UnoDraw2)
             {
                 // TODO: 11/29/2018 implement this method 
@@ -235,8 +225,8 @@ public class UnoLocalGame extends LocalGame
                     //tell gameState to play card
                     state.playCard(playerNum, c);
 
-                    if(((action instanceof UnoSkip) && (action instanceof UnoReverse) == false))
-                    { //not skip or reverse, change turn)
+                    if(((action instanceof UnoSkip) && (action instanceof UnoReverse)) == false)
+                    { //not skip or reverse, change turn
                         int turn = state.getTurn();
                         if(turn == 0)
                         {
@@ -245,18 +235,17 @@ public class UnoLocalGame extends LocalGame
                         else
                         {
                             state.setTurn(0);
-
                         }
                         return true;
 
                     } //if ok return true
                     return true;
                 }
-
             }
 
         Log.i("Make Move","Didn't Move");
         return false;
+
     }//makeMove
 }
 

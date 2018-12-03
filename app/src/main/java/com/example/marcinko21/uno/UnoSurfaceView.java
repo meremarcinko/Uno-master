@@ -72,8 +72,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
             }
         }
 
-        //todo: touch down for everything in the function
-        // todo: debug the crash, prob in the play card function in the game state, maybe
+        //todo: move card from hand to discard
 
         //creates a new instance of playCardAction
 
