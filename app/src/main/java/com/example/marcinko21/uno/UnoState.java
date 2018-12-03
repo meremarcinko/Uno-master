@@ -370,6 +370,7 @@ public class UnoState extends GameState
             }
             return true;
         }
+        //Todo: need to be able to remove the card from the Hand after the card is played
     }//playCard
 
     /**

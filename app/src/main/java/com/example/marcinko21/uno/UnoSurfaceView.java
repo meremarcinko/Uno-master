@@ -41,35 +41,37 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         //sub note: can cast because primitive
         // casting happens later if not primitive
         int touchY = (int)event.getY();
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
-        final double RATIO = 1.2;
-        //for the human player's hand
-        int y = 3*(this.getHeight())/4;
-        //card width
-        int xSize = (this.getWidth())/Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
-        //card height
-        int ySize = (int)(xSize*RATIO);
-        for(int i=0; i < state.getHandSize(state.getHand(0)); i++)
-        {
-            Card c = state.getHand(0).get(i);
-            //c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
-            int leftX = xSize*i;
-            int rightX = xSize + xSize*i;
-            int topY = y;
-            int bottomY = ySize + y;
-            Log.i("SurfaceView onTouch", "touch x, y " + touchX + " " + touchY + " left corner"+ leftX + " " + topY + " bottom Corner" + rightX + "  " + bottomY);
+            final double RATIO = 1.2;
+            //for the human player's hand
+            int y = 3 * (this.getHeight()) / 4;
+            //card width
+            int xSize = (this.getWidth()) / Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
+            //card height
+            int ySize = (int) (xSize * RATIO);
+            for (int i = 0; i < state.getHandSize(state.getHand(0)); i++) {
+                Card c = state.getHand(0).get(i);
+                //c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
+                int leftX = xSize * i;
+                int rightX = xSize + xSize * i;
+                int topY = y;
+                int bottomY = ySize + y;
+                Log.i("SurfaceView onTouch", "touch x, y " + touchX + " " + touchY + " left corner" + leftX + " " + topY + " bottom Corner" + rightX + "  " + bottomY);
 
-            //check rect to see if we have the exact right card to playAction
-            if((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY)){
+                //check rect to see if we have the exact right card to playAction
+                if ((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY)) {
 
-                playCardAction a = new playCardAction(aHuman, c);
-                aGame.sendAction(a);
-                Log.i("SurfaceView onTouch", "sent playCard action: " + i);
-                return true;
+                    playCardAction a = new playCardAction(aHuman, c);
+                    aGame.sendAction(a);
+                    Log.i("SurfaceView onTouch", "sent playCard action: " + i);
+                    return true;
 
+                }
             }
         }
+
         //todo: touch down for everything in the function
         // todo: debug the crash, prob in the play card function in the game state, maybe
 

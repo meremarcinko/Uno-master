@@ -185,6 +185,8 @@ public class UnoLocalGame extends LocalGame
             {
                 // TODO: 11/29/2018 finish implementing this method 
                 int turn = state.getTurn();
+                Card cardToPlay = ((UnoSkip)action).getSkipCard();
+                state.playCard(state.getTurn(), cardToPlay);
                 if(turn == 0)
                 {
                     state.setTurn(1);
@@ -193,8 +195,6 @@ public class UnoLocalGame extends LocalGame
                 {
                     state.setTurn(0);
                 }
-                Card cardToPlay = ((UnoSkip)action).getSkipCard();
-                state.playCard(state.getTurn(), cardToPlay);
                 return true;
 
             }
@@ -202,6 +202,8 @@ public class UnoLocalGame extends LocalGame
             {
                 // TODO: 11/29/2018 implement this method 
                 int turn = state.getTurn();
+                Card cardBeingPlayed = ((UnoReverse)action).getReverseCard();
+                state.playCard(state.getTurn(), cardBeingPlayed);
                 if(turn == 0)
                 {
                     state.setTurn(1);
@@ -211,8 +213,6 @@ public class UnoLocalGame extends LocalGame
                     state.setTurn(0);
 
                 }
-                Card cardBeingPlayed = ((UnoReverse)action).getReverseCard();
-                state.playCard(state.getTurn(), cardBeingPlayed);
                 return true;
                 //treat the reverse like a skip card
             }

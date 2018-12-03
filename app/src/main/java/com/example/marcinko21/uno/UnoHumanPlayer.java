@@ -56,6 +56,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         drawButton.setOnClickListener(this);
         unoButton = (Button) myActivity.findViewById(R.id.unoButton);
         unoButton.setOnClickListener(this);
+
+        surfaceView.setGame(game);
+
+        if(game == null)
+        {
+            Log.i("setAsGUI", "GAME IS NULL");
+        }
     }
 
     /**
@@ -121,7 +128,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         surfaceView.setOnTouchListener(surfaceView);
 
         surfaceView.setHumanPlayer(this);
-        surfaceView.setGame(game);
 
     }//setAsGui
 
