@@ -17,7 +17,7 @@ import com.example.marcinko21.uno.game.infoMsg.IllegalMoveInfo;
 import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
 
 /**
- * UnoHumanPlayer Class for Uno Game
+ * UnoHumanPlayer Class for Uno Game.
  *
  * @author Meredith, Andrew, Ashley
  * @version 09 November 2018

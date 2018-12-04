@@ -212,12 +212,49 @@ public class UnoLocalGame extends LocalGame
                 }
                 //treat the reverse like a skip card
             }
-
+            else if(action instanceof UnoDraw4)
+            {
+                //player 1's turn is 0
+                int turn = state.getTurn();
+                Card cardToPlay = ((UnoDraw4)action).getDraw4Card();
+                boolean played = state.playCard(state.getTurn(), cardToPlay);
+                if(played)
+                {
+                    if (turn == 0)
+                    {
+                        state.drawFour(state.hand2);
+                    }
+                    else
+                    {
+                        state.drawFour(state.hand1);
+                    }
+                    return true;
+                }
+                //treat the draw4 like a skip card
+            }
             else if(action instanceof UnoDraw2)
             {
                 // TODO: 11/29/2018 implement this method 
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
+
+                //player 1's turn is 0
+                int turn = state.getTurn();
+                Card cardPlayed = ((UnoDraw2)action).getDraw2Card();
+                boolean played = state.playCard(state.getTurn(), cardPlayed);
+                if(played)
+                {
+                    if (turn == 0)
+                    {
+                        state.drawTwo(state.hand2);
+                    }
+                    else
+                    {
+                        state.drawTwo(state.hand1);
+                    }
+                    return true;
+                }
+                //treat the draw2 like a skip card
             }
             else if (action instanceof playCardAction)
             {
@@ -231,8 +268,8 @@ public class UnoLocalGame extends LocalGame
                     //tell gameState to play card
                     boolean played = state.playCard(playerNum, c);
 
-                    if(played && ((action instanceof UnoSkip) && (action instanceof UnoReverse) == false) && action instanceof UnoDraw2)
-                    { //not skip or reverse, change turn)
+                    if(played && ((action instanceof UnoSkip) && (action instanceof UnoReverse) == false) && (action instanceof UnoDraw2) && (action instanceof UnoDraw4))
+                    { //not skip or reverse or draw 2 or draw 4, change turn)
                         int turn = state.getTurn();
                         if(turn == 0)
                         {

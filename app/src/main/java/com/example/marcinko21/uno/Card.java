@@ -19,7 +19,7 @@ public class Card
     /**
      * Initialize Variables
      */
-     // two hand. One card in one hand. Two cards in the other hand. Have one card be played and show
+    //two hand. One card in one hand. Two cards in the other hand. Have one card be played and show
     //that it was added to the discard pile. The discard pile has one more card and the hand now has
     //one less card
     int value;
