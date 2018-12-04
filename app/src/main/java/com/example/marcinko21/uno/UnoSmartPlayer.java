@@ -79,13 +79,13 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     {
                         colorPick(gs.hand2);
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }
                 }//draw 4 (legal)
             }
-
             if (found == false)
             {
                 for (Card m : gs.hand2)
@@ -93,7 +93,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     if (gs.type == 'd' || m.color == gs.color)
                     {
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//draw 2
@@ -107,7 +108,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     {
                         colorPick(gs.hand2);
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//draw 4 (illegal)
@@ -120,7 +122,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     if ((gs.type == 's' || gs.type == 'r') && m.type == gs.type)
                     {
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//skip/reverse
@@ -133,7 +136,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     if (m.value == gs.value && m.color != gs.color)
                     {
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//same number
@@ -146,7 +150,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     if (m.color == gs.color)
                     {
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//same color
@@ -160,7 +165,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     {
                         colorPick(gs.hand2);
                         sleep(100);
-                        gs.playCard(gs.hand2, m);
+                        playCardAction pc = new playCardAction(this, m);
+                        game.sendAction(pc);
                         found = true;
                         break;
                     }//wild
