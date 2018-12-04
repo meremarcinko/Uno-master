@@ -302,7 +302,7 @@ public class UnoState extends GameState
      */
     public boolean playCard(ArrayList<Card> hand, Card c)
     {
-        //ckeck cardToPlay is valid move based on color, etc.
+        //check cardToPlay is valid move based on color, etc.
         //todo: maybe need to check type, adding in if statement
         if(this.color == c.color || this.value == c.value || c.type == 'w')
         {

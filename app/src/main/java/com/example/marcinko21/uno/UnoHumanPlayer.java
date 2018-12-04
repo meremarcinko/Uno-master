@@ -1,13 +1,9 @@
 package com.example.marcinko21.uno;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.marcinko21.uno.game.GameHumanPlayer;
@@ -27,13 +23,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     /**
      * Initialize Variables
-     */
+
     private Activity myActivity; //the current activity
     private UnoSurfaceView surfaceView; //the surfaceview
     private int layoutId; //the ID for the layout to use
     private Button drawButton;
     private Button unoButton;
     private TextView aText;
+     */
+    private Activity myActivity; //the current activity
+    private UnoSurfaceView surfaceView; //the surfaceView
+    private int layoutId; //the ID for the layout to use
+    private Button amfDraw;
+    private Button amfUno;
+    private TextView amfText;
 
     /**
      * Constructor for UnoHumanPlayer Class
@@ -55,12 +58,21 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     protected void initAfterReady()
     {
+        /**
         drawButton = myActivity.findViewById(R.id.drawButton);
         drawButton.setOnClickListener(this);
         unoButton = myActivity.findViewById(R.id.unoButton);
         unoButton.setOnClickListener(this);
         aText = myActivity.findViewById(R.id.textBox);
         aText.setOnClickListener(this);
+        //Log.i("initAfterReady()", "aText is : " + aText);
+         */
+        amfDraw = myActivity.findViewById(R.id.mfDraw);
+        amfDraw.setOnClickListener(this);
+        amfUno = myActivity.findViewById(R.id.mfUno);
+        amfUno.setOnClickListener(this);
+        amfText = myActivity.findViewById(R.id.mfText);
+        amfText.setOnClickListener(this);
         //Log.i("initAfterReady()", "aText is : " + aText);
 
         surfaceView.setGame(game);
@@ -129,7 +141,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         activity.setContentView(layoutId);
 
         // set the surfaceView instance variable
-        surfaceView = (UnoSurfaceView)myActivity.findViewById(R.id.unoSurfaceView);
+        surfaceView = myActivity.findViewById(R.id.unoSurfaceView);
         Log.i("set listener","OnTouch");
         surfaceView.setOnTouchListener(surfaceView);
 
@@ -147,20 +159,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void onClick(View button) {
 
 
-        if(button.getId() == R.id.unoButton)
+        if(button.getId() == R.id.mfUno)
         {
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
-            aText.setText("The Uno Button Has Been Pushed");
+            amfText.setText("The Uno Button Has Been Pushed");
 
         }
-        else if (button.getId() == R.id.drawButton)
+        else if (button.getId() == R.id.mfDraw)
         {
 
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);
-            aText.setText("The Draw Button Has Been Pushed");
+            amfText.setText("The Draw Button Has Been Pushed");
 
         }
     }// onClick

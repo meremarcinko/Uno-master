@@ -73,7 +73,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         }
 
         //todo: move card from hand to discard
-
         //creates a new instance of playCardAction
 
         return true;
