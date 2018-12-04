@@ -192,4 +192,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     private GamePlayer aHuman;
     private Game aGame;
 
+    //Todo: if it is a special card, call the specil card action, else play a regular card
+
 }

@@ -9,28 +9,28 @@ import com.example.marcinko21.uno.game.actionMsg.GameAction;
  * @author Meredith, Andrew, Ashley
  *  @version 09 November 2018
  */
-public class UnoDraw2 extends GameAction
+public class UnoDraw4 extends GameAction
 {
 
-    private Card draw2Card;
+    private Card draw4Card;
     /** constructor
      *
      * @param p
      * 		the player who sent the action
      */
-    public UnoDraw2(GamePlayer p, Card draw2Card)
+    public UnoDraw4(GamePlayer p, Card draw4Card)
     {
         super(p);
-        this.draw2Card = draw2Card;
+        this.draw4Card = draw4Card;
     }
 
-    public Card setDraw2Card(Card draw2Card)
+    public Card setDraw4Card(Card draw4Card)
     {
-        return draw2Card;
+        return draw4Card;
     }
 
-    public Card getDraw2Card()
+    public Card getDraw4Card()
     {
-        return draw2Card;
+        return draw4Card;
     }
 }

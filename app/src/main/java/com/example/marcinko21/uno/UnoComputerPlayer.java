@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  * UnoComputerPlayer Class for Uno
+ * This is where the Computer player is implemented
  *
  * @author Andrew, Meredith, Ashley
  * @date 9 November 2018

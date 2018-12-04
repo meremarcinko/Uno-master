@@ -110,7 +110,7 @@ public class UnoState extends GameState
         color = state.color;
     }//copyCtor
 
-    
+
     /**
      * Method to make the deck for a new game
      */
@@ -304,7 +304,7 @@ public class UnoState extends GameState
     {
         //check cardToPlay is valid move based on color, etc.
         //todo: maybe need to check type, adding in if statement
-        if(this.color == c.color || this.value == c.value || c.type == 'w')
+        if(this.color == c.color || this.value == c.value || c.type == 'w' || (c.type == 'd' && c.color == 4))
         {
             hand.remove(c);
             discardPile.add(c);
