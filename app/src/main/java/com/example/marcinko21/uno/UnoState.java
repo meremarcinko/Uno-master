@@ -304,7 +304,7 @@ public class UnoState extends GameState
     {
         //ckeck cardToPlay is valid move based on color, etc.
         //todo: maybe need to check type, adding in if statement
-        if(this.color == c.color || this.value == c.value || c.type == 'w' || c.type == 'd' && c.color == 4)
+        if(this.color == c.color || this.value == c.value || c.type == 'w' || (c.type == 'd' && c.color == 4))
         {
             hand.remove(c);
             discardPile.add(c);
