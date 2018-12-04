@@ -38,7 +38,7 @@
             tools:layout_editor_absoluteY="288dp">
 
             <Button
-                android:id="@+id/mfUno"
+                android:id="@+id/unoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
@@ -50,7 +50,7 @@
                 android:layout_weight="20" />
 
             <Button
-                android:id="@+id/mfDraw"
+                android:id="@+id/drawButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
@@ -90,7 +90,7 @@
             android:layout_height="55dp" />
 
         <TextView
-            android:id="@+id/mfText"
+            android:id="@+id/textBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-smallcaps"
