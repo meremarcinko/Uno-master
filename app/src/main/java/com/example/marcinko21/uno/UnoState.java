@@ -304,6 +304,7 @@ public class UnoState extends GameState
     {
         //check cardToPlay is valid move based on color, etc.
         //todo: maybe need to check type, adding in if statement
+        //Todo: needs to switch turns after card is played
         if(this.color == c.color || this.value == c.value || c.type == 'w' || (c.type == 'd' && c.color == 4))
         {
             hand.remove(c);
@@ -340,6 +341,8 @@ public class UnoState extends GameState
                 Log.i("playcard", "max count is" + max + "location is: "+ (location +1));
                 color = location + 1;
             }
+
+            //if the card is played or the draw button is used, switch turns
             return true;
         }
         return false;

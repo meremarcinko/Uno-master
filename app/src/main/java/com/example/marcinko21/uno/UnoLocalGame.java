@@ -147,8 +147,20 @@ public class UnoLocalGame extends LocalGame
             if (action instanceof UnoDrawAction)
             {
 
-                state.drawCard(state.getHand(playerNum));
-                return true;
+                /*boolean played = state.drawCard(state.getHand(playerNum));
+                //if player 1 drew, end turn and make i
+                //chck to see if there is a valid move
+                //when there is no valid move, draw the card for them
+                int turn = state.getTurn();
+                //changes the turn if the card is played
+                if(played) {
+                    if (turn == 0) {
+                        state.setTurn(1);
+                    } else {
+                        state.setTurn(1);
+                    }
+                    return true;
+                }*/
 
             }
             else if (action instanceof UnoUnoAction)
@@ -174,7 +186,7 @@ public class UnoLocalGame extends LocalGame
             }
             else if(action instanceof UnoSkip)
             {
-                // TODO: 11/29/2018 finish implementing this method 
+
                 int turn = state.getTurn();
                 Card cardToPlay = ((UnoSkip)action).getSkipCard();
                 boolean played = state.playCard(state.getTurn(), cardToPlay);
@@ -193,7 +205,7 @@ public class UnoLocalGame extends LocalGame
             }
             else if(action instanceof UnoReverse)
             {
-                // TODO: 11/29/2018 implement this method 
+
                 int turn = state.getTurn();
                 Card cardBeingPlayed = ((UnoReverse)action).getReverseCard();
                 boolean played = state.playCard(state.getTurn(), cardBeingPlayed);
@@ -234,7 +246,6 @@ public class UnoLocalGame extends LocalGame
             }
             else if(action instanceof UnoDraw2)
             {
-                // TODO: 11/29/2018 implement this method 
                 //if this card is drawn, player receives two cards
                 //else turn = person who played the card
 

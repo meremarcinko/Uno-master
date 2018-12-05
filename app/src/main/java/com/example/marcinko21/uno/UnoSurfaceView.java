@@ -117,7 +117,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
      */
     private void init()
     {
-        setBackgroundColor(backgroundColor());
+        //setBackgroundColor(backgroundColor());
     }// init
 
     public int backgroundColor()
@@ -133,6 +133,29 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     @Override
     public void onDraw(Canvas canvas)
     {
+
+        //green
+        if(state.color == 0)
+        {
+            setBackgroundColor(Color.GREEN);
+        }
+        //blue
+        else if(state.color == 1)
+        {
+            setBackgroundColor(Color.BLUE);
+        }
+        //red
+        else if(state.color == 2)
+        {
+            setBackgroundColor(Color.RED);
+        }
+        //yellow
+        else if(state.color == 3)
+        {
+            setBackgroundColor(Color.YELLOW);
+        }
+
+
         final double RATIO = 1.2;
         //for the human player's hand
         int y = 3*(this.getHeight())/4;
