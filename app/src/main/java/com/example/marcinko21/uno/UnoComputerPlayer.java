@@ -31,6 +31,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
         info.setGame(game);
         UnoState gs = (UnoState) info;
         int id = gs.player2Id;
+        boolean found = false;
 
         if(gs.hand1.size() == 1)
         {
@@ -43,7 +44,8 @@ public class UnoComputerPlayer extends GameComputerPlayer
             {
                 Log.i("Dumb AI", "Declaring UNO in 2 seconds");
                 sleep(2000);
-                gs.declareUno(id);
+                UnoUnoAction uno = new UnoUnoAction(this);
+                game.sendAction(uno);
             }
         }
 
@@ -61,6 +63,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
                         Log.i("Dumb AI", "Playing card"+m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
+                        found = true;
                         break;
                     }
                     if (m.type == 'w')
@@ -72,6 +75,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
                         m.color = colorPick(gs.hand2);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
+                        found = true;
                         break;
                     }
                     if(m.color == gs.color)
@@ -80,6 +84,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
                         Log.i("Dumb AI", "Playing card"+m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
+                        found = true;
                         break;
                     }
                     if(m.value == gs.value && gs.type == 'n')
@@ -88,6 +93,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
                         Log.i("Dumb AI", "Playing card"+m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
+                        found = true;
                         break;
                     }
                     if(m.type == gs.type && gs.type != 'n')
@@ -96,13 +102,18 @@ public class UnoComputerPlayer extends GameComputerPlayer
                         Log.i("Dumb AI", "Playing card"+m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
+                        found = true;
                         break;
                     }
                 }
-            Log.i("Dumb AI", "Drawing card");
-            gs.drawCard(gs.hand2);
+            if(found == false){
+                    UnoDrawAction ud = new UnoDrawAction(this);
+                    game.sendAction(ud);
+            }
         }
-        return;
+        else{
+            Log.i("Dumb AI", "Not turn");
+       }
     }//receiveInfo()
 
     private int colorPick(ArrayList<Card> hand){
@@ -120,6 +131,7 @@ public class UnoComputerPlayer extends GameComputerPlayer
                 out = i;
             }
         }
+        Log.i("Dumb AI", "Color: "+out);
         return out;
     }
 }

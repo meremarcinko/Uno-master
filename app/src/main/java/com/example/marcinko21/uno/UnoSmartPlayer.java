@@ -178,14 +178,16 @@ public class UnoSmartPlayer extends GameComputerPlayer
             {
                 Log.i("Smart AI", "Declaring UNO");
                 sleep(r.nextInt(500) + 500);
-                gs.declareUno(id);
+                UnoUnoAction uno = new UnoUnoAction(this);
+                game.sendAction(uno);
             }
 
             if (found == false)
             {
                 Log.i("Smart AI", "No playable cards found, drawing card");
                 sleep(100);
-                gs.drawCard(gs.hand2);
+                UnoDrawAction ud = new UnoDrawAction(this);
+                game.sendAction(ud);
             }
         }
     }
@@ -209,6 +211,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
                 out = i;
             }
         }
+        Log.i("Smart AI", "Color: "+out);
         return out;
     }
 }
