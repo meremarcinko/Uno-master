@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.marcinko21.uno.game.Game;
 import com.example.marcinko21.uno.game.GamePlayer;
@@ -27,6 +28,9 @@ import java.lang.Math;
  */
 public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
 {
+
+
+
 
     public boolean onTouch(View v, MotionEvent event)
     {
@@ -83,6 +87,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
      */
     //the game's state
     protected UnoState state = new UnoState();
+    private TextView text;
 
     /**
      * Constructor for the UnoSurfaceView class.
@@ -94,6 +99,12 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         super(context);
         setState(state);
         init();
+
+        //text = myActivity.findViewById(R.id.textBox);
+        text = findViewById(R.id.textBox);
+        text.setOnClickListener((OnClickListener) this);
+
+
 
     }//ctor
 
@@ -110,14 +121,14 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         super(context, attrs);
         setWillNotDraw(false);
         init();
+
     }//ctor
 
     /**
      * Helper-method for the constructors
      */
     private void init()
-    {
-        //setBackgroundColor(backgroundColor());
+    {//setBackgroundColor(backgroundColor());
     }// init
 
     public int backgroundColor()
@@ -133,6 +144,16 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     @Override
     public void onDraw(Canvas canvas)
     {
+
+
+        int playerOne = state.getPlayer1Id();
+        int playerTwo = state.getPlayer2Id();
+        int turn = state.getTurn();
+        String name =
+
+
+        if((state. = true);
+            canvas.drawText("It is: " + turn + "'s turn");
 
         //green
         if(state.color == 0)
