@@ -12,6 +12,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
 {
     Random r = new Random();
     boolean legal = true;
+    boolean found = true;
 
     public UnoSmartPlayer(String name)
     {
@@ -25,7 +26,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
         info.setGame(game);
         UnoState gs = (UnoState) info;
         int id = gs.player2Id;
-        boolean found = false;
+        found = false;
 
         //UNO check
         if (gs.hand2.size() == 1 || gs.hand1.size() == 1)

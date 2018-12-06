@@ -17,6 +17,7 @@ import java.util.Random;
  */
 public class UnoComputerPlayer extends GameComputerPlayer {
     private Random r = new Random();
+    private boolean found = false;
 
     public UnoComputerPlayer(String name) {
         super(name);
@@ -24,6 +25,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
 
     @Override
     protected void receiveInfo(GameInfo info) {
+        found = false;
         if (info instanceof UnoState) {
             Log.i("Dumb AI", "Receiving info");
             info.setGame(game);
@@ -55,22 +57,29 @@ public class UnoComputerPlayer extends GameComputerPlayer {
 
                     if(m.type == 'd' && m.color == 4){
                         game.sendAction(d4);
+                        found = true;
                     }
                     else if(m.type == 'd' && m.color != 4){
                         game.sendAction(d2);
+                        found = true;
                     }
                     else if(m.type == 's'){
                         game.sendAction(sk);
+                        found = true;
                     }
                     else if(m.type == 'r'){
                         game.sendAction(rv);
+                        found = true;
                     }
                     else {
                         game.sendAction(pc);
+                        found = true;
                     }
                 }
-                UnoDrawAction ud = new UnoDrawAction(this);
-                game.sendAction(ud);
+                if(found == false) {
+                    UnoDrawAction ud = new UnoDrawAction(this);
+                    game.sendAction(ud);
+                }
                 if (gs.hand1.size() == 1 || gs.hand2.size() == 1) {
                     int i = r.nextInt(9) + 1;
                     if (i < 5) {
