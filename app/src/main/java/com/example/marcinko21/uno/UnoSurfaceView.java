@@ -66,12 +66,29 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
 
                 //check rect to see if we have the exact right card to playAction
                 if ((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY)) {
-
+                    UnoDraw2 d2 = new UnoDraw2(aHuman, c);
+                    UnoDraw4 d4 = new UnoDraw4(aHuman, c);
+                    UnoSkip sk = new UnoSkip(aHuman, c);
+                    UnoReverse rv = new UnoReverse(aHuman, c);
                     playCardAction a = new playCardAction(aHuman, c);
-                    aGame.sendAction(a);
+
+                    if(c.type == 'd' && c.color == 4){
+                        aGame.sendAction(d4);
+                    }
+                    else if(c.type == 'd' && c.color != 4){
+                        aGame.sendAction(d2);
+                    }
+                    else if(c.type == 's'){
+                        aGame.sendAction(sk);
+                    }
+                    else if(c.type == 'r'){
+                        aGame.sendAction(rv);
+                    }
+                    else {
+                        aGame.sendAction(a);
+                    }
                     Log.i("SurfaceView onTouch", "sent playCard action: " + i);
                     return true;
-
                 }
             }
         }

@@ -188,7 +188,6 @@ public class UnoLocalGame extends LocalGame
             }
             else if(action instanceof UnoSkip)
             {
-
                 int turn = state.getTurn();
                 Card cardToPlay = ((UnoSkip)action).getSkipCard();
                 boolean played = state.playCard(state.getTurn(), cardToPlay);
