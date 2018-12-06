@@ -133,7 +133,7 @@ public class UnoLocalGame extends LocalGame
             }
         }
 
-        Log.i("Make Move","Checking Turn");
+        //Log.i("Make Move","Checking Turn");
             //for every action, check that it's my turn
             //true for except for challenges
 
@@ -143,7 +143,7 @@ public class UnoLocalGame extends LocalGame
         }
 
 
-        Log.i("Make Move","About to take action");
+        //Log.i("Make Move","About to take action");
             if (action instanceof UnoDrawAction)
             {
 
@@ -270,11 +270,11 @@ public class UnoLocalGame extends LocalGame
             }
             else if (action instanceof playCardAction)
             {
-                Log.i("Make Move", "have play card action");
+                //Log.i("Make Move", "have play card action");
                 if(canMove(playerNum))
                 { //if valid action
 
-                    Log.i("Make Move", "about to play card");
+                    //Log.i("Make Move", "about to play card");
                     Card c = ((playCardAction)action).getCard();
 
                     //tell gameState to play card
@@ -300,7 +300,7 @@ public class UnoLocalGame extends LocalGame
 
             }
 
-        Log.i("Make Move","Didn't Move");
+        //Log.i("Make Move","Didn't Move");
         return false;
 
     }//makeMove
