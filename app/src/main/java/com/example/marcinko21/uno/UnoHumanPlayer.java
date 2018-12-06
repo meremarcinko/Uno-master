@@ -30,7 +30,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private int layoutId; //the ID for the layout to use
     private Button draw;
     private Button uno;
-    private TextView text;
 
     /**
      * Constructor for UnoHumanPlayer Class
@@ -56,8 +55,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         draw.setOnClickListener(this);
         uno = myActivity.findViewById(R.id.unoButton);
         uno.setOnClickListener(this);
-        text = myActivity.findViewById(R.id.textBox);
-        text.setOnClickListener(this);
         //Log.i("initAfterReady()", "aText is : " + aText);
 
         surfaceView.setGame(game);
@@ -149,15 +146,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
-            text.setText("The Uno Button Has Been Pushed");
-
         }
         else if (button.getId() == R.id.drawButton)
         {
 
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);
-            text.setText("The Draw Button Has Been Pushed");
 
         }
     }// onClick

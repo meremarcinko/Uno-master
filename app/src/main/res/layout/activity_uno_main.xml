@@ -10,14 +10,12 @@
 
     <com.example.marcinko21.uno.UnoSurfaceView
         android:id="@+id/unoSurfaceView"
-        android:layout_width="1024dp"
-        android:layout_height="626dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center"
         android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
