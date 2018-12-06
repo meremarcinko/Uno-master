@@ -49,6 +49,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     }//ctor
 
+    /**
+     *initAfterReady Method:
+     *  Makes the buttons
+     *
+     */
     protected void initAfterReady()
     {
         draw = myActivity.findViewById(R.id.drawButton);
@@ -138,7 +143,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param button
      * 		the button that was clicked
      */
-    public void onClick(View button) {
+    public void onClick(View button)
+    {
 
         if(button.getId() == R.id.unoButton)
         {

@@ -8,6 +8,13 @@ import com.example.marcinko21.uno.game.LocalGame;
 
 import java.util.ArrayList;
 
+/**
+ * The Uno Main Activity Class
+ *
+ * @author Andrew, Meredith, Ashley
+ * @date 9 November 2018
+ */
+
 public class UnoMainActivity extends GameMainActivity
 {
 

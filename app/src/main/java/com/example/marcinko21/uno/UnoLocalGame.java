@@ -172,6 +172,7 @@ public class UnoLocalGame extends LocalGame
                 state.declareUno(playerNum);
                 return true;
             }
+            //went into office hours and recieved help on this method
             else if(action instanceof UnoPlayAction)
             {
                 ArrayList<Card> hand;
@@ -186,6 +187,7 @@ public class UnoLocalGame extends LocalGame
                 state.playCard(hand, state.cbp);
                 return true;
             }
+            //went into office hours and recieved help on this method
             else if(action instanceof UnoSkip)
             {
                 int turn = state.getTurn();
@@ -268,6 +270,7 @@ public class UnoLocalGame extends LocalGame
                 }
                 //treat the draw2 like a skip card
             }
+            //went into office hours and received help on this method
             else if (action instanceof playCardAction)
             {
                 //Log.i("Make Move", "have play card action");
