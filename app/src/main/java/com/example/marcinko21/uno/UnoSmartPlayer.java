@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.marcinko21.uno.game.GameComputerPlayer;
 import com.example.marcinko21.uno.game.infoMsg.GameInfo;
+import com.example.marcinko21.uno.game.infoMsg.NotYourTurnInfo;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,6 +39,9 @@ public class UnoSmartPlayer extends GameComputerPlayer
     protected void receiveInfo(GameInfo info)
     {
         Log.i("Smart AI", "Receiving info");
+        if(!(info instanceof UnoState)){
+            return;
+        }
         info.setGame(game);
         UnoState gs = (UnoState) info;
         int id = gs.player2Id;
