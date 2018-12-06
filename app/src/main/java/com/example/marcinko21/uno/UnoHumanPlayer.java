@@ -66,7 +66,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         if(game == null)
         {
-            Log.i("setAsGUI", "GAME IS NULL");
+            //Log.i("setAsGUI", "GAME IS NULL");
         }
     }
 
@@ -111,7 +111,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             surfaceView.setState((UnoState)info);
             surfaceView.invalidate();
-            Log.i("human player", "receiving");
+            //Log.i("human player", "receiving");
         }
     }//receiveInfo
 
@@ -129,7 +129,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         // set the surfaceView instance variable
         surfaceView = myActivity.findViewById(R.id.unoSurfaceView);
-        Log.i("set listener","OnTouch");
+        //Log.i("set listener","OnTouch");
         surfaceView.setOnTouchListener(surfaceView);
 
         surfaceView.setHumanPlayer(this);

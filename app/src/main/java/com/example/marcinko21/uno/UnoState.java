@@ -79,7 +79,7 @@ public class UnoState extends GameState
 
         int i = 0;
 
-        Log.i("Game state copy constructor","deck size is: " + state.deck.size());
+        //Log.i("Game state copy constructor","deck size is: " + state.deck.size());
         deck = new ArrayList<>();
         for(Card c : state.deck)
         {
@@ -87,7 +87,7 @@ public class UnoState extends GameState
             deck.add(c.clone());
             i++;
         }
-        Log.i("Game state copy constructor","deck size is: " + deck.size());
+        //Log.i("Game state copy constructor","deck size is: " + deck.size());
         i = 0;
         discardPile = new ArrayList<>();
         for(Card c : state.discardPile)
@@ -97,14 +97,14 @@ public class UnoState extends GameState
             i++;
         }
 
-        Log.i("Game state copy constructor","hand1 size is: " + state.hand1.size());
+        //Log.i("Game state copy constructor","hand1 size is: " + state.hand1.size());
         hand1 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand1
         for (Card c : state.hand1)
         {
             hand1.add(c.clone());
         }
-        Log.i("Game state copy constructor","hand1 size is: " + hand1.size());
+        //Log.i("Game state copy constructor","hand1 size is: " + hand1.size());
         hand2 = new ArrayList<Card>();
         // this for loop creates a clone of every value in arraylist hand2
         for(Card c : state.hand2)
@@ -272,6 +272,15 @@ public class UnoState extends GameState
         deck.remove(0);
         hand.add(deck.get(0));
         deck.remove(0);
+        if(turn == 0)
+        {
+            turn = 1;
+        }
+        else
+        {
+            turn = 0;
+        }
+        playerDeclaredUno = false;
     }//drawTwo
 
     /**
@@ -286,7 +295,14 @@ public class UnoState extends GameState
             hand.add(deck.get(0));
             deck.remove(0);
         }
-
+        if(turn == 0)
+        {
+            turn = 1;
+        }
+        else
+        {
+            turn = 0;
+        }
         playerDeclaredUno = false;
     }//drawFour
 
@@ -309,7 +325,7 @@ public class UnoState extends GameState
             value = discardPile.get(discardPile.size() - 1).value;
             //in case of wild, pick players max color
             //TODO: fix me
-            Log.i("playcard", "checking wild");
+            //Log.i("playcard", "checking wild");
             if(c.type == 'w' || (c.type == 'd' && c.color == 4))
             {
                 int counts[] = {0,0,0,0};
@@ -335,7 +351,7 @@ public class UnoState extends GameState
                     }
                 }
 
-                Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
+                //Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
                 color = location + 1;
 
             }
@@ -360,7 +376,6 @@ public class UnoState extends GameState
         if(hand.size() == 1)
         {
             return true;
-
         }
         else
         {
@@ -380,7 +395,6 @@ public class UnoState extends GameState
     {
         return hand.size();
     }
-
 
     /**
      * Method to get a formatted String describing the basic game state
