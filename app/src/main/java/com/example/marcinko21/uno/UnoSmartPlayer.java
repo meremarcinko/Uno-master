@@ -38,7 +38,7 @@ public class UnoSmartPlayer extends GameComputerPlayer {
             if (found == false) {
                 for (Card m : gs.hand2) {
                     if (m.type == 'd' && m.color == 4) {
-                        Log.i("Smart AI", "Playing card");
+                        Log.i("Smart AI", "Playing draw 4");
                         sleep(500);
                         UnoDraw4 pc = new UnoDraw4(this, m);
                         game.sendAction(pc);
@@ -50,8 +50,8 @@ public class UnoSmartPlayer extends GameComputerPlayer {
 
             if (found == false) {
                 for (Card m : gs.hand2) {
-                    if (gs.type == 'd' || m.color == gs.color) {
-                        Log.i("Smart AI", "Playing card");
+                    if (gs.type == 'd' && (m.color == gs.color || m.type == gs.type)) {
+                        Log.i("Smart AI", "Playing draw 2");
                         sleep(500);
                         UnoDraw2 pc = new UnoDraw2(this, m);
                         game.sendAction(pc);
@@ -63,8 +63,8 @@ public class UnoSmartPlayer extends GameComputerPlayer {
 
             if (found == false) {
                 for (Card m : gs.hand2) {
-                    if ((gs.type == 's' || gs.type == 'r') && m.type == gs.type) {
-                        Log.i("Smart AI", "Playing card");
+                    if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color || m.type == gs.type)) {
+                        Log.i("Smart AI", "Playing skip/reverse");
                         sleep(500);
                         UnoReverse rv = new UnoReverse(this, m);
                         game.sendAction(rv);
@@ -76,21 +76,27 @@ public class UnoSmartPlayer extends GameComputerPlayer {
 
             if (found == false) {
                 for (Card m : gs.hand2) {
-                    if (m.value == gs.value && m.color != gs.color) {
-                        Log.i("Smart AI", "Playing card");
+                    if (m.type == gs.type && m.value != gs.value) {
+                        Log.i("Smart AI", "Playing same value");
                         sleep(500);
-                        playCardAction pc = new playCardAction(this, m);
-                        game.sendAction(pc);
+                        if(m.type == 'n'){
+                            playCardAction pc = new playCardAction(this, m);
+                            game.sendAction(pc);
+                        }
+                        if(m.type == 'r' || m.type == 's'){
+                            UnoReverse pc = new UnoReverse(this, m);
+                            game.sendAction(pc);
+                        }
                         found = true;
                         break;
-                    }//same number
+                    }//same value
                 }
             }
 
             if (found == false) {
                 for (Card m : gs.hand2) {
-                    if (m.color == gs.color) {
-                        Log.i("Smart AI", "Playing card");
+                    if (m.color == gs.color ) {
+                        Log.i("Smart AI", "Playing card of the same color");
                         sleep(500);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);

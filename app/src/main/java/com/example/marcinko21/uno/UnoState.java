@@ -164,12 +164,12 @@ public class UnoState extends GameState
         deck.add(new Card(1,9,'n',R.drawable.blue9_copy));//46
         deck.add(new Card(1,-1,'d',R.drawable.blue_draw2));//47
         deck.add(new Card(1,-1,'d',R.drawable.blue_draw2_copy));//48
-        deck.add(new Card(4,-2,'d',R.drawable.blue_draw4));//49
+        deck.add(new Card(4,-5,'d',R.drawable.blue_draw4));//49
         deck.add(new Card(1,-3,'r',R.drawable.blue_reverse));//50
         deck.add(new Card(1,-3,'r',R.drawable.blue_reverse_copy));//51
         deck.add(new Card(1,-4,'s',R.drawable.blue_skip));//52
         deck.add(new Card(1,-4,'s',R.drawable.blue_skip_copy));//53
-        deck.add(new Card(4,-5,'w',R.drawable.blue_wild));//54
+        deck.add(new Card(4,-2,'w',R.drawable.blue_wild));//54
         deck.add(new Card(2,0,'n',R.drawable.red0));//55
         deck.add(new Card(2,1,'n',R.drawable.red1));//56
         deck.add(new Card(2,1,'n',R.drawable.red1_copy));//57
@@ -191,12 +191,12 @@ public class UnoState extends GameState
         deck.add(new Card(2,9,'n',R.drawable.red9_copy));//73
         deck.add(new Card(2,-1,'d',R.drawable.red_draw2));//74
         deck.add(new Card(2,-1,'d',R.drawable.red_draw2_copy));//75
-        deck.add(new Card(4,-2,'d',R.drawable.red_draw4));//76
+        deck.add(new Card(4,-5,'d',R.drawable.red_draw4));//76
         deck.add(new Card(2,-3,'r',R.drawable.red_reverse));//77
         deck.add(new Card(2,-3,'r',R.drawable.red_reverse_copy));//78
         deck.add(new Card(2,-4,'s',R.drawable.red_skip));//79
         deck.add(new Card(2,-4,'s',R.drawable.red_skip_copy));//80
-        deck.add(new Card(4,-5,'w',R.drawable.red_wild));//81
+        deck.add(new Card(4,-2,'w',R.drawable.red_wild));//81
         deck.add(new Card(3,0,'n',R.drawable.yellow0));//82
         deck.add(new Card(3,1,'n',R.drawable.yellow1));//83
         deck.add(new Card(3,1,'n',R.drawable.yellow1_copy));//84
@@ -218,12 +218,12 @@ public class UnoState extends GameState
         deck.add(new Card(3,9,'n',R.drawable.yellow9_copy));//100
         deck.add(new Card(3,-1,'d',R.drawable.yellow_draw2));//101
         deck.add(new Card(3,-1,'d',R.drawable.yellow_draw2_copy));//102
-        deck.add(new Card(4,-2,'d',R.drawable.yellow_draw4));//103
+        deck.add(new Card(4,-5,'d',R.drawable.yellow_draw4));//103
         deck.add(new Card(3,-3,'r',R.drawable.yellow_reverse));//104
         deck.add(new Card(3,-3,'r',R.drawable.yellow_reverse_copy));//105
         deck.add(new Card(3,-4,'s',R.drawable.yellow_skip));//106
         deck.add(new Card(3,-4,'s',R.drawable.yellow_skip_copy));//107
-        deck.add(new Card(4,-5,'w',R.drawable.yellow_wild));//108
+        deck.add(new Card(4,-2,'w',R.drawable.yellow_wild));//108
     } //makeDeck()
 
     /**
@@ -258,6 +258,7 @@ public class UnoState extends GameState
 
     public void drawTwo(ArrayList<Card> hand)
     {
+        Log.i("Game","Drawing two");
         checkIsEmpty();
         hand.add(deck.get(0));
         deck.remove(0);
@@ -276,6 +277,7 @@ public class UnoState extends GameState
 
     public void drawFour(ArrayList<Card> hand)
     {
+        Log.i("Game","Drawing four");
         checkIsEmpty();
         for(int i = 0; i < 4; i++) {
             hand.add(deck.get(0));
@@ -495,6 +497,7 @@ public class UnoState extends GameState
             {
                 for(int i = 0; i < 2; i++)
                 {
+                    Log.i("Game","Uno penalty");
                     drawCard(hand2);
                 }
             }
@@ -502,6 +505,7 @@ public class UnoState extends GameState
             {
                 for(int i = 0; i < 2; i++)
                 {
+                    Log.i("Game","Uno penalty");
                     drawCard(hand1);
                 }
             }
