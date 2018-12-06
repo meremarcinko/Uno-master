@@ -29,7 +29,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Activity myActivity; //the current activity
     private UnoSurfaceView surfaceView; //the surfaceView
     private int layoutId; //the ID for the layout to use
-    //private Button draw;
     private Button uno;
     private ImageButton draw;
 
@@ -46,8 +45,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         super(name);
         this.layoutId = layoutId;
-
-
 
     }//ctor
 

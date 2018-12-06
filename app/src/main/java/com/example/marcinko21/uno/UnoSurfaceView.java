@@ -29,9 +29,6 @@ import java.lang.Math;
 public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
 {
 
-
-
-
     public boolean onTouch(View v, MotionEvent event)
     {
 
@@ -45,7 +42,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         //sub note: can cast because primitive
         // casting happens later if not primitive
         int touchY = (int)event.getY();
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN)
+        {
 
 
             final double RATIO = 1.2;
@@ -55,7 +53,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
             int xSize = (this.getWidth()) / Math.max(7, state.getHandSize(state.getHand(0)));//how many cards are in the hand
             //card height
             int ySize = (int) (xSize * RATIO);
-            for (int i = 0; i < state.getHandSize(state.getHand(0)); i++) {
+            for (int i = 0; i < state.getHandSize(state.getHand(0)); i++)
+            {
                 Card c = state.getHand(0).get(i);
                 //c.draw(canvas, xSize*i, y, xSize, ySize, this, false);
                 int leftX = xSize * i;
@@ -65,7 +64,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
                 Log.i("SurfaceView onTouch", "touch x, y " + touchX + " " + touchY + " left corner" + leftX + " " + topY + " bottom Corner" + rightX + "  " + bottomY);
 
                 //check rect to see if we have the exact right card to playAction
-                if ((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY)) {
+                if ((touchX >= leftX) && (touchX < rightX) && (touchY >= topY) && (touchY < bottomY))
+                {
                     UnoDraw2 d2 = new UnoDraw2(aHuman, c);
                     UnoDraw4 d4 = new UnoDraw4(aHuman, c);
                     UnoSkip sk = new UnoSkip(aHuman, c);
@@ -118,6 +118,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         setState(state);
         init();
 
+        //todo talk to tribelhorn about highlighting a text box instead of writing it
         //text = myActivity.findViewById(R.id.textBox);
         //text = findViewById(R.id.textBox);
         text.setOnClickListener((OnClickListener) this);
@@ -255,7 +256,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         {
             Card c = state.getHand(1).get(i);
             //TODO: change isHidden back to true when done debugging
-            c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
 
 

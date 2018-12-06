@@ -117,6 +117,7 @@ public class UnoState extends GameState
 
 
     /**
+     * makeDeck
      * Method to make the deck for a new game
      */
     public void makeDeck()
@@ -232,15 +233,19 @@ public class UnoState extends GameState
     } //makeDeck()
 
     /**
+     * shuffleDeck
+     *
      * Method to Shuffle the Deck
      */
     public void shuffleDeck()
     {
         //how do you shuffle an arrayList
         Collections.shuffle(deck);//Collections.shuffle - shuffles an arrayList
+
     }//shuffleDeck
 
     /**
+     * drawCard
      * Method to add a card to a specific hand
      *
      * @param hand
@@ -263,6 +268,7 @@ public class UnoState extends GameState
     }//drawCard
 
     /**
+     * drawTwo
      * Method to add two cards to a specific hand
      *
      * @param hand
@@ -287,6 +293,7 @@ public class UnoState extends GameState
     }//drawTwo
 
     /**
+     * drawFour
      * Method to add a four cards to a specific hand
      *
      * @param hand
@@ -295,7 +302,8 @@ public class UnoState extends GameState
     {
         Log.i("Game","Drawing four");
         checkIsEmpty();
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 4; i++)
+        {
             hand.add(deck.get(0));
             deck.remove(0);
         }
@@ -308,9 +316,11 @@ public class UnoState extends GameState
             turn = 0;
         }
         playerDeclaredUno = false;
+
     }//drawFour
 
     /**
+     * playCard
      * Method to play a card from the hand
      *
      * @param hand
@@ -375,7 +385,8 @@ public class UnoState extends GameState
     }//playCard
 
     /**
-     * //Method to see if UNO can be called for a hand.
+     * isUno
+     * Method to see if UNO can be called for a hand.
      *
      * @param hand
      * @param playerId
@@ -395,11 +406,11 @@ public class UnoState extends GameState
     }//isUno
 
     /**
+     * getHandSize
      * get method for the size of a hand
      *
-     *
      * @param hand
-     * @return hand size
+     * @return size
      */
     public int getHandSize(ArrayList<Card> hand)
     {
@@ -407,12 +418,15 @@ public class UnoState extends GameState
     }
 
     /**
+     * getGameState
      * Method to get a formatted String describing the basic game state
+     *
      * @return player 1 and 2's id, with the turn
      */
     public String getGameState()
     {
         return "Player 1 ID: " + player1Id + "Player 2 ID: " + player2Id + ", Turn: " + turn;
+
     } //getGameState
 
     /**
@@ -483,6 +497,7 @@ public class UnoState extends GameState
         {
             return hand2;
         }
+
     }//getHand
 
     /**
@@ -500,6 +515,7 @@ public class UnoState extends GameState
         {
             return true;
         }
+
     }//drawCard
 
 
@@ -544,6 +560,7 @@ public class UnoState extends GameState
     @Override
     public String toString()
     {
+        //todo check w tribelhorn if we need to implement this method
         int i = 0;
         /*
         updateDeckSize();
@@ -624,6 +641,7 @@ public class UnoState extends GameState
     {
         return deck;
     }
+
     public void setPlayerDeclaredUno()
     {
         playerDeclaredUno = true;

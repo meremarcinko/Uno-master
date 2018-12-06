@@ -188,7 +188,7 @@ public class UnoLocalGame extends LocalGame
                 state.playCard(hand, state.cbp);
                 return true;
             }
-            //went into office hours and recieved help on this method
+            //went into office hours and received help on this method
             else if(action instanceof UnoSkip)
             {
                 int turn = state.getTurn();
@@ -199,10 +199,12 @@ public class UnoLocalGame extends LocalGame
                     if (turn == 0)
                     {
                         state.setTurn(1);
+                        state.setTurn(0);
                     }
                     else
                     {
                         state.setTurn(0);
+                        state.setTurn(1);
                     }
                     return true;
                 }
@@ -218,11 +220,12 @@ public class UnoLocalGame extends LocalGame
                     if (turn == 0)
                     {
                         state.setTurn(1);
+                        state.setTurn(0);
                     }
                     else
                     {
                         state.setTurn(0);
-
+                        state.setTurn(1);
                     }
                     return true;
                 }

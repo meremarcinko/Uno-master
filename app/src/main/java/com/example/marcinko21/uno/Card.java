@@ -133,7 +133,6 @@ public class Card
      *
      * @return card
      */
-
     public void draw(Canvas canvas, int x, int y, int xSize, int ySize, SurfaceView unoView, boolean isHidden)
     {
         if(!isHidden)
