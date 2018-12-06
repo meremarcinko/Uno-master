@@ -259,6 +259,7 @@ public class UnoState extends GameState
             turn = 0;
         }
         playerDeclaredUno = false;
+
     }//drawCard
 
     /**

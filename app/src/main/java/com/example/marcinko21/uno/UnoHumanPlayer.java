@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.marcinko21.uno.game.GameHumanPlayer;
@@ -28,8 +29,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Activity myActivity; //the current activity
     private UnoSurfaceView surfaceView; //the surfaceView
     private int layoutId; //the ID for the layout to use
-    private Button draw;
+    //private Button draw;
     private Button uno;
+    private ImageButton draw;
 
     /**
      * Constructor for UnoHumanPlayer Class
@@ -56,7 +58,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     protected void initAfterReady()
     {
-        draw = myActivity.findViewById(R.id.drawButton);
+        draw = myActivity.findViewById(R.id.draw);
         draw.setOnClickListener(this);
         uno = myActivity.findViewById(R.id.unoButton);
         uno.setOnClickListener(this);
@@ -151,7 +153,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             UnoUnoAction declareUno = new UnoUnoAction(this);
             game.sendAction(declareUno);
         }
-        else if (button.getId() == R.id.drawButton)
+        else if (button.getId() == R.id.draw)
         {
             UnoDrawAction draw = new UnoDrawAction(this);
             game.sendAction(draw);

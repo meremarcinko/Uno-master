@@ -13,7 +13,7 @@ import java.util.Random;
  * This is where the Computer player is implemented
  *
  * @author Andrew, Meredith, Ashley
- * @date 9 November 2018
+ * @date 5 Dec 2018
  */
 public class UnoComputerPlayer extends GameComputerPlayer {
     private Random r = new Random();

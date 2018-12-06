@@ -119,7 +119,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         init();
 
         //text = myActivity.findViewById(R.id.textBox);
-        text = findViewById(R.id.textBox);
+        //text = findViewById(R.id.textBox);
         text.setOnClickListener((OnClickListener) this);
 
 
@@ -167,7 +167,24 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         int playerOne = state.getPlayer1Id();
         int playerTwo = state.getPlayer2Id();
         int turn = state.getTurn();
-        //String name =
+        String oneName = Integer.toString(playerOne);
+        String twoName = Integer.toString(playerTwo);
+
+        /***
+        if(turn == 0) {
+
+            text.setText("Current Turn: " + oneName);
+            Log.i("Text says: ", " one name ");
+
+        } else if (turn == 1) {
+
+            text.setText("Current Turn: " + twoName);
+            Log.i("Text says: ", " two name ");
+
+        }
+
+        Log.i("Text says: ", " no name ");
+         */
 
 
         //if((state. = true);
@@ -222,8 +239,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
 
         //to draw pile:
         //drawing on the surface view the draw pile
-        Card drawPile = state.getDeck().get(0);
-        drawPile.draw(canvas, (int)(.75*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(RATIO*(int)(.1*this.getWidth())), this, true);
+        //Card drawPile = state.getDeck().get(0);
+        //drawPile.draw(canvas, (int)(.75*this.getWidth()), (int)(.5*this.getHeight()), (int)(.1*this.getWidth()), (int)(RATIO*(int)(.1*this.getWidth())), this, true);
         //draw back side of the uno card's image
 
 
@@ -240,6 +257,10 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
             //TODO: change isHidden back to true when done debugging
             c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
         }
+
+
+
+
     }
 
     
@@ -257,5 +278,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     private Game aGame;
 
     //Todo: if it is a special card, call the special card action, else play a regular card
+
 
 }
