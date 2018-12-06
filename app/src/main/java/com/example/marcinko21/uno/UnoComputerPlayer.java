@@ -27,93 +27,80 @@ public class UnoComputerPlayer extends GameComputerPlayer
     @Override
     protected void receiveInfo(GameInfo info)
     {
-        Log.i("Dumb AI", "Receiving info");
-        info.setGame(game);
-        UnoState gs = (UnoState) info;
-        int id = gs.player2Id;
-        boolean found = false;
+        if(info instanceof UnoState) {
+            Log.i("Dumb AI", "Receiving info");
+            info.setGame(game);
+            UnoState gs = (UnoState) info;
+            int id = gs.player2Id;
+            boolean found = false;
 
-        if(gs.hand1.size() == 1)
-        {
-            int i = r.nextInt(9)+1;
-            if(i < 5)
-            {
-                Log.i("Dumb AI", "Did not declare UNO");
+            if (gs.hand1.size() == 1) {
+                int i = r.nextInt(9) + 1;
+                if (i < 5) {
+                    Log.i("Dumb AI", "Did not declare UNO");
+                } else {
+                    Log.i("Dumb AI", "Declaring UNO in 2 seconds");
+                    sleep(2000);
+                    UnoUnoAction uno = new UnoUnoAction(this);
+                    game.sendAction(uno);
+                }
             }
-            else
-            {
-                Log.i("Dumb AI", "Declaring UNO in 2 seconds");
-                sleep(2000);
-                UnoUnoAction uno = new UnoUnoAction(this);
-                game.sendAction(uno);
-            }
-        }
-
-       if(gs.getTurn() == this.playerNum)
-       {
-            Log.i("Dumb AI", "Is turn");
-            //Card Playing
-                for (Card m : gs.hand2)
-                {
-                    if (m.type == 'd' && m.value == 4)
-                    {
+            Log.i("Dumb AI", "This playernum is:" + this.playerNum + " turn is:" + gs.getTurn());
+            if (gs.getTurn() == this.playerNum) {
+                Log.i("Dumb AI", "Is turn");
+                //Card Playing
+                for (Card m : gs.hand2) {
+                    if (m.type == 'd' && m.value == 4) {
                         int i = r.nextInt(4);
                         gs.color = i;
                         sleep(100);
-                        Log.i("Dumb AI", "Playing card"+m.androidId);
+                        Log.i("Dumb AI", "Playing card" + m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
-                    if (m.type == 'w')
-                    {
-                        int i = r.nextInt(4);
-                        gs.color = i;
+                    else if (m.type == 'w') {
                         sleep(100);
-                        Log.i("Dumb AI", "Playing card"+m.androidId);
-                        m.color = colorPick(gs.hand2);
+                        Log.i("Dumb AI", "Playing card" + m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
-                    if(m.color == gs.color)
-                    {
+                    else if (m.color == gs.color) {
                         sleep(100);
-                        Log.i("Dumb AI", "Playing card"+m.androidId);
+                        Log.i("Dumb AI", "Playing card" + m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
-                    if(m.value == gs.value && gs.type == 'n')
-                    {
+                    else if (m.type == gs.type && gs.type != 'n') {
                         sleep(100);
-                        Log.i("Dumb AI", "Playing card"+m.androidId);
+                        Log.i("Dumb AI", "Playing card" + m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
-                    if(m.type == gs.type && gs.type != 'n')
-                    {
+                    else if (m.value == gs.value) {
                         sleep(100);
-                        Log.i("Dumb AI", "Playing card"+m.androidId);
+                        Log.i("Dumb AI", "Playing card" + m.androidId);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
                 }
-            if(found == false){
+                if (found == false) {
                     UnoDrawAction ud = new UnoDrawAction(this);
                     game.sendAction(ud);
+                }
+            } else {
+                Log.i("Dumb AI", "Not turn");
             }
         }
-        else{
-            Log.i("Dumb AI", "Not turn");
-       }
     }//receiveInfo()
 
     private int colorPick(ArrayList<Card> hand){

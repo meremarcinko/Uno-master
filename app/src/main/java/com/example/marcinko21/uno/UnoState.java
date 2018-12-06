@@ -137,12 +137,12 @@ public class UnoState extends GameState
         deck.add(new Card(0,9,'n',R.drawable.green9_copy));//19
         deck.add(new Card(0,-1,'d',R.drawable.green_draw2));//20
         deck.add(new Card(0,-1,'d',R.drawable.green_draw2_copy));//21
-        deck.add(new Card(4,-1,'w',R.drawable.green_wild));//22
-        deck.add(new Card(0,-1,'r',R.drawable.green_reverse));//23
-        deck.add(new Card(0,-1,'r',R.drawable.green_reverse_copy));//24
-        deck.add(new Card(4,-1,'d',R.drawable.green_draw4));//25
-        deck.add(new Card(0,-1,'s',R.drawable.green_skip));//26
-        deck.add(new Card(0,-1,'s',R.drawable.green_skip_copy));//27
+        deck.add(new Card(4,-2,'w',R.drawable.green_wild));//22
+        deck.add(new Card(0,-3,'r',R.drawable.green_reverse));//23
+        deck.add(new Card(0,-3,'r',R.drawable.green_reverse_copy));//24
+        deck.add(new Card(4,-4,'d',R.drawable.green_draw4));//25
+        deck.add(new Card(0,-4,'s',R.drawable.green_skip));//26
+        deck.add(new Card(0,-5,'s',R.drawable.green_skip_copy));//27
         deck.add(new Card(1,0,'n',R.drawable.blue0));//28
         deck.add(new Card(1,1,'n',R.drawable.blue1));//29
         deck.add(new Card(1,1,'n',R.drawable.blue1_copy));//30
@@ -164,12 +164,12 @@ public class UnoState extends GameState
         deck.add(new Card(1,9,'n',R.drawable.blue9_copy));//46
         deck.add(new Card(1,-1,'d',R.drawable.blue_draw2));//47
         deck.add(new Card(1,-1,'d',R.drawable.blue_draw2_copy));//48
-        deck.add(new Card(4,-1,'d',R.drawable.blue_draw4));//49
-        deck.add(new Card(1,-1,'r',R.drawable.blue_reverse));//50
-        deck.add(new Card(1,-1,'r',R.drawable.blue_reverse_copy));//51
-        deck.add(new Card(1,-1,'s',R.drawable.blue_skip));//52
-        deck.add(new Card(1,-1,'s',R.drawable.blue_skip_copy));//53
-        deck.add(new Card(4,-1,'w',R.drawable.blue_wild));//54
+        deck.add(new Card(4,-2,'d',R.drawable.blue_draw4));//49
+        deck.add(new Card(1,-3,'r',R.drawable.blue_reverse));//50
+        deck.add(new Card(1,-3,'r',R.drawable.blue_reverse_copy));//51
+        deck.add(new Card(1,-4,'s',R.drawable.blue_skip));//52
+        deck.add(new Card(1,-4,'s',R.drawable.blue_skip_copy));//53
+        deck.add(new Card(4,-5,'w',R.drawable.blue_wild));//54
         deck.add(new Card(2,0,'n',R.drawable.red0));//55
         deck.add(new Card(2,1,'n',R.drawable.red1));//56
         deck.add(new Card(2,1,'n',R.drawable.red1_copy));//57

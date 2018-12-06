@@ -198,7 +198,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         for(int i=0; i < state.getHandSize(state.getHand(1)); i++)
         {
             Card c = state.getHand(1).get(i);
-            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
+            //TODO: change isHidden back to true when done debugging
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
         }
     }
 
@@ -215,6 +216,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     private GamePlayer aHuman;
     private Game aGame;
 
-    //Todo: if it is a special card, call the specil card action, else play a regular card
+    //Todo: if it is a special card, call the special card action, else play a regular card
 
 }

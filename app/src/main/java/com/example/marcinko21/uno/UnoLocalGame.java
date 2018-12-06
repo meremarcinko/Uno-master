@@ -165,10 +165,9 @@ public class UnoLocalGame extends LocalGame
             }
             else if (action instanceof UnoUnoAction)
             {
-
-                state.setPlayerDeclaredUno();
+                //state.setPlayerDeclaredUno();
+                state.declareUno(playerNum);
                 return true;
-
             }
             else if(action instanceof UnoPlayAction)
             {
@@ -279,7 +278,7 @@ public class UnoLocalGame extends LocalGame
                     //tell gameState to play card
                     boolean played = state.playCard(playerNum, c);
 
-                    if(played && ((action instanceof UnoSkip) && (action instanceof UnoReverse) == false) && (action instanceof UnoDraw2) && (action instanceof UnoDraw4))
+                    if(played)
                     { //not skip or reverse or draw 2 or draw 4, change turn)
                         int turn = state.getTurn();
                         if(turn == 0)
