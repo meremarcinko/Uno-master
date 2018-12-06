@@ -147,6 +147,9 @@ public class UnoLocalGame extends LocalGame
             if (action instanceof UnoDrawAction)
             {
 
+                state.drawCard(state.getHand(playerNum));
+
+                return true;
                 /*boolean played = state.drawCard(state.getHand(playerNum));
                 //if player 1 drew, end turn and make i
                 //chck to see if there is a valid move
