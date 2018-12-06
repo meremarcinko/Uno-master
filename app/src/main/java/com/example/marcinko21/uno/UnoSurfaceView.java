@@ -167,11 +167,11 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         int playerOne = state.getPlayer1Id();
         int playerTwo = state.getPlayer2Id();
         int turn = state.getTurn();
-        String name =
+        //String name =
 
 
-        if((state. = true);
-            canvas.drawText("It is: " + turn + "'s turn");
+        //if((state. = true);
+          //  canvas.drawText("It is: " + turn + "'s turn");
 
         //green
         if(state.color == 0)
@@ -238,7 +238,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         {
             Card c = state.getHand(1).get(i);
             //TODO: change isHidden back to true when done debugging
-            c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
     }
 
