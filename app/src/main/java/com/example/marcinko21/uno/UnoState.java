@@ -40,7 +40,8 @@ public class UnoState extends GameState
     /**
      * Constructor for objects of class UnoState
      */
-    public UnoState() {
+    public UnoState()
+    {
         player1Id = 0;
         player2Id = 1;
         turn = 0;
@@ -48,7 +49,8 @@ public class UnoState extends GameState
         shuffleDeck();
         playerDeclaredUno = false;
         int i;
-        for(i=0; i < 7; i++){
+        for(i=0; i < 7; i++)
+        {
             drawCard(hand1);
             drawCard(hand2);
         }
@@ -67,7 +69,8 @@ public class UnoState extends GameState
      * @param state
      * 		the UnoState object that we want to clone
      */
-    public UnoState (UnoState state) {
+    public UnoState (UnoState state)
+    {
 
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
@@ -78,7 +81,8 @@ public class UnoState extends GameState
 
         Log.i("Game state copy constructor","deck size is: " + state.deck.size());
         deck = new ArrayList<>();
-        for(Card c : state.deck){
+        for(Card c : state.deck)
+        {
             //deck.set(i, c);
             deck.add(c.clone());
             i++;
@@ -256,6 +260,11 @@ public class UnoState extends GameState
         playerDeclaredUno = false;
     }//drawCard
 
+    /**
+     * Method to add two cards to a specific hand
+     *
+     * @param hand
+     */
     public void drawTwo(ArrayList<Card> hand)
     {
         checkIsEmpty();
@@ -265,6 +274,11 @@ public class UnoState extends GameState
         deck.remove(0);
     }//drawTwo
 
+    /**
+     * Method to add a four cards to a specific hand
+     *
+     * @param hand
+     */
     public void drawFour(ArrayList<Card> hand)
     {
         checkIsEmpty();
@@ -284,9 +298,8 @@ public class UnoState extends GameState
      */
     public boolean playCard(ArrayList<Card> hand, Card c)
     {
+        //went to office hours and got help with this method
         //check cardToPlay is valid move based on color, etc.
-        //todo: maybe need to check type, adding in if statement
-        //Todo: needs to switch turns after card is played
         if(this.color == c.color || this.value == c.value || c.type == 'w' || (c.type == 'd' && c.color == 4))
         {
             hand.remove(c);
@@ -300,9 +313,11 @@ public class UnoState extends GameState
             if(c.type == 'w' || (c.type == 'd' && c.color == 4))
             {
                 int counts[] = {0,0,0,0};
-                for (int i = 0; i < hand.size(); i++) {
+                for (int i = 0; i < hand.size(); i++)
+                {
                     int color = hand.get(i).color;
-                    if (color > 0) {
+                    if (color > 0)
+                    {
                         counts[color - 1]++;
                     }
                 }
@@ -428,8 +443,6 @@ public class UnoState extends GameState
         }
         //if cardToPlay is played
         //remove from hand
-        //Todo: need to be able to remove the card from the Hand after the card is played
-        //Todo: need to implement the action is it is the right card to play
     }//playCard
 
     /**

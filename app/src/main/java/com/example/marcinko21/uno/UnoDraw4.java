@@ -3,7 +3,7 @@ package com.example.marcinko21.uno;
 import com.example.marcinko21.uno.game.GamePlayer;
 import com.example.marcinko21.uno.game.actionMsg.GameAction;
 /**
- *  An action by which the player tells the game that it needs to draw 2 cards.
+ *  An action by which the player tells the game that it needs to draw 4 cards.
  *
  *
  * @author Meredith, Andrew, Ashley

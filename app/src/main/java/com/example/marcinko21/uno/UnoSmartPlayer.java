@@ -8,6 +8,12 @@ import com.example.marcinko21.uno.game.infoMsg.GameInfo;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The Smart AI player Class for Uno
+ *
+ * @author Andrew, Meredith, Ashley
+ * @date 9 November 2018
+ */
 public class UnoSmartPlayer extends GameComputerPlayer
 {
     Random r = new Random();
@@ -45,7 +51,8 @@ public class UnoSmartPlayer extends GameComputerPlayer
 
             Log.i("Smart AI", "Determining legality of +4 cards");
 
-            for(Card c : gs.hand2){
+            for(Card c : gs.hand2)
+            {
                 if(c.color == gs.color || (c.type == 'n' && c.value == gs.value) || (c.type == gs.type && gs.type != 'n') || c.type == 'w'){
                     legal = false;
                 }

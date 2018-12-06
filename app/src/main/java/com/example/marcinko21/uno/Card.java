@@ -108,6 +108,7 @@ public class Card
 
     public boolean equals(Object o)
     {
+        //went into office hours and got help with this method
         if(o instanceof Card)
         {
             Card c = (Card)o;
