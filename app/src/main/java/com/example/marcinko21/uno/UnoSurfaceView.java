@@ -241,7 +241,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
             c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
         }
     }
-
+    
     public void setHumanPlayer(GamePlayer p)
     {
         this.aHuman = p;

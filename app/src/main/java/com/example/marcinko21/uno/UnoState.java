@@ -40,7 +40,8 @@ public class UnoState extends GameState
     /**
      * Constructor for objects of class UnoState
      */
-    public UnoState() {
+    public UnoState()
+    {
         player1Id = 0;
         player2Id = 1;
         turn = 0;
@@ -48,7 +49,8 @@ public class UnoState extends GameState
         shuffleDeck();
         playerDeclaredUno = false;
         int i;
-        for(i=0; i < 7; i++){
+        for(i=0; i < 7; i++)
+        {
             drawCard(hand1);
             drawCard(hand2);
         }
@@ -67,7 +69,8 @@ public class UnoState extends GameState
      * @param state
      * 		the UnoState object that we want to clone
      */
-    public UnoState (UnoState state) {
+    public UnoState (UnoState state)
+    {
 
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
@@ -78,7 +81,8 @@ public class UnoState extends GameState
 
         //Log.i("Game state copy constructor","deck size is: " + state.deck.size());
         deck = new ArrayList<>();
-        for(Card c : state.deck){
+        for(Card c : state.deck)
+        {
             //deck.set(i, c);
             deck.add(c.clone());
             i++;
@@ -88,6 +92,7 @@ public class UnoState extends GameState
         discardPile = new ArrayList<>();
         for(Card c : state.discardPile)
         {
+
             //discardPile.set(i, c);
             discardPile.add(c.clone());
             i++;
@@ -256,6 +261,11 @@ public class UnoState extends GameState
         playerDeclaredUno = false;
     }//drawCard
 
+    /**
+     * Method to add two cards to a specific hand
+     *
+     * @param hand
+     */
     public void drawTwo(ArrayList<Card> hand)
     {
         Log.i("Game","Drawing two");
@@ -275,6 +285,11 @@ public class UnoState extends GameState
         playerDeclaredUno = false;
     }//drawTwo
 
+    /**
+     * Method to add a four cards to a specific hand
+     *
+     * @param hand
+     */
     public void drawFour(ArrayList<Card> hand)
     {
         Log.i("Game","Drawing four");
@@ -302,9 +317,8 @@ public class UnoState extends GameState
      */
     public boolean playCard(ArrayList<Card> hand, Card c)
     {
+        //went to office hours and got help with this method
         //check cardToPlay is valid move based on color, etc.
-        //todo: maybe need to check type, adding in if statement
-        //Todo: needs to switch turns after card is played
         if(this.color == c.color || this.value == c.value || c.type == 'w' || (c.type == 'd' && c.color == 4))
         {
             hand.remove(c);
@@ -318,9 +332,11 @@ public class UnoState extends GameState
             if(c.type == 'w' || (c.type == 'd' && c.color == 4))
             {
                 int counts[] = {0,0,0,0};
-                for (int i = 0; i < hand.size(); i++) {
+                for (int i = 0; i < hand.size(); i++)
+                {
                     int color = hand.get(i).color;
-                    if (color > 0) {
+                    if (color > 0)
+                    {
                         counts[color - 1]++;
                     }
                 }
@@ -344,6 +360,11 @@ public class UnoState extends GameState
             }
             //if the card is played or the draw button is used, switch turns
             playerDeclaredUno = false;
+            //if the card is a reverse card
+           /* if(c.type == 'r')
+            {
+
+            }*/
             return true;
         }
 
@@ -395,7 +416,6 @@ public class UnoState extends GameState
     /**
      * Method to check if the deck is empty and makes and shuffles
      * a new one from the pile if it is
-     *
      */
     public void checkIsEmpty()
     {
@@ -444,8 +464,6 @@ public class UnoState extends GameState
         }
         //if cardToPlay is played
         //remove from hand
-        //Todo: need to be able to remove the card from the Hand after the card is played
-        //Todo: need to implement the action is it is the right card to play
     }//playCard
 
     /**
@@ -488,17 +506,18 @@ public class UnoState extends GameState
      *
      * @return true if legal move
      */
-    public void declareUno(int playerId)
+    public boolean declareUno(int playerId)
     {
         if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false))
         {
-            playerDeclaredUno = true;
+            //playerDeclaredUno = true;
             if(playerId == player1Id && hand2.size() == 1 )
             {
                 for(int i = 0; i < 2; i++)
                 {
                     Log.i("Game","Uno penalty");
                     drawCard(hand2);
+                    return true;
                 }
             }
             else if(playerId == player2Id && hand1.size() == 1 )
@@ -507,9 +526,11 @@ public class UnoState extends GameState
                 {
                     Log.i("Game","Uno penalty");
                     drawCard(hand1);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 
