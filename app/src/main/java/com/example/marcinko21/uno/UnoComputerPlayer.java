@@ -48,37 +48,66 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                 Log.i("Dumb AI", "Is turn");
                 //Card Playing
                 for (Card m : gs.hand2) {
-                    sleep(500);
-                    Log.i("Dumb AI", "Playing card" + m.androidId);
-                    UnoDraw2 d2 = new UnoDraw2(this, m);
-                    UnoDraw4 d4 = new UnoDraw4(this, m);
-                    UnoSkip sk = new UnoSkip(this, m);
-                    UnoReverse rv = new UnoReverse(this, m);
-                    playCardAction pc = new playCardAction(this, m);
-
-                    if(m.type == 'd' && m.color == 4){
-                        game.sendAction(d4);
-                        found = true;
-                    }
-                    else if(m.type == 'd' && m.color != 4){
-                        game.sendAction(d2);
-                        found = true;
-                    }
-                    else if(m.type == 's'){
-                        game.sendAction(sk);
-                        found = true;
-                    }
-                    else if(m.type == 'r'){
-                        game.sendAction(rv);
-                        found = true;
-                    }
-                    else {
-                        game.sendAction(pc);
-                        found = true;
+                    if(found == false) {
+                        if (m.type == 'd' && m.color == 4) {
+                            Log.i("Dumb AI", "Playing draw 4");
+                            sleep(500);
+                            UnoDraw4 pc = new UnoDraw4(this, m);
+                            game.sendAction(pc);
+                            found = true;
+                            break;
+                        }
+                        if (gs.type == 'd' && (m.color == gs.color || m.type == gs.type)) {
+                            Log.i("Dumb AI", "Playing draw 2");
+                            sleep(500);
+                            UnoDraw2 pc = new UnoDraw2(this, m);
+                            game.sendAction(pc);
+                            found = true;
+                            break;
+                        }//draw 2
+                        if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color || m.type == gs.type)) {
+                            Log.i("Dumb AI", "Playing skip/reverse");
+                            sleep(500);
+                            UnoReverse rv = new UnoReverse(this, m);
+                            game.sendAction(rv);
+                            found = true;
+                            break;
+                        }//skip/reverse
+                        if (m.type == gs.type && m.value != gs.value) {
+                            Log.i("Dumb AI", "Playing same value");
+                            sleep(500);
+                            if(m.type == 'n'){
+                                playCardAction pc = new playCardAction(this, m);
+                                game.sendAction(pc);
+                            }
+                            if(m.type == 'r' || m.type == 's'){
+                                UnoReverse pc = new UnoReverse(this, m);
+                                game.sendAction(pc);
+                            }
+                            found = true;
+                            break;
+                        }//same value
+                        if (m.color == gs.color && m.type != 'd') {
+                            Log.i("Dumb AI", "Playing card of the same color");
+                            sleep(500);
+                            playCardAction pc = new playCardAction(this, m);
+                            game.sendAction(pc);
+                            found = true;
+                            break;
+                        }//same color
+                        if (m.type == 'w') {
+                            Log.i("Dumb AI", "Playing wild card");
+                            sleep(500);
+                            playCardAction pc = new playCardAction(this, m);
+                            game.sendAction(pc);
+                            found = true;
+                            break;
+                        }//wild
                     }
                 }
                 if(found == false) {
                     UnoDrawAction ud = new UnoDrawAction(this);
+                    sleep(500);
                     game.sendAction(ud);
                 }
             }

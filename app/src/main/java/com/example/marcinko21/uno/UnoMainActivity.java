@@ -39,7 +39,6 @@ public class UnoMainActivity extends GameMainActivity
             }
         });
 
-
         // dumb computer player
         playerTypes.add(new GamePlayerType("Computer Player (dumb)")
         {
@@ -63,9 +62,6 @@ public class UnoMainActivity extends GameMainActivity
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
         defaultConfig.addPlayer("Dumb AI", 1); // player 2: a computer player
         defaultConfig.addPlayer("Smart AI", 2); // player 3: a smart computer player
-
-        defaultConfig.setRemoteData("Remote Player", "", 1);
-
         return defaultConfig;
 
     }//createDefaultConfig
