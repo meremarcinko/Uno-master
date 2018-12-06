@@ -343,13 +343,15 @@ public class UnoState extends GameState
             //Log.i("playcard", "checking wild");
             if(c.type == 'w' || (c.type == 'd' && c.color == 4))
             {
+                //int counts[] = {0,0,0,0};
                 int counts[] = {0,0,0,0};
                 for (int i = 0; i < hand.size(); i++)
                 {
                     int color = hand.get(i).color;
-                    if (color > 0)
+                    //if(color >= 0 && color < 4)
+                    if (color >= 0)
                     {
-                        counts[color - 1]++;
+                        counts[color]++;
                     }
                 }
                 //find the max counts
