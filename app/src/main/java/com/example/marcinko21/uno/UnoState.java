@@ -351,7 +351,7 @@ public class UnoState extends GameState
 
         else if(c.type == 'r' && c.type =='s') {
             if (turn == player1Id) {
-                //repeat own turn
+                //skip turn
 
             }
             else if (turn == player2Id) {
