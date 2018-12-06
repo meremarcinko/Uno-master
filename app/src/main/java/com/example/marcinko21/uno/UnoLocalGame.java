@@ -265,7 +265,6 @@ public class UnoLocalGame extends LocalGame
                     }
                     else
                     {
-
                         Log.i("Game","Drawing two w/ action");
                         state.drawTwo(state.hand1);
                     }
