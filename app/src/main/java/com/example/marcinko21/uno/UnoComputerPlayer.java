@@ -48,8 +48,27 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                 for (Card m : gs.hand2) {
                     sleep(500);
                     Log.i("Dumb AI", "Playing card" + m.androidId);
+                    UnoDraw2 d2 = new UnoDraw2(this, m);
+                    UnoDraw4 d4 = new UnoDraw4(this, m);
+                    UnoSkip sk = new UnoSkip(this, m);
+                    UnoReverse rv = new UnoReverse(this, m);
                     playCardAction pc = new playCardAction(this, m);
-                    game.sendAction(pc);
+
+                    if(m.type == 'd' && m.color == 4){
+                        game.sendAction(d4);
+                    }
+                    else if(m.type == 'd' && m.color != 4){
+                        game.sendAction(d2);
+                    }
+                    else if(m.type == 's'){
+                        game.sendAction(sk);
+                    }
+                    else if(m.type == 'r'){
+                        game.sendAction(rv);
+                    }
+                    else {
+                        game.sendAction(pc);
+                    }
                 }
                 UnoDrawAction ud = new UnoDrawAction(this);
                 game.sendAction(ud);
@@ -64,7 +83,8 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                         game.sendAction(uno);
                     }
                 }
-            } else {
+            }
+            else {
                 Log.i("Dumb AI", "Not turn");
             }
         }

@@ -322,44 +322,12 @@ public class UnoState extends GameState
 
                 Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
                 color = location + 1;
+
             }
-
-            if(c.type == 'd' && c.color == 4) {
-                if (turn == player1Id) {
-                    drawFour(hand2);
-                }
-                else if (turn == player2Id) {
-                    drawFour(hand1);
-                }
-            } //if the played card is a +4
-
             //if the card is played or the draw button is used, switch turns
             playerDeclaredUno = false;
             return true;
         }
-
-        else if(c.type == 'd' && c.color != 4) {
-            if (turn == player1Id) {
-                drawTwo(hand2);
-            }
-            else if (turn == player2Id) {
-                drawTwo(hand1);
-            }
-            playerDeclaredUno = false;
-            return true;
-        } //if the played card is a +2
-
-        else if(c.type == 'r' && c.type =='s') {
-            if (turn == player1Id) {
-                //skip turn
-
-            }
-            else if (turn == player2Id) {
-                //repeat own turn
-            }
-            playerDeclaredUno = false;
-            return true;
-        } //if the played card is a reverse or skip
 
         playerDeclaredUno = false;
         return false;
