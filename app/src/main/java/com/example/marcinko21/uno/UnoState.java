@@ -88,6 +88,7 @@ public class UnoState extends GameState
         discardPile = new ArrayList<>();
         for(Card c : state.discardPile)
         {
+
             //discardPile.set(i, c);
             discardPile.add(c.clone());
             i++;
@@ -393,7 +394,6 @@ public class UnoState extends GameState
     /**
      * Method to check if the deck is empty and makes and shuffles
      * a new one from the pile if it is
-     *
      */
     public void checkIsEmpty()
     {
@@ -486,16 +486,17 @@ public class UnoState extends GameState
      *
      * @return true if legal move
      */
-    public void declareUno(int playerId)
+    public boolean declareUno(int playerId)
     {
         if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false))
         {
-            playerDeclaredUno = true;
+            //playerDeclaredUno = true;
             if(playerId == player1Id && hand2.size() == 1 )
             {
                 for(int i = 0; i < 2; i++)
                 {
                     drawCard(hand2);
+                    return true;
                 }
             }
             else if(playerId == player2Id && hand1.size() == 1 )
@@ -503,9 +504,11 @@ public class UnoState extends GameState
                 for(int i = 0; i < 2; i++)
                 {
                     drawCard(hand1);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 
