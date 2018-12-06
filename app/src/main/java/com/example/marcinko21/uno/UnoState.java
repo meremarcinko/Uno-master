@@ -140,9 +140,9 @@ public class UnoState extends GameState
         deck.add(new Card(4,-2,'w',R.drawable.green_wild));//22
         deck.add(new Card(0,-3,'r',R.drawable.green_reverse));//23
         deck.add(new Card(0,-3,'r',R.drawable.green_reverse_copy));//24
-        deck.add(new Card(4,-4,'d',R.drawable.green_draw4));//25
+        deck.add(new Card(4,-5,'d',R.drawable.green_draw4));//25
         deck.add(new Card(0,-4,'s',R.drawable.green_skip));//26
-        deck.add(new Card(0,-5,'s',R.drawable.green_skip_copy));//27
+        deck.add(new Card(0,-4,'s',R.drawable.green_skip_copy));//27
         deck.add(new Card(1,0,'n',R.drawable.blue0));//28
         deck.add(new Card(1,1,'n',R.drawable.blue1));//29
         deck.add(new Card(1,1,'n',R.drawable.blue1_copy));//30
@@ -320,7 +320,7 @@ public class UnoState extends GameState
                     }
                 }
 
-                Log.i("playcard", "max count is" + max + "location is: "+ (location +1));
+                Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
                 color = location + 1;
             }
 
@@ -337,6 +337,7 @@ public class UnoState extends GameState
             playerDeclaredUno = false;
             return true;
         }
+
         else if(c.type == 'd' && c.color != 4) {
             if (turn == player1Id) {
                 drawTwo(hand2);

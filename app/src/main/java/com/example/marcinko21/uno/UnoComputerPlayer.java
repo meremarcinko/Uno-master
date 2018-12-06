@@ -46,7 +46,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                 Log.i("Dumb AI", "Is turn");
                 //Card Playing
                 for (Card m : gs.hand2) {
-                    sleep(100);
+                    sleep(500);
                     Log.i("Dumb AI", "Playing card" + m.androidId);
                     playCardAction pc = new playCardAction(this, m);
                     game.sendAction(pc);
