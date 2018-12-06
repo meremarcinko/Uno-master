@@ -97,7 +97,10 @@ public class UnoTest
 
         //use up deck and fill the discard pile
         testUno.discardPile.add(testUno.getDeck().get(0));
+        testUno.discardPile.add(testUno.getDeck().get(1));
         testUno.getDeck().clear();
+        assertEquals(0, testUno.getDeckSize());
+        assertEquals(2, testUno.discardPile.size());
 
         //this should shuffle the one card from the discard pile into the deck
         testUno.checkIsEmpty();
@@ -105,8 +108,8 @@ public class UnoTest
         //assert that the deck has 1 card
         assertEquals(1, testUno.getDeckSize());
 
-        //assert that the discard pile has 0 cards
-        assertEquals(0, testUno.getDiscardPile().size());
+        //assert that the discard pile has 0 cards, because we leave one card in the discard pile(top card)
+        assertEquals(1, testUno.getDiscardPile().size());
 
 
         /**

@@ -637,7 +637,7 @@ public class UnoState extends GameState
 
     public int getDeckSize()
     {
-        return deckSize;
+        return deck.size();
     }
 
     public ArrayList<Card> getDeck()
