@@ -358,6 +358,7 @@ public class UnoState extends GameState
             }
             //if the card is played or the draw button is used, switch turns
             playerDeclaredUno = false;
+            //SPECIAL CARD ACTIONS
             //if the card is a reverse card
            /* if(c.type == 'r')
             {
