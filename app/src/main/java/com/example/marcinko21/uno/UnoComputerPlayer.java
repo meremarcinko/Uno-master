@@ -13,7 +13,7 @@ import java.util.Random;
  * This is where the Computer player is implemented
  *
  * @author Andrew, Meredith, Ashley
- * @date 5 Dec 2018
+ * @date 9 November 2018
  */
 public class UnoComputerPlayer extends GameComputerPlayer {
     private Random r = new Random();
@@ -87,7 +87,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             found = true;
                             break;
                         }//same value
-                        if (m.color == gs.color && m.type != 'd') {
+                        if (m.color == gs.color && m.type != 'd' && m.type != 'r' && m.type != 's') {
                             Log.i("Dumb AI", "Playing card of the same color");
                             sleep(500);
                             playCardAction pc = new playCardAction(this, m);
