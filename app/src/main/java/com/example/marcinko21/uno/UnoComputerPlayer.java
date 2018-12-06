@@ -28,7 +28,6 @@ public class UnoComputerPlayer extends GameComputerPlayer {
             Log.i("Dumb AI", "Receiving info");
             info.setGame(game);
             UnoState gs = (UnoState) info;
-            int id = gs.player2Id;
 
             if (gs.hand1.size() == 1 || gs.hand2.size() == 1) {
                 int i = r.nextInt(9) + 1;

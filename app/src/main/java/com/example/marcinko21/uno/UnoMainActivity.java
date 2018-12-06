@@ -42,10 +42,20 @@ public class UnoMainActivity extends GameMainActivity
             }
         });
 
+        // smart computer player
+        playerTypes.add(new GamePlayerType("Computer Player (smart)")
+        {
+            public GamePlayer createPlayer(String name)
+            {
+                return new UnoSmartPlayer(name);
+            }
+        });
+
         // Add the default players
         GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "Pig", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); // player 1: a human player
-        defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
+        defaultConfig.addPlayer("Dumb AI", 1); // player 2: a computer player
+        defaultConfig.addPlayer("Smart AI", 2); // player 3: a smart computer player
 
         defaultConfig.setRemoteData("Remote Player", "", 1);
 

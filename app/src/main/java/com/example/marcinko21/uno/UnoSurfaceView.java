@@ -238,7 +238,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         {
             Card c = state.getHand(1).get(i);
             //TODO: change isHidden back to true when done debugging
-            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
         }
     }
 

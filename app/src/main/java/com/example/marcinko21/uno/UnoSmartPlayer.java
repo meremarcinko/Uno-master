@@ -43,28 +43,9 @@ public class UnoSmartPlayer extends GameComputerPlayer
             legal = true;
 
             Log.i("Smart AI", "Determining legality of +4 cards");
-            for (int i = 0; i < gs.hand2.size(); i++)
-            {
-                if (gs.hand2.get(i - 1).color == gs.color)
-                { //matching colors
-                    legal = false;
-                }
-                else if (gs.hand2.get(i).color != gs.color)
-                {
-                    if (gs.hand2.get(i).type == gs.type && gs.type != 'n')
-                    { //not a number card and matching types
-                        legal = false;
-                    }
-                    else if (gs.hand2.get(i).type == gs.type && gs.type == 'n')
-                    { //is a number card
-                        if (gs.hand2.get(i).value == gs.value)
-                        { //same value
-                            legal = false;
-                        }
-                    }
-                }
-                else if (gs.hand2.get(i).type == 'w')
-                { //wild card in hand
+
+            for(Card c : gs.hand2){
+                if(c.color == gs.color || (c.type == 'n' && c.value == gs.value) || (c.type == gs.type && gs.type != 'n') || c.type == 'w'){
                     legal = false;
                 }
             }
@@ -79,28 +60,28 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     {
                         colorPick(gs.hand2);
                         sleep(500);
-                        playCardAction pc = new playCardAction(this, m);
+                        UnoDraw4 pc = new UnoDraw4(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }
                 }//draw 4 (legal)
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
                     if (gs.type == 'd' || m.color == gs.color)
                     {
                         sleep(500);
-                        playCardAction pc = new playCardAction(this, m);
+                        UnoDraw2 pc = new UnoDraw2(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }//draw 2
                 }
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
@@ -108,28 +89,28 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     {
                         colorPick(gs.hand2);
                         sleep(500);
-                        playCardAction pc = new playCardAction(this, m);
+                        UnoDraw4 pc = new UnoDraw4(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
                     }//draw 4 (illegal)
                 }
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
                     if ((gs.type == 's' || gs.type == 'r') && m.type == gs.type)
                     {
                         sleep(500);
-                        playCardAction pc = new playCardAction(this, m);
-                        game.sendAction(pc);
+                        UnoReverse rv = new UnoReverse(this, m);
+                        game.sendAction(rv);
                         found = true;
                         break;
                     }//skip/reverse
                 }
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
@@ -143,7 +124,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     }//same number
                 }
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
@@ -157,7 +138,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
                     }//same color
                 }
             }
-            if (found == false)
+            else if (found == false)
             {
                 for (Card m : gs.hand2)
                 {
