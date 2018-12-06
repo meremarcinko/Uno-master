@@ -147,6 +147,7 @@ public class UnoLocalGame extends LocalGame
             if (action instanceof UnoDrawAction)
             {
 
+                Log.i("Game","Drawing card w/ action call");
                 state.drawCard(state.getHand(playerNum));
 
                 return true;
@@ -264,6 +265,7 @@ public class UnoLocalGame extends LocalGame
                     }
                     else
                     {
+                        Log.i("Game","Drawing two w/ action");
                         state.drawTwo(state.hand1);
                     }
                     return true;
