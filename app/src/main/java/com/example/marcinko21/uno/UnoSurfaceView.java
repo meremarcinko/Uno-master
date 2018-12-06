@@ -85,6 +85,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
                         aGame.sendAction(rv);
                     }
                     else {
+                        //other type
                         aGame.sendAction(a);
                     }
                     Log.i("SurfaceView onTouch", "sent playCard action: " + i);
