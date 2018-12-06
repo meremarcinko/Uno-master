@@ -253,6 +253,7 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
+        playerDeclaredUno = false;
     }//drawCard
 
     public void drawTwo(ArrayList<Card> hand)
@@ -262,37 +263,18 @@ public class UnoState extends GameState
         deck.remove(0);
         hand.add(deck.get(0));
         deck.remove(0);
-        if(turn == 0)
-        {
-            turn = 1;
-        }
-        else
-        {
-            turn = 0;
-        }
     }//drawTwo
 
     public void drawFour(ArrayList<Card> hand)
     {
         checkIsEmpty();
+        for(int i = 0; i < 4; i++) {
+            hand.add(deck.get(0));
+            deck.remove(0);
+        }
 
-        hand.add(deck.get(0));
-        deck.remove(0);
-        hand.add(deck.get(0));
-        deck.remove(0);
-        hand.add(deck.get(0));
-        deck.remove(0);
-        hand.add(deck.get(0));
-        deck.remove(0);
-        if(turn == 0)
-        {
-            turn = 1;
-        }
-        else
-        {
-            turn = 0;
-        }
-    }//drawTwo
+        playerDeclaredUno = false;
+    }//drawFour
 
     /**
      * Method to play a card from the hand
@@ -342,18 +324,44 @@ public class UnoState extends GameState
                 color = location + 1;
             }
 
+            if(c.type == 'd' && c.color == 4) {
+                if (turn == player1Id) {
+                    drawFour(hand2);
+                }
+                else if (turn == player2Id) {
+                    drawFour(hand1);
+                }
+            } //if the played card is a +4
+
             //if the card is played or the draw button is used, switch turns
+            playerDeclaredUno = false;
             return true;
         }
+        else if(c.type == 'd' && c.color != 4) {
+            if (turn == player1Id) {
+                drawTwo(hand2);
+            }
+            else if (turn == player2Id) {
+                drawTwo(hand1);
+            }
+            playerDeclaredUno = false;
+            return true;
+        } //if the played card is a +2
+
+        else if(c.type == 'r' && c.type =='s') {
+            if (turn == player1Id) {
+                //repeat own turn
+
+            }
+            else if (turn == player2Id) {
+                //repeat own turn
+            }
+            playerDeclaredUno = false;
+            return true;
+        } //if the played card is a reverse or skip
+
+        playerDeclaredUno = false;
         return false;
-        /*if(turn == 0)
-        {
-            turn = 1;
-        }
-        else
-        {
-            turn = 0;
-        }*/
     }//playCard
 
     /**
@@ -499,13 +507,13 @@ public class UnoState extends GameState
     {
         if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false))
         {
+            playerDeclaredUno = true;
             if(playerId == player1Id && hand2.size() == 1 )
             {
-                    for(int i = 0; i < 2; i++)
-                    {
-                        drawCard(hand2);
-                    }
-                    playerDeclaredUno = true;
+                for(int i = 0; i < 2; i++)
+                {
+                    drawCard(hand2);
+                }
             }
             else if(playerId == player2Id && hand1.size() == 1 )
             {
@@ -513,15 +521,6 @@ public class UnoState extends GameState
                 {
                     drawCard(hand1);
                 }
-                playerDeclaredUno = true;
-            }
-            else if(playerId == player1Id && hand1.size() == 1 )
-            {
-                playerDeclaredUno = true;
-            }
-            else if(playerId == player2Id && hand2.size() == 1 )
-            {
-                playerDeclaredUno = true;
             }
         }
     }
