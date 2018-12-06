@@ -73,7 +73,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
-                android:src="@drawable/test3"
+                android:src="@drawable/uno_logo_card"
                 android:contentDescription="@string/hello_world"
                 tools:layout_editor_absoluteX="759dp"
                 tools:layout_editor_absoluteY="294dp" />

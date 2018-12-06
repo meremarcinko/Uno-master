@@ -29,6 +29,7 @@ public class UnoState extends GameState
     char type;
     int value;
     int deckSize;
+    //int playerUno;
     boolean playerDeclaredUno;
     Card cbp; //card being played
     ArrayList<Card> deck = new ArrayList<Card>(108);
@@ -526,26 +527,26 @@ public class UnoState extends GameState
      */
     public boolean declareUno(int playerId)
     {
-        if((isUno(hand1, playerId) || isUno(hand2, playerId)) && (playerDeclaredUno == false))
+        if(((isUno(hand1, playerId) || isUno(hand2, playerId))) && (playerDeclaredUno == false))
         {
-            //playerDeclaredUno = true;
-            if(playerId == player1Id && hand2.size() == 1 )
+            playerDeclaredUno = true;
+            if(playerId == player1Id && hand2.size() == 1)
             {
                 for(int i = 0; i < 2; i++)
                 {
                     Log.i("Game","Uno penalty");
                     drawCard(hand2);
-                    return true;
                 }
+                return true;
             }
-            else if(playerId == player2Id && hand1.size() == 1 )
+            else if(playerId == player2Id && hand1.size() == 1)
             {
                 for(int i = 0; i < 2; i++)
                 {
                     Log.i("Game","Uno penalty");
                     drawCard(hand1);
-                    return true;
                 }
+                return true;
             }
         }
         return false;
