@@ -244,10 +244,30 @@ public class UnoLocalGame extends LocalGame
                     if (turn == 0)
                     {
                         state.drawFour(state.hand2);
+                        if (turn == 0)
+                        {
+                            state.setTurn(1);
+                            state.setTurn(0);
+                        }
+                        else
+                        {
+                            state.setTurn(0);
+                            state.setTurn(1);
+                        }
                     }
                     else
                     {
                         state.drawFour(state.hand1);
+                        if (turn == 0)
+                        {
+                            state.setTurn(1);
+                            state.setTurn(0);
+                        }
+                        else
+                        {
+                            state.setTurn(0);
+                            state.setTurn(1);
+                        }
                     }
                     return true;
                 }
@@ -267,11 +287,31 @@ public class UnoLocalGame extends LocalGame
                     if (turn == 0)
                     {
                         state.drawTwo(state.hand2);
+                        if (turn == 0)
+                        {
+                            state.setTurn(1);
+                            state.setTurn(0);
+                        }
+                        else
+                        {
+                            state.setTurn(0);
+                            state.setTurn(1);
+                        }
                     }
                     else
                     {
                         Log.i("Game","Drawing two w/ action");
                         state.drawTwo(state.hand1);
+                        if (turn == 0)
+                        {
+                            state.setTurn(1);
+                            state.setTurn(0);
+                        }
+                        else
+                        {
+                            state.setTurn(0);
+                            state.setTurn(1);
+                        }
                     }
                     return true;
                 }
