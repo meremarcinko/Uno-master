@@ -15,8 +15,7 @@ import java.util.Random;
  * @author Meredith, Andrew, Ashley
  * @version 05 December 2018
  */
-public class UnoSmartPlayer extends GameComputerPlayer
-{
+public class UnoSmartPlayer extends GameComputerPlayer {
     Random r = new Random();
     boolean legal = true;
     boolean found = true;
@@ -36,25 +35,21 @@ public class UnoSmartPlayer extends GameComputerPlayer
      * @param info
      */
     @Override
-    protected void receiveInfo(GameInfo info)
-    {
+    protected void receiveInfo(GameInfo info) {
         Log.i("Smart AI", "Receiving info");
-        if(!(info instanceof UnoState)){
+        if (!(info instanceof UnoState)) {
             return;
         }
         info.setGame(game);
         UnoState gs = (UnoState) info;
-        int id = gs.player2Id;
         found = false;
 
         //UNO check
-        if (gs.hand2.size() == 1 || gs.hand1.size() == 1)
-        {
+        if (gs.hand2.size() == 1 || gs.hand1.size() == 1) {
             sleep(300);
             if (gs.playerUno != -1 || gs.playerDeclaredUno) {
                 Log.i("Smart AI", "Did not declare UNO");
-            }
-            else {
+            } else {
                 Log.i("Smart AI", "Declaring UNO in variable seconds");
                 sleep(r.nextInt(500) + 500);
                 UnoUnoAction uno = new UnoUnoAction(this);
@@ -62,33 +57,26 @@ public class UnoSmartPlayer extends GameComputerPlayer
             }
         }
 
-        if (gs.getTurn() == this.playerNum)
-        {
+        if (gs.getTurn() == this.playerNum) {
             Log.i("Smart AI", "Is turn");
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if (m.type == 'd' && m.color == 4)
-                    {
-                        Log.i("Smart AI", "Playing draw 4");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if (m.type == 'd' && m.color == 4) {
+                        Log.i("Dumb AI", "Playing draw 4");
                         sleep(500);
                         UnoDraw4 pc = new UnoDraw4(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
-                    }
+                    }//draw 4
                 }//draw 4
             }
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if (gs.type == 'd' && (m.color == gs.color || m.type == gs.type))
-                    {
-                        Log.i("Smart AI", "Playing draw 2");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if (m.type == 'd' && (m.color == gs.color || m.type == gs.type)) {
+                        Log.i("Dumb AI", "Playing draw 2");
                         sleep(500);
                         UnoDraw2 pc = new UnoDraw2(this, m);
                         game.sendAction(pc);
@@ -98,69 +86,53 @@ public class UnoSmartPlayer extends GameComputerPlayer
                 }
             }
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color || m.type == gs.type))
-                    {
-                        Log.i("Smart AI", "Playing skip/reverse");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if ((m.type == 's' || m.type == 'r') && (m.color == gs.color || m.type == gs.type)) {
+                        Log.i("Dumb AI", "Playing skip/reverse");
                         sleep(500);
                         UnoReverse rv = new UnoReverse(this, m);
                         game.sendAction(rv);
+                        sleep(500);
                         found = true;
                         break;
                     }//skip/reverse
                 }
             }
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if (m.value == gs.value)
-                    {
-                        Log.i("Smart AI", "Playing same value");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if (m.value == gs.value && m.type == 'n' && m.type == gs.type) {
+                        Log.i("Dumb AI", "Playing number card of the same value");
                         sleep(500);
-                        if(m.type == 'n')
-                        {
+                        if (m.type == 'n') {
                             playCardAction pc = new playCardAction(this, m);
                             game.sendAction(pc);
                         }
-                        if(m.type == 'r' || m.type == 's')
-                        {
-                            UnoReverse pc = new UnoReverse(this, m);
-                            game.sendAction(pc);
-                        }
+                        sleep(500);
                         found = true;
                         break;
-                    }//same value
+                    }//same value number
                 }
             }
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if (m.color == gs.color)
-                    {
-                        Log.i("Smart AI", "Playing card of the same color");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if (m.color == gs.color && m.type == 'n') {
+                        Log.i("Dumb AI", "Playing number card of the same color");
                         sleep(500);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
                         found = true;
                         break;
-                    }//same color
+                    }//same color number
                 }
             }
 
-            if (found == false)
-            {
-                for (Card m : gs.hand2)
-                {
-                    if (m.type == 'w')
-                    {
-                        Log.i("Smart AI", "Playing wild card");
+            if (found == false) {
+                for (Card m : gs.hand2) {
+                    if (m.type == 'w') {
+                        Log.i("Dumb AI", "Playing wild card");
                         sleep(500);
                         playCardAction pc = new playCardAction(this, m);
                         game.sendAction(pc);
@@ -170,29 +142,15 @@ public class UnoSmartPlayer extends GameComputerPlayer
                 }
             }
 
-            if (found == false)
-            {
+            if (found == false) {
                 Log.i("Smart AI", "No playable cards found, drawing card");
-                sleep(100);
+                sleep(500);
                 UnoDrawAction ud = new UnoDrawAction(this);
                 game.sendAction(ud);
             }
-
-            //UNO declaration
-            if (gs.hand2.size() == 1 || gs.hand1.size() == 1)
-            {
-                Log.i("Smart AI", "Declaring UNO");
-                sleep(r.nextInt(500) + 500);
-                UnoUnoAction uno = new UnoUnoAction(this);
-                game.sendAction(uno);
-            }
-        } else
-            {
-
-            Log.i("Smart AI", "Not turn");
-
         }
-
-
+        else {
+            Log.i("Smart AI", "Not turn");
+        }
     }//receiveInfo
 }//UnoSmartPlayer
