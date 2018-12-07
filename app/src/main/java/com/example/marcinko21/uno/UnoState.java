@@ -365,33 +365,24 @@ public class UnoState extends GameState
             if(c.type == 'w' || (c.type == 'd' && c.color == 4))
             {
                 //int counts[] = {0,0,0,0};
-                int counts[] = {0,0,0,0};
-                for (int i = 0; i < hand.size(); i++)
-                {
-                    int color = hand.get(i).color;
-                    //if(color >= 0 && color < 4)
-                    if (color >= 0)
-                    {
-                        counts[color]++;
-                    }
+                int colors[] = new int[4];
+                int size = 0;
+                int out = 0;
+                for(Card m:hand){
+                    if(m.color == 0) colors[0]++; //g
+                    else if(m.color == 1) colors[1]++; //b
+                    else if(m.color == 2) colors[2]++; //r
+                    else if(m.color == 3) colors[3]++; //y
                 }
-                //find the max counts
-                //what is the maximum
-
-                int max = counts[0];
-                int location = 0;
-                for(int i = 0; i < counts.length; i++)
-                {
-                    if(counts[i] > max)
-                    {
-                        max = counts[i];
-                        location = i;
+                for(int i = 0; i < colors.length; i++){
+                    if(colors[i] > size){
+                        out = i;
+                        Log.i("Game","Wild color: "+out);
                     }
                 }
 
                 //Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
-                color = location + 1;
-
+                color = out;
             }
             //if the card is played or the draw button is used, switch turns
             playerDeclaredUno = false;

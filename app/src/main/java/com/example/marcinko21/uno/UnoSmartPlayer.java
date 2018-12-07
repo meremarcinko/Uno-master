@@ -118,7 +118,7 @@ public class UnoSmartPlayer extends GameComputerPlayer
             {
                 for (Card m : gs.hand2)
                 {
-                    if (m.type == gs.type && m.value != gs.value)
+                    if (m.value == gs.value)
                     {
                         Log.i("Smart AI", "Playing same value");
                         sleep(500);

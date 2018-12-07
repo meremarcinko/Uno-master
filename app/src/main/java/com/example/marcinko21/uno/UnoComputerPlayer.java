@@ -68,7 +68,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             found = true;
                             break;
                         }//draw 2
-                        if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color || m.type == gs.type)) {
+                        if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color)) {
                             Log.i("Dumb AI", "Playing skip/reverse");
                             sleep(500);
                             UnoReverse rv = new UnoReverse(this, m);
@@ -76,7 +76,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             found = true;
                             break;
                         }//skip/reverse
-                        if (m.type == gs.type && m.value != gs.value) {
+                        if (m.value == gs.value && m.type == gs.type && m.type != 'w') {
                             Log.i("Dumb AI", "Playing same value");
                             sleep(500);
                             if(m.type == 'n'){
@@ -91,7 +91,7 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             break;
                         }//same value
                         if (m.color == gs.color && m.type != 'd' && m.type != 'r' && m.type != 's') {
-                            Log.i("Dumb AI", "Playing card of the same color");
+                            Log.i("Dumb AI", "Playing number card of the same color");
                             sleep(500);
                             playCardAction pc = new playCardAction(this, m);
                             game.sendAction(pc);

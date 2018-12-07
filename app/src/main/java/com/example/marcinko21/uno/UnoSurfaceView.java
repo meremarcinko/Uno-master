@@ -180,11 +180,11 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     public void onDraw(Canvas canvas)
     {
 
-        float compTextX = compText.getX();
+        /*float compTextX = compText.getX();
         float compTextY = compText.getY();
         float compTextH = compText.getHeight();
         float compTextW = compText.getWidth();
-        canvas.drawRect(compTextX, compTextY, compTextW, compTextH, myPaint());
+        canvas.drawRect(compTextX, compTextY, compTextW, compTextH, myPaint());*/
 
 
         /**
@@ -276,7 +276,7 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         for(int i=0; i < state.getHandSize(state.getHand(1)); i++)
         {
             Card c = state.getHand(1).get(i);
-            c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
+            c.draw(canvas, xSize * i, y, xSize, ySize, this, false);
         }
 
 
