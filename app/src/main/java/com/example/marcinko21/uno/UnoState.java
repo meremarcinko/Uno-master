@@ -378,9 +378,10 @@ public class UnoState extends GameState
                 }
                 for(int i = 0; i < colors.length; i++){
                     if(colors[i] > size){
+                        size = colors[i];
                         out = i;
-                        Log.i("Game","Wild color: "+out);
                     }
+                    Log.i("Game","Wild color: "+out);
                 }
 
                 //Log.i("playCard", "max count is" + max + "location is: "+ (location +1));
