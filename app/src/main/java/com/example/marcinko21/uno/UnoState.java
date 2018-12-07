@@ -116,6 +116,8 @@ public class UnoState extends GameState
             hand2.add(c.clone());
         }
         color = state.color;
+        type = state.type;
+        value = state.value;
     }//copyCtor
 
 

@@ -50,8 +50,10 @@ public class UnoComputerPlayer extends GameComputerPlayer {
             if (gs.getTurn() == this.playerNum) {
                 Log.i("Dumb AI", "Is turn");
                 //Card Playing
+                Log.i("Game","Value: "+gs.value+" Color: "+gs.color+" Type: "+gs.type);
                 for (Card m : gs.hand2) {
                     if(found == false) {
+                        Log.i("Dumb AI", "color: "+m.color + " type: "+m.type+" value: "+m.value);
                         if (m.type == 'd' && m.color == 4) {
                             Log.i("Dumb AI", "Playing draw 4");
                             sleep(500);
@@ -59,8 +61,8 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             game.sendAction(pc);
                             found = true;
                             break;
-                        }
-                        if (gs.type == 'd' && (m.color == gs.color || m.type == gs.type)) {
+                        }//draw 4
+                        if (m.type == 'd' && (m.color == gs.color || m.type == gs.type)) {
                             Log.i("Dumb AI", "Playing draw 2");
                             sleep(500);
                             UnoDraw2 pc = new UnoDraw2(this, m);
@@ -68,36 +70,34 @@ public class UnoComputerPlayer extends GameComputerPlayer {
                             found = true;
                             break;
                         }//draw 2
-                        if ((gs.type == 's' || gs.type == 'r') && (m.color == gs.color)) {
+                        if ((m.type == 's' || m.type == 'r') && (m.color == gs.color || m.type == gs.type)) {
                             Log.i("Dumb AI", "Playing skip/reverse");
                             sleep(500);
                             UnoReverse rv = new UnoReverse(this, m);
                             game.sendAction(rv);
+                            sleep(500);
                             found = true;
                             break;
                         }//skip/reverse
-                        if (m.value == gs.value && m.type == gs.type && m.type != 'w') {
-                            Log.i("Dumb AI", "Playing same value");
+                        if (m.value == gs.value && m.type == 'n' && m.type == gs.type) {
+                            Log.i("Dumb AI","Playing number card of the same value");
                             sleep(500);
                             if(m.type == 'n'){
                                 playCardAction pc = new playCardAction(this, m);
                                 game.sendAction(pc);
                             }
-                            if(m.type == 'r' || m.type == 's'){
-                                UnoReverse pc = new UnoReverse(this, m);
-                                game.sendAction(pc);
-                            }
+                            sleep(500);
                             found = true;
                             break;
-                        }//same value
-                        if (m.color == gs.color && m.type != 'd' && m.type != 'r' && m.type != 's') {
+                        }//same value number
+                        if (m.color == gs.color && m.type == 'n') {
                             Log.i("Dumb AI", "Playing number card of the same color");
                             sleep(500);
                             playCardAction pc = new playCardAction(this, m);
                             game.sendAction(pc);
                             found = true;
                             break;
-                        }//same color
+                        }//same color number
                         if (m.type == 'w') {
                             Log.i("Dumb AI", "Playing wild card");
                             sleep(500);
