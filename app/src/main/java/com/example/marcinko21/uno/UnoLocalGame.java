@@ -170,10 +170,9 @@ public class UnoLocalGame extends LocalGame
             else if (action instanceof UnoUnoAction)
             {
                 //state.setPlayerDeclaredUno();
-                //if(state.playerDeclaredUno == false) {
-                  //  state.playerUno = playerNum;
+                if(state.playerDeclaredUno == false) {
                     state.declareUno(playerNum);
-                //}
+                }
                 return true;
             }
             //went into office hours and recieved help on this method
@@ -301,7 +300,6 @@ public class UnoLocalGame extends LocalGame
                         else
                         {
                             state.setTurn(0);
-
                         }
                         return true;
 

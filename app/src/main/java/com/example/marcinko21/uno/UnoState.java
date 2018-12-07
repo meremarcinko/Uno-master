@@ -29,7 +29,7 @@ public class UnoState extends GameState
     char type;
     int value;
     int deckSize;
-    //int playerUno;
+    int playerUno;
     boolean playerDeclaredUno;
     Card cbp; //card being played
     ArrayList<Card> deck = new ArrayList<Card>(108);
@@ -48,6 +48,7 @@ public class UnoState extends GameState
         turn = 0;
         makeDeck();
         shuffleDeck();
+        playerUno = -1;
         playerDeclaredUno = false;
         int i;
         for(i=0; i < 7; i++)
@@ -76,6 +77,7 @@ public class UnoState extends GameState
         player1Id = state.getPlayer1Id();
         player2Id = state.getPlayer2Id();
         turn = state.getTurn();
+        playerUno = state.playerUno;
         playerDeclaredUno = state.playerDeclaredUno;
 
         int i = 0;
@@ -264,8 +266,14 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        playerDeclaredUno = false;
-
+        if(hand == hand1 && playerUno == player1Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
+        else if(hand == hand2 && playerUno == player2Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
     }//drawCard
 
     /**
@@ -290,7 +298,14 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        playerDeclaredUno = false;
+        if(hand == hand1 && playerUno == player1Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
+        else if(hand == hand2 && playerUno == player2Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
     }//drawTwo
 
     /**
@@ -316,8 +331,14 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        playerDeclaredUno = false;
-
+        if(hand == hand1 && playerUno == player1Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
+        else if(hand == hand2 && playerUno == player2Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
     }//drawFour
 
     /**
@@ -382,8 +403,14 @@ public class UnoState extends GameState
             }*/
             return true;
         }
-
-        playerDeclaredUno = false;
+        if(hand == hand1 && playerUno == player1Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
+        else if(hand == hand2 && playerUno == player2Id) {
+            playerUno = -1;
+            playerDeclaredUno = false;
+        }
         return false;
     }//playCard
 
@@ -529,7 +556,7 @@ public class UnoState extends GameState
      */
     public boolean declareUno(int playerId)
     {
-        if(((isUno(hand1, playerId) || isUno(hand2, playerId))) && (playerDeclaredUno == false))
+        if(((isUno(hand1, playerId) || isUno(hand2, playerId))) && (playerDeclaredUno == false) && playerUno == -1)
         {
             playerDeclaredUno = true;
             if(playerId == player1Id && hand2.size() == 1)
@@ -550,7 +577,16 @@ public class UnoState extends GameState
                 }
                 return true;
             }
+            else if(playerId == player1Id && hand1.size() == 1){
+                playerUno = playerId;
+                return true;
+            }
+            else if(playerId == player2Id && hand2.size() == 1){
+                playerUno = playerId;
+                return true;
+            }
         }
+        playerDeclaredUno = false;
         return false;
     }
 

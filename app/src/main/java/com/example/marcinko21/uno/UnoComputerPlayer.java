@@ -33,9 +33,12 @@ public class UnoComputerPlayer extends GameComputerPlayer {
 
             if (gs.hand1.size() == 1 || gs.hand2.size() == 1) {
                 int i = r.nextInt(9) + 1;
-                if (i < 5) {
+                sleep(300);
+                Log.i("Game",i + "playerUno: "+gs.playerUno + "status: "+gs.playerDeclaredUno);
+                if (i < 5 || gs.playerUno != -1 || gs.playerDeclaredUno) {
                     Log.i("Dumb AI", "Did not declare UNO");
-                } else {
+                }
+                else {
                     Log.i("Dumb AI", "Declaring UNO in 2 seconds");
                     sleep(2000);
                     UnoUnoAction uno = new UnoUnoAction(this);

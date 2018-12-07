@@ -50,10 +50,16 @@ public class UnoSmartPlayer extends GameComputerPlayer
         //UNO check
         if (gs.hand2.size() == 1 || gs.hand1.size() == 1)
         {
-            Log.i("Smart AI", "Declaring UNO in variable seconds");
-            sleep(r.nextInt(500) + 500);
-            UnoUnoAction uno = new UnoUnoAction(this);
-            game.sendAction(uno);
+            sleep(300);
+            if (gs.playerUno != -1 || gs.playerDeclaredUno) {
+                Log.i("Smart AI", "Did not declare UNO");
+            }
+            else {
+                Log.i("Smart AI", "Declaring UNO in variable seconds");
+                sleep(r.nextInt(500) + 500);
+                UnoUnoAction uno = new UnoUnoAction(this);
+                game.sendAction(uno);
+            }
         }
 
         if (gs.getTurn() == this.playerNum)
