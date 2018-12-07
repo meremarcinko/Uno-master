@@ -1,8 +1,11 @@
 package com.example.marcinko21.uno;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -105,7 +108,9 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
      */
     //the game's state
     protected UnoState state = new UnoState();
-    private TextView text;
+    private TextView compText;
+    private TextView yourText;
+    private Activity myActivity;
 
     /**
      * Constructor for the UnoSurfaceView class.
@@ -118,12 +123,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         setState(state);
         init();
 
-        //todo talk to tribelhorn about highlighting a text box instead of writing it
-        //text = myActivity.findViewById(R.id.textBox);
-        //text = findViewById(R.id.textBox);
-        text.setOnClickListener((OnClickListener) this);
-
-
+        compText = myActivity.findViewById(R.id.compHand);
+        yourText = myActivity.findViewById(R.id.yourHand);
 
     }//ctor
 
@@ -147,7 +148,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
      * Helper-method for the constructors
      */
     private void init()
-    {//setBackgroundColor(backgroundColor());
+    {
+        //setBackgroundColor(backgroundColor());
     }// init
 
     public int backgroundColor()
@@ -160,36 +162,56 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         this.state = state;
     }
 
+    public Paint myPaint(){
+
+        //set highlight to pink
+        int highlight = Color.argb(255, 255, 0, 255);
+        myPaint().setColor(highlight);
+        return myPaint();
+    }
+
+    /**
+     * onDraw
+     * draws on SurfaceView
+     *
+     * @param canvas
+     */
     @Override
     public void onDraw(Canvas canvas)
     {
 
+        float compTextX = compText.getX();
+        float compTextY = compText.getY();
+        float compTextH = compText.getHeight();
+        float compTextW = compText.getWidth();
+        canvas.drawRect(compTextX, compTextY, compTextW, compTextH, myPaint());
 
-        int playerOne = state.getPlayer1Id();
-        int playerTwo = state.getPlayer2Id();
-        int turn = state.getTurn();
-        String oneName = Integer.toString(playerOne);
-        String twoName = Integer.toString(playerTwo);
 
-        /***
-        if(turn == 0) {
+        /**
+        //view class has an x, y, width, height, or get position
+        float compTextX = compText.getX();
+        float compTextY = compText.getY();
+        float compTextH = compText.getHeight();
+        float compTextW = compText.getWidth();
 
-            text.setText("Current Turn: " + oneName);
-            Log.i("Text says: ", " one name ");
+        float yourTextLeft = yourText.getX() - 10 ; //x
+        float yourTextTop = yourText.getY() - 10; //y
+        float yourTextBottom = yourText.getHeight() + 10; //height
+        float yourTextRight = yourText.getWidth() + 50; //width
 
-        } else if (turn == 1) {
 
-            text.setText("Current Turn: " + twoName);
-            Log.i("Text says: ", " two name ");
+        //drawing highlight around textView depending on the turn
+        if (state.getTurn() == 0){ //if player's turn
+
+            //canvas.drawRect(x + 10, y + 10, 10, 10, color);
+            canvas.drawRect(yourTextLeft, yourTextTop, yourTextRight, yourTextBottom, myPaint());
+
+        } else if (state.getTurn() == 1){ //if computer's turn
+
+            //canvas.drawRect(x + 10, y + 10, 10, 10, color);
 
         }
-
-        Log.i("Text says: ", " no name ");
          */
-
-
-        //if((state. = true);
-          //  canvas.drawText("It is: " + turn + "'s turn");
 
         //green
         if(state.color == 0)
@@ -211,7 +233,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         {
             setBackgroundColor(Color.YELLOW);
         }
-
 
         final double RATIO = 1.2;
         //for the human player's hand
@@ -255,7 +276,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
         for(int i=0; i < state.getHandSize(state.getHand(1)); i++)
         {
             Card c = state.getHand(1).get(i);
-            //TODO: change isHidden back to true when done debugging
             c.draw(canvas, xSize * i, y, xSize, ySize, this, true);
         }
 
@@ -273,6 +293,8 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
     {
         this.aGame = g;
     }
+
+    public void setMyActivity(Activity a) { this.myActivity = a; }
 
     private GamePlayer aHuman;
     private Game aGame;

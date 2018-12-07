@@ -133,6 +133,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         surfaceView.setHumanPlayer(this);
 
+        surfaceView.setMyActivity(myActivity);
+
     }//setAsGui
 
     /**
