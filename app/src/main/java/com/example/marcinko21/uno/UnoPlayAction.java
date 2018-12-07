@@ -23,7 +23,7 @@ public class UnoPlayAction extends GameAction
         super(p);
     }
 
-    //todo add private variable for the card number
+    // add private variable for the card number
     //getter and setter for those
     //maybe an overloaded constructor
 

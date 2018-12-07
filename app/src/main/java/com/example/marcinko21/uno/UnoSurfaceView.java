@@ -75,19 +75,24 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
                     UnoReverse rv = new UnoReverse(aHuman, c);
                     playCardAction a = new playCardAction(aHuman, c);
 
-                    if(c.type == 'd' && c.color == 4){
+                    if(c.type == 'd' && c.color == 4)
+                    {
                         aGame.sendAction(d4);
                     }
-                    else if(c.type == 'd' && c.color != 4){
+                    else if(c.type == 'd' && c.color != 4)
+                    {
                         aGame.sendAction(d2);
                     }
-                    else if(c.type == 's'){
+                    else if(c.type == 's')
+                    {
                         aGame.sendAction(sk);
                     }
-                    else if(c.type == 'r'){
+                    else if(c.type == 'r')
+                    {
                         aGame.sendAction(rv);
                     }
-                    else {
+                    else
+                    {
                         //other type
                         aGame.sendAction(a);
                     }
@@ -96,8 +101,6 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
                 }
             }
         }
-
-        //todo: move card from hand to discard
         //creates a new instance of playCardAction
 
         return true;
@@ -298,8 +301,4 @@ public class UnoSurfaceView extends SurfaceView implements View.OnTouchListener
 
     private GamePlayer aHuman;
     private Game aGame;
-
-    //Todo: if it is a special card, call the special card action, else play a regular card
-
-
 }

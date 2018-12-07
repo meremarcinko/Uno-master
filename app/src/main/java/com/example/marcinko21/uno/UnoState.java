@@ -268,11 +268,13 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        if(hand == hand1 && playerUno == player1Id) {
+        if(hand == hand1 && playerUno == player1Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
-        else if(hand == hand2 && playerUno == player2Id) {
+        else if(hand == hand2 && playerUno == player2Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
@@ -300,11 +302,13 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        if(hand == hand1 && playerUno == player1Id) {
+        if(hand == hand1 && playerUno == player1Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
-        else if(hand == hand2 && playerUno == player2Id) {
+        else if(hand == hand2 && playerUno == player2Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
@@ -333,11 +337,13 @@ public class UnoState extends GameState
         {
             turn = 0;
         }
-        if(hand == hand1 && playerUno == player1Id) {
+        if(hand == hand1 && playerUno == player1Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
-        else if(hand == hand2 && playerUno == player2Id) {
+        else if(hand == hand2 && playerUno == player2Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
@@ -370,14 +376,17 @@ public class UnoState extends GameState
                 int colors[] = new int[4];
                 int size = 0;
                 int out = 0;
-                for(Card m:hand){
+                for(Card m:hand)
+                {
                     if(m.color == 0) colors[0]++; //g
                     else if(m.color == 1) colors[1]++; //b
                     else if(m.color == 2) colors[2]++; //r
                     else if(m.color == 3) colors[3]++; //y
                 }
-                for(int i = 0; i < colors.length; i++){
-                    if(colors[i] > size){
+                for(int i = 0; i < colors.length; i++)
+                {
+                    if(colors[i] > size)
+                    {
                         size = colors[i];
                         out = i;
                     }
@@ -397,11 +406,13 @@ public class UnoState extends GameState
             }*/
             return true;
         }
-        if(hand == hand1 && playerUno == player1Id) {
+        if(hand == hand1 && playerUno == player1Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
-        else if(hand == hand2 && playerUno == player2Id) {
+        else if(hand == hand2 && playerUno == player2Id)
+        {
             playerUno = -1;
             playerDeclaredUno = false;
         }
@@ -571,11 +582,13 @@ public class UnoState extends GameState
                 }
                 return true;
             }
-            else if(playerId == player1Id && hand1.size() == 1){
+            else if(playerId == player1Id && hand1.size() == 1)
+            {
                 playerUno = playerId;
                 return true;
             }
-            else if(playerId == player2Id && hand2.size() == 1){
+            else if(playerId == player2Id && hand2.size() == 1)
+            {
                 playerUno = playerId;
                 return true;
             }
